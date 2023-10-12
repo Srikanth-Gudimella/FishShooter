@@ -5,16 +5,20 @@ namespace FishShooting
 {
     public class BulletController : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
+        public float Speed = 15f;
 
+        private void OnEnable()
+        {
+            Invoke(nameof(DisableIt), 2f);
         }
 
-        // Update is called once per frame
+        void DisableIt()
+        {
+            gameObject.SetActive(false);
+        }
         void Update()
         {
-
+            transform.Translate(Vector3.up * Speed * Time.deltaTime);
         }
     }
 }

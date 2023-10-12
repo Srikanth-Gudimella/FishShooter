@@ -9,7 +9,7 @@ namespace FishShooting
         #region Publice Members
         public GameObject Pointer;
         public Transform CanonPivot,BulletInitPos;
-        public float rotationSpeed;
+        public float NextShootTime,ShootIntervel;
 
         public List<GameObject> AllBullets;
         public GameObject BulletPrefab;
@@ -34,24 +34,24 @@ namespace FishShooting
                 {
                     GO = AllBullets[i].gameObject;
                     GO.SetActive(true);
-                    GO.transform.position = BulletInitPos.position;
-                    GO.transform.rotation = BulletInitPos.rotation;
+                    GO.transform.SetPositionAndRotation(BulletInitPos.position,BulletInitPos.rotation);
                     return GO;
                 }
             }
             GO = Instantiate(BulletPrefab);
+            AllBullets.Add(GO);
             GO.SetActive(true);
-            GO.transform.position = BulletInitPos.position;
-            GO.transform.rotation = BulletInitPos.rotation;
+            GO.transform.SetPositionAndRotation(BulletInitPos.position, BulletInitPos.rotation);
             return GO;
         }
 
         RaycastHit hit;
         void ShootFrequently()
         {
-            if(Physics.Raycast(BulletInitPos.position,BulletInitPos.transform.up,20))
+            //if(Physics.Raycast(BulletInitPos.position,BulletInitPos.transform.up,20))
             {
                 Debug.Log("<color=yellow> ---- Shoot :::: </color> ");
+                GetBullet();
             }
         }
 
@@ -62,6 +62,7 @@ namespace FishShooting
                 touchStartPos = Input.mousePosition;
             }
             Debug.DrawRay(BulletInitPos.position, BulletInitPos.transform.up * 20, Color.red);
+            
             if (Input.GetMouseButton(0))
             {
                 Vector2 mousePosition = Input.mousePosition;
@@ -79,6 +80,14 @@ namespace FishShooting
                 // Apply the rotation to the CanonPivot
                 CanonPivot.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle-90));
                 Pointer.transform.position =  new Vector3(targetPosition.x, targetPosition.y, -1f);
+                
+                //Shooting with Delay
+                if(Time.time >= NextShootTime)
+                {
+                    ShootFrequently();
+                    NextShootTime = Time.time + ShootIntervel;
+                }
+
             }
         }
     }
