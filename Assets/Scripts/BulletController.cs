@@ -6,7 +6,7 @@ namespace FishShooting
     public class BulletController : MonoBehaviour
     {
         public float Speed = 15f;
-
+        
         private void OnEnable()
         {
             Invoke(nameof(DisableIt), 2f);
@@ -20,5 +20,14 @@ namespace FishShooting
         {
             transform.Translate(Vector3.up * Speed * Time.deltaTime);
         }
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            IDamagable damagable = collision.transform.GetComponent<IDamagable>();
+            if (damagable != null)
+                damagable.ApplyDamage(10);
+            CancelInvoke("DisableIt");
+            gameObject.SetActive(false);
+        }
+
     }
 }
