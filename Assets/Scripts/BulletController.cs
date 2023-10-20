@@ -24,7 +24,7 @@ namespace FishShooting
         {
             IDamagable damagable = collision.transform.GetComponent<IDamagable>();
             if (damagable != null)
-                damagable.ApplyDamage(10);
+                damagable.ApplyDamage(50);
             CancelInvoke("DisableIt");
             gameObject.SetActive(false);
         }

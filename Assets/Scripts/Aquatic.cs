@@ -18,11 +18,18 @@ namespace FishShooting
         public bool Is_Dead;
         int PathID;
 
-        void Start()
+        public void SetInitials()
         {
+            Is_Dead = false;
+            Health = 100;
             PathID = 0;
             CurrentPoint = Path.PathPoints[PathID];
             transform.SetPositionAndRotation(CurrentPoint.position, CurrentPoint.rotation);
+        }
+
+        void Start()
+        {
+            
         }
        
         void Update()
