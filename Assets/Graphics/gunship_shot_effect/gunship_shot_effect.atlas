@@ -1,0 +1,74 @@
+gunship_shot_effect.png
+size:2048,2048
+filter:Linear,Linear
+pma:true
+Energy_Ball
+bounds:864,96,149,148
+offsets:0,1,150,149
+Energy_Ball_fx/Energy_Ball_00000
+bounds:4,1712,426,240
+Energy_Ball_fx/Energy_Ball_00004
+bounds:4,1468,426,240
+Energy_Ball_fx/Energy_Ball_00008
+bounds:434,1712,426,240
+Energy_Ball_fx/Energy_Ball_00012
+bounds:4,1224,426,240
+Energy_Ball_fx/Energy_Ball_00016
+bounds:434,1468,426,240
+Energy_Ball_fx/Energy_Ball_00020
+bounds:864,1712,426,240
+Energy_Ball_fx/Energy_Ball_00024
+bounds:4,980,426,240
+Energy_Ball_fx/Energy_Ball_00028
+bounds:434,1224,426,240
+Energy_Ball_fx/Energy_Ball_00032
+bounds:864,1468,426,240
+Energy_Ball_fx/Energy_Ball_00036
+bounds:1294,1712,426,240
+Energy_Ball_fx/Energy_Ball_00040
+bounds:4,736,426,240
+Energy_Ball_fx/Energy_Ball_00044
+bounds:434,980,426,240
+Energy_Ball_fx/Energy_Ball_00048
+bounds:864,1224,426,240
+Energy_Ball_fx/Energy_Ball_00052
+bounds:1294,1468,426,240
+Energy_Ball_fx/Energy_Ball_00056
+bounds:1724,1526,426,240
+rotate:90
+Laser_Beam/Edited VFX Free to use_00002
+bounds:4,492,426,240
+Laser_Beam/Edited VFX Free to use_00006
+bounds:434,736,426,240
+Laser_Beam/Edited VFX Free to use_00010
+bounds:864,980,426,240
+Laser_Beam/Edited VFX Free to use_00014
+bounds:1294,1224,426,240
+Laser_Beam/Edited VFX Free to use_00018
+bounds:4,248,426,240
+Laser_Beam/Edited VFX Free to use_00022
+bounds:434,492,426,240
+Laser_Beam/Edited VFX Free to use_00026
+bounds:864,736,426,240
+Laser_Beam/Edited VFX Free to use_00030
+bounds:1294,980,426,240
+Laser_Beam/Edited VFX Free to use_00034
+bounds:1724,1096,426,240
+rotate:90
+Laser_Beam/Edited VFX Free to use_00038
+bounds:4,4,426,240
+Laser_Beam/Edited VFX Free to use_00042
+bounds:434,248,426,240
+Laser_Beam/Edited VFX Free to use_00046
+bounds:864,492,426,240
+Laser_Beam/Edited VFX Free to use_00050
+bounds:1294,736,426,240
+Laser_Beam/Edited VFX Free to use_00054
+bounds:434,4,426,240
+Laser_Beam/Edited VFX Free to use_00058
+bounds:864,248,426,240
+Laser_Beam/Edited VFX Free to use_00062
+bounds:1294,492,426,240
+Laser_Beam/Edited VFX Free to use_00066
+bounds:1724,666,426,240
+rotate:90

@@ -1,0 +1,268 @@
+{
+"skeleton": {
+	"hash": "+GlyayZMN/8",
+	"spine": "4.1.24",
+	"x": -1320,
+	"y": -737.5,
+	"width": 2640,
+	"height": 1475,
+	"images": "./images/",
+	"audio": "J:/LogicLane/Work/Canons/gunship"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "Main_Anim", "parent": "root", "y": -59.08 },
+	{ "name": "base", "parent": "Main_Anim", "x": -29.46, "y": -620.25 },
+	{ "name": "Left_missiles", "parent": "base", "x": -584.13, "y": 275.47 },
+	{ "name": "Right_missiles", "parent": "base", "x": 643.24, "y": 271.39 },
+	{ "name": "orb", "parent": "base", "x": 24.61, "y": 317.61 },
+	{ "name": "rodes", "parent": "Main_Anim", "x": -48.56, "y": 7.79 },
+	{ "name": "top", "parent": "Main_Anim", "x": -34.23, "y": 239.43 },
+	{ "name": "Left_wings", "parent": "base", "x": -97.91, "y": 389.24 },
+	{ "name": "Right_wings", "parent": "base", "x": 150.44, "y": 379.69 },
+	{ "name": "Guildor_fx", "parent": "orb", "x": 6.56, "y": 15.62, "scaleX": 2.4174, "scaleY": 2.0835 },
+	{ "name": "orb_glow", "parent": "orb", "x": -2.53, "y": 2.65, "scaleX": 3, "scaleY": 3 },
+	{ "name": "Backward_BG", "parent": "root" },
+	{ "name": "Forground_BG", "parent": "root" }
+],
+"slots": [
+	{ "name": "Backward_BG", "bone": "Backward_BG" },
+	{ "name": "Forground_BG", "bone": "Forground_BG" },
+	{ "name": "Right_wings", "bone": "Right_wings", "attachment": "Right_wings" },
+	{ "name": "Left_wings", "bone": "Left_wings", "attachment": "Left_wings" },
+	{ "name": "rodes", "bone": "rodes", "attachment": "rodes" },
+	{ "name": "base", "bone": "base", "attachment": "base" },
+	{ "name": "orb", "bone": "orb", "attachment": "orb" },
+	{ "name": "top", "bone": "top", "attachment": "top" },
+	{ "name": "Left_missiles", "bone": "Left_missiles", "attachment": "Left_missiles" },
+	{ "name": "Right_missiles", "bone": "Right_missiles", "attachment": "Right_missiles" },
+	{ "name": "orb_glow", "bone": "orb_glow", "attachment": "glow_organe_B" },
+	{ "name": "Guildor_fx2", "bone": "Guildor_fx", "attachment": "Guildor_fx/Guildor_fx_00000", "blend": "screen" },
+	{ "name": "Guildor_fx3", "bone": "Guildor_fx", "attachment": "Guildor_fx/Guildor_fx_00000", "blend": "screen" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"base": {
+				"base": { "x": 24.96, "y": 456.75, "width": 1009, "height": 971 }
+			},
+			"Guildor_fx2": {
+				"Guildor_fx/Guildor_fx_00000": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00002": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00004": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00006": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00008": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00010": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00012": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00014": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00016": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00018": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00020": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00022": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00024": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00026": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00028": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00030": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00032": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00034": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00036": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00038": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00039": { "width": 160, "height": 160 }
+			},
+			"Guildor_fx3": {
+				"Guildor_fx/Guildor_fx_00000": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00002": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00004": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00006": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00008": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00010": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00012": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00014": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00016": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00018": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00020": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00022": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00024": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00026": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00028": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00030": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00032": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00034": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00036": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00038": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00039": { "width": 160, "height": 160 }
+			},
+			"Left_missiles": {
+				"Left_missiles": { "x": 2.08, "y": 71.78, "width": 181, "height": 738 }
+			},
+			"Left_wings": {
+				"Left_wings": { "x": -319.64, "y": -0.99, "width": 732, "height": 530 }
+			},
+			"orb": {
+				"orb": { "x": 1.85, "y": 9.14, "width": 350, "height": 339 }
+			},
+			"orb_glow": {
+				"glow_organe_B": { "width": 170, "height": 170 }
+			},
+			"Right_missiles": {
+				"Right_missiles": { "x": -7.28, "y": 76.86, "width": 181, "height": 738 }
+			},
+			"Right_wings": {
+				"Right_wings": { "x": 313.51, "y": 6.56, "width": 733, "height": 530 }
+			},
+			"rodes": {
+				"rodes": { "x": 42.06, "y": 165.71, "width": 515, "height": 435 }
+			},
+			"top": {
+				"top": { "x": 27.73, "y": 219.57, "width": 711, "height": 582 }
+			}
+		}
+	}
+],
+"animations": {
+	"default": {
+		"slots": {
+			"Guildor_fx2": {
+				"attachment": [
+					{ "time": 0.0333, "name": "Guildor_fx/Guildor_fx_00002" },
+					{ "time": 0.0667, "name": "Guildor_fx/Guildor_fx_00004" },
+					{ "time": 0.1, "name": "Guildor_fx/Guildor_fx_00006" },
+					{ "time": 0.1333, "name": "Guildor_fx/Guildor_fx_00008" },
+					{ "time": 0.1667, "name": "Guildor_fx/Guildor_fx_00010" },
+					{ "time": 0.2, "name": "Guildor_fx/Guildor_fx_00012" },
+					{ "time": 0.2333, "name": "Guildor_fx/Guildor_fx_00014" },
+					{ "time": 0.2667, "name": "Guildor_fx/Guildor_fx_00016" },
+					{ "time": 0.3, "name": "Guildor_fx/Guildor_fx_00018" },
+					{ "time": 0.3333, "name": "Guildor_fx/Guildor_fx_00020" },
+					{ "time": 0.3667, "name": "Guildor_fx/Guildor_fx_00022" },
+					{ "time": 0.4, "name": "Guildor_fx/Guildor_fx_00024" },
+					{ "time": 0.4333, "name": "Guildor_fx/Guildor_fx_00026" },
+					{ "time": 0.4667, "name": "Guildor_fx/Guildor_fx_00028" },
+					{ "time": 0.5, "name": "Guildor_fx/Guildor_fx_00030" },
+					{ "time": 0.5333, "name": "Guildor_fx/Guildor_fx_00032" },
+					{ "time": 0.5667, "name": "Guildor_fx/Guildor_fx_00034" },
+					{ "time": 0.6, "name": "Guildor_fx/Guildor_fx_00036" },
+					{ "time": 0.6333, "name": "Guildor_fx/Guildor_fx_00038" },
+					{ "time": 0.6667, "name": "Guildor_fx/Guildor_fx_00039" },
+					{ "time": 0.7, "name": "Guildor_fx/Guildor_fx_00000" },
+					{ "time": 0.7333, "name": "Guildor_fx/Guildor_fx_00002" },
+					{ "time": 0.7667, "name": "Guildor_fx/Guildor_fx_00004" },
+					{ "time": 0.8, "name": "Guildor_fx/Guildor_fx_00006" },
+					{ "time": 0.8333, "name": "Guildor_fx/Guildor_fx_00008" },
+					{ "time": 0.8667, "name": "Guildor_fx/Guildor_fx_00010" },
+					{ "time": 0.9, "name": "Guildor_fx/Guildor_fx_00012" },
+					{ "time": 0.9333, "name": "Guildor_fx/Guildor_fx_00014" },
+					{ "time": 0.9667, "name": "Guildor_fx/Guildor_fx_00016" },
+					{ "time": 1, "name": "Guildor_fx/Guildor_fx_00018" }
+				]
+			},
+			"Guildor_fx3": {
+				"attachment": [
+					{ "time": 0.0333, "name": "Guildor_fx/Guildor_fx_00002" },
+					{ "time": 0.0667, "name": "Guildor_fx/Guildor_fx_00004" },
+					{ "time": 0.1, "name": "Guildor_fx/Guildor_fx_00006" },
+					{ "time": 0.1333, "name": "Guildor_fx/Guildor_fx_00008" },
+					{ "time": 0.1667, "name": "Guildor_fx/Guildor_fx_00010" },
+					{ "time": 0.2, "name": "Guildor_fx/Guildor_fx_00012" },
+					{ "time": 0.2333, "name": "Guildor_fx/Guildor_fx_00014" },
+					{ "time": 0.2667, "name": "Guildor_fx/Guildor_fx_00016" },
+					{ "time": 0.3, "name": "Guildor_fx/Guildor_fx_00018" },
+					{ "time": 0.3333, "name": "Guildor_fx/Guildor_fx_00020" },
+					{ "time": 0.3667, "name": "Guildor_fx/Guildor_fx_00022" },
+					{ "time": 0.4, "name": "Guildor_fx/Guildor_fx_00024" },
+					{ "time": 0.4333, "name": "Guildor_fx/Guildor_fx_00026" },
+					{ "time": 0.4667, "name": "Guildor_fx/Guildor_fx_00028" },
+					{ "time": 0.5, "name": "Guildor_fx/Guildor_fx_00030" },
+					{ "time": 0.5333, "name": "Guildor_fx/Guildor_fx_00032" },
+					{ "time": 0.5667, "name": "Guildor_fx/Guildor_fx_00034" },
+					{ "time": 0.6, "name": "Guildor_fx/Guildor_fx_00036" },
+					{ "time": 0.6333, "name": "Guildor_fx/Guildor_fx_00038" },
+					{ "time": 0.6667, "name": "Guildor_fx/Guildor_fx_00039" },
+					{ "time": 0.7, "name": "Guildor_fx/Guildor_fx_00000" },
+					{ "time": 0.7333, "name": "Guildor_fx/Guildor_fx_00002" },
+					{ "time": 0.7667, "name": "Guildor_fx/Guildor_fx_00004" },
+					{ "time": 0.8, "name": "Guildor_fx/Guildor_fx_00006" },
+					{ "time": 0.8333, "name": "Guildor_fx/Guildor_fx_00008" },
+					{ "time": 0.8667, "name": "Guildor_fx/Guildor_fx_00010" },
+					{ "time": 0.9, "name": "Guildor_fx/Guildor_fx_00012" },
+					{ "time": 0.9333, "name": "Guildor_fx/Guildor_fx_00014" },
+					{ "time": 0.9667, "name": "Guildor_fx/Guildor_fx_00016" },
+					{ "time": 1, "name": "Guildor_fx/Guildor_fx_00018" }
+				]
+			}
+		},
+		"bones": {
+			"top": {
+				"translate": [
+					{
+						"curve": [ 0.056, 0, 0.111, 0, 0.072, 0, 0.09, -49.21 ]
+					},
+					{
+						"time": 0.1667,
+						"y": -49.21,
+						"curve": [ 0.222, 0, 0.278, 0, 0.238, -49.21, 0.257, 0 ]
+					},
+					{ "time": 0.3333 }
+				]
+			},
+			"base": {
+				"translate": [
+					{
+						"time": 0.1,
+						"curve": [ 0.156, 0, 0.211, 0, 0.172, 0, 0.19, -28.12 ]
+					},
+					{
+						"time": 0.2667,
+						"y": -28.12,
+						"curve": [ 0.322, 0, 0.378, 0, 0.338, -28.12, 0.357, 0 ]
+					},
+					{ "time": 0.4333 }
+				]
+			},
+			"rodes": {
+				"translate": [
+					{
+						"time": 0.0667,
+						"curve": [ 0.122, 0, 0.178, 0, 0.138, 0, 0.157, -49.21 ]
+					},
+					{
+						"time": 0.2333,
+						"y": -49.21,
+						"curve": [ 0.289, 0, 0.344, 0, 0.305, -49.21, 0.324, 0 ]
+					},
+					{ "time": 0.4 }
+				]
+			},
+			"Left_missiles": {
+				"translate": [
+					{
+						"time": 0.1,
+						"curve": [ 0.156, 0, 0.211, 0, 0.167, 0, 0.199, -28.12 ]
+					},
+					{
+						"time": 0.2667,
+						"y": -28.12,
+						"curve": [ 0.322, 0, 0.378, 0, 0.334, -28.12, 0.365, 0 ]
+					},
+					{ "time": 0.4333 }
+				]
+			},
+			"Right_missiles": {
+				"translate": [
+					{
+						"time": 0.1,
+						"curve": [ 0.156, 0, 0.211, 0, 0.167, 0, 0.199, -28.12 ]
+					},
+					{
+						"time": 0.2667,
+						"y": -28.12,
+						"curve": [ 0.322, 0, 0.378, 0, 0.334, -28.12, 0.365, 0 ]
+					},
+					{ "time": 0.4333 }
+				]
+			}
+		}
+	}
+}
+}
