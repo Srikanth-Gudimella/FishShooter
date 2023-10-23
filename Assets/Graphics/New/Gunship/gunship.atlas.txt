@@ -1,0 +1,177 @@
+gunship.png
+size:1956,1456
+filter:Linear,Linear
+pma:true
+Energy_Ball
+bounds:1488,707,149,148
+offsets:0,1,150,149
+Energy_Ball_fx/Energy_Ball_00000
+bounds:430,131,200,113
+Energy_Ball_fx/Energy_Ball_00004
+bounds:858,356,200,113
+rotate:90
+Energy_Ball_fx/Energy_Ball_00008
+bounds:1030,615,200,113
+Energy_Ball_fx/Energy_Ball_00012
+bounds:1453,857,200,113
+Energy_Ball_fx/Energy_Ball_00016
+bounds:430,16,200,113
+Energy_Ball_fx/Energy_Ball_00020
+bounds:632,131,200,113
+Energy_Ball_fx/Energy_Ball_00024
+bounds:632,16,200,113
+Energy_Ball_fx/Energy_Ball_00028
+bounds:973,356,200,113
+rotate:90
+Energy_Ball_fx/Energy_Ball_00032
+bounds:858,241,200,113
+Energy_Ball_fx/Energy_Ball_00036
+bounds:834,126,200,113
+Energy_Ball_fx/Energy_Ball_00040
+bounds:834,11,200,113
+Energy_Ball_fx/Energy_Ball_00044
+bounds:1088,413,200,113
+rotate:90
+Energy_Ball_fx/Energy_Ball_00048
+bounds:1714,913,200,113
+Energy_Ball_fx/Energy_Ball_00052
+bounds:1286,696,200,113
+Energy_Ball_fx/Energy_Ball_00056
+bounds:1203,413,200,113
+rotate:90
+Guildor_fx/Guildor_fx_00000
+bounds:1318,544,145,150
+offsets:5,0,160,160
+Guildor_fx/Guildor_fx_00002
+bounds:1318,398,144,149
+offsets:6,0,160,160
+rotate:90
+Guildor_fx/Guildor_fx_00004
+bounds:1241,253,143,150
+offsets:7,0,160,160
+rotate:90
+Guildor_fx/Guildor_fx_00006
+bounds:1393,246,143,150
+offsets:7,0,160,160
+Guildor_fx/Guildor_fx_00008
+bounds:1632,95,143,149
+offsets:7,0,160,160
+Guildor_fx/Guildor_fx_00010
+bounds:1777,100,143,149
+offsets:7,0,160,160
+Guildor_fx/Guildor_fx_00012
+bounds:1465,544,144,150
+offsets:6,0,160,160
+Guildor_fx/Guildor_fx_00014
+bounds:1469,398,144,150
+offsets:6,0,160,160
+rotate:90
+Guildor_fx/Guildor_fx_00016
+bounds:1538,246,144,150
+offsets:6,0,160,160
+Guildor_fx/Guildor_fx_00018
+bounds:1036,89,144,150
+offsets:6,0,160,160
+Guildor_fx/Guildor_fx_00020
+bounds:1790,762,143,149
+offsets:7,0,160,160
+Guildor_fx/Guildor_fx_00022
+bounds:1790,611,143,149
+offsets:7,0,160,160
+Guildor_fx/Guildor_fx_00024
+bounds:1182,101,144,150
+offsets:6,0,160,160
+Guildor_fx/Guildor_fx_00026
+bounds:1639,711,144,149
+offsets:6,0,160,160
+rotate:90
+Guildor_fx/Guildor_fx_00028
+bounds:1328,101,143,150
+offsets:7,0,160,160
+rotate:90
+Guildor_fx/Guildor_fx_00030
+bounds:1766,460,143,149
+offsets:7,0,160,160
+Guildor_fx/Guildor_fx_00032
+bounds:1611,555,142,150
+offsets:7,0,160,160
+Guildor_fx/Guildor_fx_00034
+bounds:1480,101,143,150
+offsets:6,0,160,160
+rotate:90
+Guildor_fx/Guildor_fx_00036
+bounds:1621,403,143,150
+offsets:7,0,160,160
+Guildor_fx/Guildor_fx_00038
+bounds:1684,251,143,150
+offsets:7,0,160,160
+Guildor_fx/Guildor_fx_00039
+bounds:1088,268,143,151
+offsets:7,0,160,160
+rotate:90
+Laser_Beam/Edited VFX Free to use_00002
+bounds:2,1214,426,240
+Laser_Beam/Edited VFX Free to use_00006
+bounds:2,972,426,240
+Laser_Beam/Edited VFX Free to use_00010
+bounds:430,1214,426,240
+Laser_Beam/Edited VFX Free to use_00014
+bounds:2,730,426,240
+Laser_Beam/Edited VFX Free to use_00018
+bounds:430,972,426,240
+Laser_Beam/Edited VFX Free to use_00022
+bounds:858,1214,426,240
+Laser_Beam/Edited VFX Free to use_00026
+bounds:2,488,426,240
+Laser_Beam/Edited VFX Free to use_00030
+bounds:430,730,426,240
+Laser_Beam/Edited VFX Free to use_00034
+bounds:858,972,426,240
+Laser_Beam/Edited VFX Free to use_00038
+bounds:1286,1214,426,240
+Laser_Beam/Edited VFX Free to use_00042
+bounds:2,246,426,240
+Laser_Beam/Edited VFX Free to use_00046
+bounds:430,488,426,240
+Laser_Beam/Edited VFX Free to use_00050
+bounds:858,730,426,240
+Laser_Beam/Edited VFX Free to use_00054
+bounds:1286,972,426,240
+Laser_Beam/Edited VFX Free to use_00058
+bounds:1714,1028,426,240
+rotate:90
+Laser_Beam/Edited VFX Free to use_00062
+bounds:2,4,426,240
+Laser_Beam/Edited VFX Free to use_00066
+bounds:430,246,426,240
+Left_missiles
+bounds:1655,859,30,111
+offsets:1,6,32,118
+Left_wings
+bounds:1829,339,119,87
+offsets:1,1,121,89
+rotate:90
+Right_missiles
+bounds:1232,616,30,112
+offsets:1,6,32,119
+Right_wings
+bounds:1182,11,119,88
+offsets:1,1,121,90
+base
+bounds:1286,811,165,159
+offsets:1,1,167,161
+glow_organe_B
+bounds:858,558,170,170
+orb
+bounds:1766,403,58,55
+offsets:1,2,60,58
+rodes
+bounds:1036,2,85,72
+offsets:1,1,87,74
+rotate:90
+shine
+bounds:1829,269,49,68
+offsets:3,1,56,70
+top
+bounds:1777,2,116,96
+offsets:1,1,118,98

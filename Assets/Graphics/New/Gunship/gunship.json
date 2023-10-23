@@ -1,0 +1,425 @@
+{
+"skeleton": {
+	"hash": "G0n3N+QdPE4",
+	"spine": "4.1.24",
+	"x": -1320,
+	"y": -737.5,
+	"width": 2640,
+	"height": 1475,
+	"images": "./images/",
+	"audio": "J:/LogicLane/Work/Canons/gunship"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "Main_Anim", "parent": "root", "y": -59.08 },
+	{ "name": "base", "parent": "Main_Anim", "x": -2.02, "y": 3.04 },
+	{ "name": "Left_missiles", "parent": "base", "x": -98.79, "y": 2.38 },
+	{ "name": "Right_missiles", "parent": "base", "x": 103.49, "y": 0.57 },
+	{ "name": "orb", "parent": "base", "x": -0.31, "y": 3.94 },
+	{ "name": "rodes", "parent": "Main_Anim", "x": 3.7, "y": 4.98 },
+	{ "name": "top", "parent": "Main_Anim", "x": -2.8, "y": 123.89 },
+	{ "name": "Left_wings", "parent": "base", "x": -75.4, "y": 0.41 },
+	{ "name": "Right_wings", "parent": "base", "x": 75.53, "y": -0.75 },
+	{ "name": "Guildor_fx", "parent": "orb", "x": 2.79, "y": 5.76, "scaleX": 0.35, "scaleY": 0.35 },
+	{ "name": "orb_glow", "parent": "orb", "x": 2.27, "y": 1.91, "scaleX": 0.4, "scaleY": 0.4 },
+	{ "name": "Backward_BG", "parent": "root" },
+	{ "name": "Forground_BG", "parent": "root" },
+	{ "name": "Guildor_fx2", "parent": "orb", "x": 2.79, "y": 5.76, "scaleX": 0.35, "scaleY": 0.35 },
+	{ "name": "Shine_top", "parent": "Main_Anim", "x": -140.11, "y": 123.47 },
+	{ "name": "Attack_Fx", "parent": "Main_Anim", "rotation": 90, "y": 187.79 },
+	{ "name": "Energy_Ball_fx", "parent": "Main_Anim", "x": -1.32, "y": 588.32, "scaleX": 6, "scaleY": 6 },
+	{ "name": "Energy_Ball", "parent": "Main_Anim", "y": 145.03, "scaleX": 0.5, "scaleY": 0.5 },
+	{ "name": "Top_Gold_shine", "parent": "Main_Anim", "x": 81.22, "y": 159.19 }
+],
+"slots": [
+	{ "name": "Backward_BG", "bone": "Backward_BG" },
+	{ "name": "Forground_BG", "bone": "Forground_BG" },
+	{ "name": "Right_wings", "bone": "Right_wings", "attachment": "Right_wings" },
+	{ "name": "Left_wings", "bone": "Left_wings", "attachment": "Left_wings" },
+	{ "name": "rodes", "bone": "rodes", "attachment": "rodes" },
+	{ "name": "base", "bone": "base", "attachment": "base" },
+	{ "name": "orb", "bone": "orb", "attachment": "orb" },
+	{ "name": "Left_missiles", "bone": "Left_missiles", "attachment": "Left_missiles" },
+	{ "name": "Right_missiles", "bone": "Right_missiles", "attachment": "Right_missiles" },
+	{ "name": "orb_glow", "bone": "orb_glow", "color": "04d7ffff", "attachment": "glow_organe_B" },
+	{ "name": "Guildor_fx2", "bone": "Guildor_fx", "attachment": "Guildor_fx/Guildor_fx_00000", "blend": "additive" },
+	{ "name": "Guildor_fx3", "bone": "Guildor_fx2", "attachment": "Guildor_fx/Guildor_fx_00000", "blend": "additive" },
+	{ "name": "Attack_Fx", "bone": "Attack_Fx", "color": "ffffff00", "attachment": "Laser_Beam/Edited VFX Free to use_00002", "blend": "additive" },
+	{ "name": "Energy_Ball", "bone": "Energy_Ball", "attachment": "Energy_Ball" },
+	{ "name": "Energy_Ball_fx", "bone": "Energy_Ball_fx", "color": "ffffff00", "blend": "additive" },
+	{ "name": "top", "bone": "top", "attachment": "top" },
+	{ "name": "Mask_top", "bone": "Main_Anim", "attachment": "Mask_top" },
+	{ "name": "Shine_top", "bone": "Shine_top", "attachment": "shine", "blend": "additive" },
+	{ "name": "Mask_Top_Golden", "bone": "Main_Anim", "attachment": "Mask_Top_Golden" },
+	{ "name": "Top_Gold_shine", "bone": "Top_Gold_shine", "color": "f9ac04ff", "attachment": "shine", "blend": "additive" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"Attack_Fx": {
+				"Laser_Beam/Edited VFX Free to use_00002": { "x": 158.84, "y": 0.95, "width": 426, "height": 240 },
+				"Laser_Beam/Edited VFX Free to use_00006": { "x": 158.84, "y": 0.95, "width": 426, "height": 240 },
+				"Laser_Beam/Edited VFX Free to use_00010": { "x": 158.84, "y": 0.95, "width": 426, "height": 240 },
+				"Laser_Beam/Edited VFX Free to use_00014": { "x": 158.84, "y": 0.95, "width": 426, "height": 240 },
+				"Laser_Beam/Edited VFX Free to use_00018": { "x": 158.84, "y": 0.95, "width": 426, "height": 240 },
+				"Laser_Beam/Edited VFX Free to use_00022": { "x": 158.84, "y": 0.95, "width": 426, "height": 240 },
+				"Laser_Beam/Edited VFX Free to use_00026": { "x": 158.84, "y": 0.95, "width": 426, "height": 240 },
+				"Laser_Beam/Edited VFX Free to use_00030": { "x": 158.84, "y": 0.95, "width": 426, "height": 240 },
+				"Laser_Beam/Edited VFX Free to use_00034": { "x": 158.84, "y": 0.95, "width": 426, "height": 240 },
+				"Laser_Beam/Edited VFX Free to use_00038": { "x": 158.84, "y": 0.95, "width": 426, "height": 240 },
+				"Laser_Beam/Edited VFX Free to use_00042": { "x": 158.84, "y": 0.95, "width": 426, "height": 240 },
+				"Laser_Beam/Edited VFX Free to use_00046": { "x": 158.84, "y": 0.95, "width": 426, "height": 240 },
+				"Laser_Beam/Edited VFX Free to use_00050": { "x": 158.84, "y": 0.95, "width": 426, "height": 240 },
+				"Laser_Beam/Edited VFX Free to use_00054": { "x": 158.84, "y": 0.95, "width": 426, "height": 240 },
+				"Laser_Beam/Edited VFX Free to use_00058": { "x": 158.84, "y": 0.95, "width": 426, "height": 240 },
+				"Laser_Beam/Edited VFX Free to use_00062": { "x": 158.84, "y": 0.95, "width": 426, "height": 240 },
+				"Laser_Beam/Edited VFX Free to use_00066": { "x": 158.84, "y": 0.95, "width": 426, "height": 240 }
+			},
+			"base": {
+				"base": { "x": 2.39, "y": 27.8, "width": 167, "height": 161 }
+			},
+			"Energy_Ball": {
+				"Energy_Ball": { "y": 0.5, "width": 150, "height": 149 }
+			},
+			"Energy_Ball_fx": {
+				"Energy_Ball_fx/Energy_Ball_00000": { "width": 200, "height": 113 },
+				"Energy_Ball_fx/Energy_Ball_00004": { "width": 200, "height": 113 },
+				"Energy_Ball_fx/Energy_Ball_00008": { "width": 200, "height": 113 },
+				"Energy_Ball_fx/Energy_Ball_00012": { "width": 200, "height": 113 },
+				"Energy_Ball_fx/Energy_Ball_00016": { "width": 200, "height": 113 },
+				"Energy_Ball_fx/Energy_Ball_00020": { "width": 200, "height": 113 },
+				"Energy_Ball_fx/Energy_Ball_00024": { "width": 200, "height": 113 },
+				"Energy_Ball_fx/Energy_Ball_00028": { "width": 200, "height": 113 },
+				"Energy_Ball_fx/Energy_Ball_00032": { "width": 200, "height": 113 },
+				"Energy_Ball_fx/Energy_Ball_00036": { "width": 200, "height": 113 },
+				"Energy_Ball_fx/Energy_Ball_00040": { "width": 200, "height": 113 },
+				"Energy_Ball_fx/Energy_Ball_00044": { "width": 200, "height": 113 },
+				"Energy_Ball_fx/Energy_Ball_00048": { "width": 200, "height": 113 },
+				"Energy_Ball_fx/Energy_Ball_00052": { "width": 200, "height": 113 },
+				"Energy_Ball_fx/Energy_Ball_00056": { "width": 200, "height": 113 }
+			},
+			"Guildor_fx2": {
+				"Guildor_fx/Guildor_fx_00000": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00002": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00004": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00006": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00008": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00010": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00012": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00014": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00016": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00018": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00020": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00022": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00024": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00026": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00028": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00030": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00032": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00034": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00036": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00038": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00039": { "width": 160, "height": 160 }
+			},
+			"Guildor_fx3": {
+				"Guildor_fx/Guildor_fx_00000": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00002": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00004": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00006": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00008": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00010": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00012": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00014": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00016": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00018": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00020": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00022": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00024": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00026": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00028": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00030": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00032": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00034": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00036": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00038": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00039": { "width": 160, "height": 160 }
+			},
+			"Left_missiles": {
+				"Left_missiles": { "x": 2.08, "y": 9.41, "width": 32, "height": 118 }
+			},
+			"Left_wings": {
+				"Left_wings": { "x": 4.68, "y": 16.34, "width": 121, "height": 89 }
+			},
+			"Mask_top": {
+				"Mask_top": {
+					"type": "clipping",
+					"end": "Shine_top",
+					"vertexCount": 6,
+					"vertices": [ -52.43, 140.03, -52.62, 98.08, -47.95, 94.35, 45.45, 93.24, 50.29, 97.9, 50.74, 140.32 ],
+					"color": "ce3a3a00"
+				}
+			},
+			"Mask_Top_Golden": {
+				"Mask_Top_Golden": {
+					"type": "clipping",
+					"end": "Top_Gold_shine",
+					"vertexCount": 31,
+					"vertices": [ -51.22, 178.52, -51.19, 177.65, -54.19, 177.46, -55.18, 176.4, -55.13, 158.57, -58.12, 158.5, -58.2, 143.67, -58.31, 142.36, -56.58, 142.51, -54.83, 142.53, -54.1, 142.49, -54.12, 141.51, -52.16, 141.54, -52.2, 140.53, 50.82, 140.5, 50.87, 141.43, 51.85, 141.48, 51.87, 142.44, 55.79, 142.56, 55.83, 143.54, 56.96, 143.59, 56.96, 157.19, 56.9, 157.56, 55.88, 157.54, 55.82, 158.52, 53.86, 158.56, 53.85, 176.53, 50.88, 176.54, 50.84, 177.59, 48.85, 177.63, 48.81, 178.54 ],
+					"color": "06ff4c00"
+				}
+			},
+			"orb": {
+				"orb": { "x": 1.85, "y": 2.24, "width": 60, "height": 58 }
+			},
+			"orb_glow": {
+				"glow_organe_B": { "width": 170, "height": 170 }
+			},
+			"Right_missiles": {
+				"Right_missiles": { "x": -1.21, "y": 12.8, "width": 32, "height": 119 }
+			},
+			"Right_wings": {
+				"Right_wings": { "x": -0.9, "y": 16.46, "width": 121, "height": 90 }
+			},
+			"rodes": {
+				"rodes": { "x": -4.99, "y": 44.71, "width": 87, "height": 74 }
+			},
+			"Shine_top": {
+				"shine": { "y": 0.5, "width": 56, "height": 70 }
+			},
+			"top": {
+				"top": { "x": 1.64, "y": 7.63, "width": 118, "height": 98 }
+			},
+			"Top_Gold_shine": {
+				"shine": { "width": 56, "height": 70 }
+			}
+		}
+	}
+],
+"animations": {
+	"attack": {
+		"slots": {
+			"Energy_Ball": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Energy_Ball_fx": {
+				"attachment": [
+					{ "name": "Energy_Ball_fx/Energy_Ball_00000" }
+				]
+			},
+			"Guildor_fx2": {
+				"attachment": [
+					{ "time": 0.0333, "name": "Guildor_fx/Guildor_fx_00002" },
+					{ "time": 0.0667, "name": "Guildor_fx/Guildor_fx_00004" },
+					{ "time": 0.1, "name": "Guildor_fx/Guildor_fx_00006" },
+					{ "time": 0.1333, "name": "Guildor_fx/Guildor_fx_00008" },
+					{ "time": 0.1667, "name": "Guildor_fx/Guildor_fx_00010" },
+					{ "time": 0.2, "name": "Guildor_fx/Guildor_fx_00012" },
+					{ "time": 0.2333, "name": "Guildor_fx/Guildor_fx_00014" },
+					{ "time": 0.2667, "name": "Guildor_fx/Guildor_fx_00016" },
+					{ "time": 0.3, "name": "Guildor_fx/Guildor_fx_00018" },
+					{ "time": 0.3333, "name": "Guildor_fx/Guildor_fx_00020" },
+					{ "time": 0.3667, "name": "Guildor_fx/Guildor_fx_00022" },
+					{ "time": 0.4, "name": "Guildor_fx/Guildor_fx_00024" },
+					{ "time": 0.4333, "name": "Guildor_fx/Guildor_fx_00026" },
+					{ "time": 0.4667, "name": "Guildor_fx/Guildor_fx_00028" },
+					{ "time": 0.5, "name": "Guildor_fx/Guildor_fx_00030" },
+					{ "time": 0.5333, "name": "Guildor_fx/Guildor_fx_00032" },
+					{ "time": 0.5667, "name": "Guildor_fx/Guildor_fx_00034" },
+					{ "time": 0.6, "name": "Guildor_fx/Guildor_fx_00036" },
+					{ "time": 0.6333, "name": "Guildor_fx/Guildor_fx_00038" },
+					{ "time": 0.6667, "name": "Guildor_fx/Guildor_fx_00039" },
+					{ "time": 0.7, "name": "Guildor_fx/Guildor_fx_00000" },
+					{ "time": 0.7333, "name": "Guildor_fx/Guildor_fx_00002" },
+					{ "time": 0.7667, "name": "Guildor_fx/Guildor_fx_00004" },
+					{ "time": 0.8, "name": "Guildor_fx/Guildor_fx_00006" },
+					{ "time": 0.8333, "name": "Guildor_fx/Guildor_fx_00008" },
+					{ "time": 0.8667, "name": "Guildor_fx/Guildor_fx_00010" },
+					{ "time": 0.9, "name": "Guildor_fx/Guildor_fx_00012" },
+					{ "time": 0.9333, "name": "Guildor_fx/Guildor_fx_00014" },
+					{ "time": 0.9667, "name": "Guildor_fx/Guildor_fx_00016" },
+					{ "time": 1, "name": "Guildor_fx/Guildor_fx_00018" }
+				]
+			},
+			"Guildor_fx3": {
+				"attachment": [
+					{ "time": 0.0333, "name": "Guildor_fx/Guildor_fx_00002" },
+					{ "time": 0.0667, "name": "Guildor_fx/Guildor_fx_00004" },
+					{ "time": 0.1, "name": "Guildor_fx/Guildor_fx_00006" },
+					{ "time": 0.1333, "name": "Guildor_fx/Guildor_fx_00008" },
+					{ "time": 0.1667, "name": "Guildor_fx/Guildor_fx_00010" },
+					{ "time": 0.2, "name": "Guildor_fx/Guildor_fx_00012" },
+					{ "time": 0.2333, "name": "Guildor_fx/Guildor_fx_00014" },
+					{ "time": 0.2667, "name": "Guildor_fx/Guildor_fx_00016" },
+					{ "time": 0.3, "name": "Guildor_fx/Guildor_fx_00018" },
+					{ "time": 0.3333, "name": "Guildor_fx/Guildor_fx_00020" },
+					{ "time": 0.3667, "name": "Guildor_fx/Guildor_fx_00022" },
+					{ "time": 0.4, "name": "Guildor_fx/Guildor_fx_00024" },
+					{ "time": 0.4333, "name": "Guildor_fx/Guildor_fx_00026" },
+					{ "time": 0.4667, "name": "Guildor_fx/Guildor_fx_00028" },
+					{ "time": 0.5, "name": "Guildor_fx/Guildor_fx_00030" },
+					{ "time": 0.5333, "name": "Guildor_fx/Guildor_fx_00032" },
+					{ "time": 0.5667, "name": "Guildor_fx/Guildor_fx_00034" },
+					{ "time": 0.6, "name": "Guildor_fx/Guildor_fx_00036" },
+					{ "time": 0.6333, "name": "Guildor_fx/Guildor_fx_00038" },
+					{ "time": 0.6667, "name": "Guildor_fx/Guildor_fx_00039" },
+					{ "time": 0.7, "name": "Guildor_fx/Guildor_fx_00000" },
+					{ "time": 0.7333, "name": "Guildor_fx/Guildor_fx_00002" },
+					{ "time": 0.7667, "name": "Guildor_fx/Guildor_fx_00004" },
+					{ "time": 0.8, "name": "Guildor_fx/Guildor_fx_00006" },
+					{ "time": 0.8333, "name": "Guildor_fx/Guildor_fx_00008" },
+					{ "time": 0.8667, "name": "Guildor_fx/Guildor_fx_00010" },
+					{ "time": 0.9, "name": "Guildor_fx/Guildor_fx_00012" },
+					{ "time": 0.9333, "name": "Guildor_fx/Guildor_fx_00014" },
+					{ "time": 0.9667, "name": "Guildor_fx/Guildor_fx_00016" },
+					{ "time": 1, "name": "Guildor_fx/Guildor_fx_00018" }
+				]
+			}
+		},
+		"bones": {
+			"top": {
+				"translate": [
+					{
+						"curve": [ 0.056, 0, 0.111, 0, 0.072, 0, 0.09, -21.24 ]
+					},
+					{
+						"time": 0.1667,
+						"y": -21.24,
+						"curve": [ 0.222, 0, 0.278, 0, 0.238, -21.24, 0.257, 0 ]
+					},
+					{ "time": 0.3333 }
+				]
+			},
+			"base": {
+				"translate": [
+					{
+						"time": 0.1,
+						"curve": [ 0.156, 0, 0.211, 0, 0.172, 0, 0.19, -19.34 ]
+					},
+					{
+						"time": 0.2667,
+						"y": -19.34,
+						"curve": [ 0.322, 0, 0.378, 0, 0.338, -19.34, 0.357, 0 ]
+					},
+					{ "time": 0.4333 }
+				]
+			},
+			"rodes": {
+				"translate": [
+					{
+						"time": 0.0667,
+						"curve": [ 0.133, 0, 0.2, 0, 0.153, 0, 0.175, -10.31 ]
+					},
+					{
+						"time": 0.2667,
+						"y": -10.31,
+						"curve": [ 0.311, 0, 0.356, 0, 0.324, -10.31, 0.339, 0 ]
+					},
+					{ "time": 0.4 }
+				]
+			},
+			"Left_missiles": {
+				"translate": [
+					{
+						"time": 0.1,
+						"curve": [ 0.156, 0, 0.211, 0, 0.167, 0, 0.199, -16.57 ]
+					},
+					{
+						"time": 0.2667,
+						"y": -16.57,
+						"curve": [ 0.322, 0, 0.378, 0, 0.334, -16.57, 0.365, 0 ]
+					},
+					{ "time": 0.4333 }
+				]
+			},
+			"Right_missiles": {
+				"translate": [
+					{
+						"time": 0.1,
+						"curve": [ 0.156, 0, 0.211, 0, 0.167, 0, 0.199, -13.85 ]
+					},
+					{
+						"time": 0.2667,
+						"y": -13.85,
+						"curve": [ 0.322, 0, 0.378, 0, 0.334, -13.85, 0.365, 0 ]
+					},
+					{ "time": 0.4333 }
+				]
+			}
+		}
+	},
+	"idle": {
+		"slots": {
+			"Energy_Ball": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Guildor_fx2": {
+				"attachment": [
+					{ "time": 0.0333, "name": "Guildor_fx/Guildor_fx_00002" },
+					{ "time": 0.0667, "name": "Guildor_fx/Guildor_fx_00004" },
+					{ "time": 0.1, "name": "Guildor_fx/Guildor_fx_00006" },
+					{ "time": 0.1333, "name": "Guildor_fx/Guildor_fx_00008" },
+					{ "time": 0.1667, "name": "Guildor_fx/Guildor_fx_00010" },
+					{ "time": 0.2, "name": "Guildor_fx/Guildor_fx_00012" },
+					{ "time": 0.2333, "name": "Guildor_fx/Guildor_fx_00014" },
+					{ "time": 0.2667, "name": "Guildor_fx/Guildor_fx_00016" },
+					{ "time": 0.3, "name": "Guildor_fx/Guildor_fx_00018" },
+					{ "time": 0.3333, "name": "Guildor_fx/Guildor_fx_00020" },
+					{ "time": 0.3667, "name": "Guildor_fx/Guildor_fx_00022" },
+					{ "time": 0.4, "name": "Guildor_fx/Guildor_fx_00024" },
+					{ "time": 0.4333, "name": "Guildor_fx/Guildor_fx_00026" },
+					{ "time": 0.4667, "name": "Guildor_fx/Guildor_fx_00028" },
+					{ "time": 0.5, "name": "Guildor_fx/Guildor_fx_00030" },
+					{ "time": 0.5333, "name": "Guildor_fx/Guildor_fx_00032" },
+					{ "time": 0.5667, "name": "Guildor_fx/Guildor_fx_00034" },
+					{ "time": 0.6, "name": "Guildor_fx/Guildor_fx_00036" },
+					{ "time": 0.6333, "name": "Guildor_fx/Guildor_fx_00038" },
+					{ "time": 0.6667, "name": "Guildor_fx/Guildor_fx_00039" }
+				]
+			},
+			"Guildor_fx3": {
+				"attachment": [
+					{ "time": 0.0333, "name": "Guildor_fx/Guildor_fx_00002" },
+					{ "time": 0.0667, "name": "Guildor_fx/Guildor_fx_00004" },
+					{ "time": 0.1, "name": "Guildor_fx/Guildor_fx_00006" },
+					{ "time": 0.1333, "name": "Guildor_fx/Guildor_fx_00008" },
+					{ "time": 0.1667, "name": "Guildor_fx/Guildor_fx_00010" },
+					{ "time": 0.2, "name": "Guildor_fx/Guildor_fx_00012" },
+					{ "time": 0.2333, "name": "Guildor_fx/Guildor_fx_00014" },
+					{ "time": 0.2667, "name": "Guildor_fx/Guildor_fx_00016" },
+					{ "time": 0.3, "name": "Guildor_fx/Guildor_fx_00018" },
+					{ "time": 0.3333, "name": "Guildor_fx/Guildor_fx_00020" },
+					{ "time": 0.3667, "name": "Guildor_fx/Guildor_fx_00022" },
+					{ "time": 0.4, "name": "Guildor_fx/Guildor_fx_00024" },
+					{ "time": 0.4333, "name": "Guildor_fx/Guildor_fx_00026" },
+					{ "time": 0.4667, "name": "Guildor_fx/Guildor_fx_00028" },
+					{ "time": 0.5, "name": "Guildor_fx/Guildor_fx_00030" },
+					{ "time": 0.5333, "name": "Guildor_fx/Guildor_fx_00032" },
+					{ "time": 0.5667, "name": "Guildor_fx/Guildor_fx_00034" },
+					{ "time": 0.6, "name": "Guildor_fx/Guildor_fx_00036" },
+					{ "time": 0.6333, "name": "Guildor_fx/Guildor_fx_00038" },
+					{ "time": 0.6667, "name": "Guildor_fx/Guildor_fx_00039" }
+				]
+			}
+		},
+		"bones": {
+			"Shine_top": {
+				"translate": [
+					{ "x": 57.03 },
+					{ "time": 0.6667, "x": 235.68 }
+				]
+			},
+			"Top_Gold_shine": {
+				"translate": [
+					{},
+					{ "time": 0.6667, "x": -195.51 }
+				]
+			}
+		}
+	}
+}
+}

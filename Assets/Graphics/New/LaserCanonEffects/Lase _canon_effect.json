@@ -1,0 +1,523 @@
+{
+"skeleton": {
+	"hash": "IOAF0h9MvnU",
+	"spine": "4.1.24",
+	"x": -1320,
+	"y": -737.5,
+	"width": 2640,
+	"height": 1475,
+	"images": "./images/",
+	"audio": "J:/LogicLane/Work/Canons/Lase canon"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "Main_Anim", "parent": "root", "x": 6.18, "y": -13.7 },
+	{ "name": "Laser_Fx", "parent": "Main_Anim", "rotation": 90.27, "x": -4, "y": 148.29, "scaleX": 2 },
+	{ "name": "Barrel", "parent": "Main_Anim", "x": -6.66, "y": 4.25 },
+	{ "name": "body", "parent": "Main_Anim", "x": -8.5, "y": 8.83 },
+	{ "name": "Right_Button", "parent": "body", "x": 75.73, "y": -66.43 },
+	{ "name": "Left_Button", "parent": "body", "x": -71.91, "y": -67.41 },
+	{ "name": "Belt", "parent": "Main_Anim", "x": -6.18, "y": 62.39 },
+	{ "name": "Tip", "parent": "Barrel", "x": -1.53, "y": 110.84 },
+	{ "name": "Guildor_fx_L", "parent": "Left_Button", "x": 4.4, "y": 3.45, "scaleX": 0.3857, "scaleY": 0.3857 },
+	{ "name": "Guildor_fx_R", "parent": "Right_Button", "x": -3.81, "y": 3.18, "scaleX": 0.3857, "scaleY": 0.3857 },
+	{ "name": "Glow_L", "parent": "Main_Anim", "x": -74.55, "y": -57.17 },
+	{ "name": "Glow_R", "parent": "Main_Anim", "x": 66.11, "y": -57.24 },
+	{
+		"name": "Btn_glow_L1",
+		"parent": "body",
+		"rotation": -55.85,
+		"x": -48.85,
+		"y": 7.17,
+		"scaleX": 0.5,
+		"scaleY": 0.5
+	},
+	{
+		"name": "Btn_glow_L2",
+		"parent": "body",
+		"rotation": -55.85,
+		"x": -50.57,
+		"y": -9.99,
+		"scaleX": 0.5,
+		"scaleY": 0.5
+	},
+	{
+		"name": "Btn_glow_R1",
+		"parent": "body",
+		"rotation": -55.85,
+		"x": 53.54,
+		"y": 6.7,
+		"scaleX": 0.5,
+		"scaleY": 0.5
+	},
+	{
+		"name": "Btn_glow_R2",
+		"parent": "body",
+		"rotation": -55.85,
+		"x": 54.07,
+		"y": -11.65,
+		"scaleX": 0.5,
+		"scaleY": 0.5
+	},
+	{
+		"name": "Btn_glow_L3",
+		"parent": "Left_Button",
+		"rotation": -54.41,
+		"x": 7.68,
+		"y": 31.42,
+		"scaleX": 0.3,
+		"scaleY": 0.3
+	},
+	{
+		"name": "Btn_glow_R3",
+		"parent": "Right_Button",
+		"rotation": 119.37,
+		"x": -3,
+		"y": 34.01,
+		"scaleX": 0.3,
+		"scaleY": 0.3
+	},
+	{ "name": "Big_Spark", "parent": "Main_Anim", "x": -6.18, "y": 487.46, "scaleX": 1.5, "scaleY": 1.5 },
+	{ "name": "Bomb_spark", "parent": "Main_Anim", "x": -7.25, "y": 142.72, "scaleX": 0.6726, "scaleY": 0.5 },
+	{ "name": "Barrel_Glow", "parent": "Barrel", "x": 0.69, "y": 6.44 },
+	{
+		"name": "Btn_glow_L4",
+		"parent": "Left_Button",
+		"rotation": 122.07,
+		"x": 3.54,
+		"y": -33.12,
+		"scaleX": 0.3,
+		"scaleY": 0.3
+	},
+	{
+		"name": "Btn_glow_R4",
+		"parent": "Right_Button",
+		"rotation": -60.3,
+		"x": -1.66,
+		"y": -39.81,
+		"scaleX": 0.3,
+		"scaleY": 0.3
+	},
+	{ "name": "Backward_BG", "parent": "root" },
+	{ "name": "Forground_BG", "parent": "root" }
+],
+"slots": [
+	{ "name": "Backward_BG", "bone": "Backward_BG" },
+	{ "name": "Forground_BG", "bone": "Forground_BG" },
+	{ "name": "Belt", "bone": "Belt", "attachment": "Belt" },
+	{ "name": "Laser_Fx", "bone": "Laser_Fx", "attachment": "Laser_Fx/Laser_Fx00", "blend": "additive" },
+	{ "name": "body", "bone": "body", "attachment": "body" },
+	{ "name": "Right_Button", "bone": "Right_Button", "attachment": "Right_Button" },
+	{ "name": "Left_Button", "bone": "Left_Button", "attachment": "Left_Button" },
+	{ "name": "Barrel", "bone": "Barrel", "attachment": "Barrel" },
+	{ "name": "Tip", "bone": "Tip", "attachment": "Tip" },
+	{ "name": "Bomb_spark", "bone": "Bomb_spark", "color": "ffffff00", "attachment": "Bomb_spark/eff_fc_sp_00", "blend": "additive" },
+	{ "name": "Glow", "bone": "Glow_L", "attachment": "glow_organe_B", "blend": "additive" },
+	{ "name": "Glow2", "bone": "Glow_R", "attachment": "glow_organe_B", "blend": "additive" },
+	{ "name": "Guildor_fx", "bone": "Guildor_fx_L", "attachment": "Guildor_fx/Guildor_fx_00000", "blend": "additive" },
+	{ "name": "Guildor_fx3", "bone": "Guildor_fx_L", "attachment": "Guildor_fx/Guildor_fx_00000", "blend": "additive" },
+	{ "name": "Guildor_fx2", "bone": "Guildor_fx_R", "attachment": "Guildor_fx/Guildor_fx_00000", "blend": "additive" },
+	{ "name": "Guildor_fx4", "bone": "Guildor_fx_R", "attachment": "Guildor_fx/Guildor_fx_00000", "blend": "additive" },
+	{ "name": "Btn_glow", "bone": "Btn_glow_L1", "color": "ffffff00", "attachment": "button_hilight", "blend": "additive" },
+	{ "name": "Btn_glow3", "bone": "Btn_glow_R1", "color": "ffffff00", "attachment": "button_hilight", "blend": "additive" },
+	{ "name": "Btn_glow2", "bone": "Btn_glow_L2", "color": "ffffff00", "attachment": "button_hilight", "blend": "additive" },
+	{ "name": "Btn_glow5", "bone": "Btn_glow_L3", "attachment": "button_hilight", "blend": "additive" },
+	{ "name": "Btn_glow7", "bone": "Btn_glow_L4", "attachment": "button_hilight", "blend": "additive" },
+	{ "name": "Btn_glow4", "bone": "Btn_glow_R2", "color": "ffffff00", "attachment": "button_hilight", "blend": "additive" },
+	{ "name": "Btn_glow6", "bone": "Btn_glow_R3", "attachment": "button_hilight", "blend": "additive" },
+	{ "name": "Btn_glow8", "bone": "Btn_glow_R4", "attachment": "button_hilight", "blend": "additive" },
+	{ "name": "Big_Spark", "bone": "Big_Spark", "color": "0669feff", "attachment": "Big_Spark/Big_discharge03", "blend": "additive" },
+	{ "name": "Barrel_Glow", "bone": "Barrel_Glow", "color": "ffffff00", "attachment": "Barrel_Glow", "blend": "additive" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"Barrel": {
+				"Barrel": { "x": -0.34, "y": 16.25, "width": 65, "height": 230 }
+			},
+			"Barrel_Glow": {
+				"Barrel_Glow": { "x": 0.5, "width": 37, "height": 54 }
+			},
+			"Belt": {
+				"Belt": { "width": 123, "height": 91 }
+			},
+			"Big_Spark": {
+				"Big_Spark/Big_discharge03": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge04": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge05": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge06": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge07": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge08": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge09": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge10": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge11": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge12": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge13": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge14": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge15": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge16": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge17": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge18": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge19": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge20": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge21": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge22": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge23": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge24": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge25": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge26": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge27": { "width": 150, "height": 84 }
+			},
+			"body": {
+				"body": { "x": 2, "y": -12.91, "width": 169, "height": 163 }
+			},
+			"Bomb_spark": {
+				"Bomb_spark/eff_fc_sp_00": { "width": 60, "height": 60 },
+				"Bomb_spark/eff_fc_sp_01": { "width": 60, "height": 60 },
+				"Bomb_spark/eff_fc_sp_02": { "width": 60, "height": 60 },
+				"Bomb_spark/eff_fc_sp_03": { "width": 60, "height": 60 },
+				"Bomb_spark/eff_fc_sp_04": { "width": 60, "height": 60 },
+				"Bomb_spark/eff_fc_sp_05": { "width": 60, "height": 60 },
+				"Bomb_spark/eff_fc_sp_06": { "width": 60, "height": 60 },
+				"Bomb_spark/eff_fc_sp_07": { "width": 60, "height": 60 },
+				"Bomb_spark/eff_fc_sp_08": { "width": 60, "height": 60 },
+				"Bomb_spark/eff_fc_sp_09": { "width": 60, "height": 60 }
+			},
+			"Btn_glow": {
+				"button_hilight": { "x": 0.5, "y": 0.5, "width": 75, "height": 77 }
+			},
+			"Btn_glow2": {
+				"button_hilight": { "x": 0.5, "y": 0.5, "width": 75, "height": 77 }
+			},
+			"Btn_glow3": {
+				"button_hilight": { "x": 0.5, "y": 0.5, "width": 75, "height": 77 }
+			},
+			"Btn_glow4": {
+				"button_hilight": { "x": 0.5, "y": 0.5, "width": 75, "height": 77 }
+			},
+			"Btn_glow5": {
+				"button_hilight": { "x": -12.1, "y": 3.23, "rotation": 170.4, "width": 75, "height": 77 }
+			},
+			"Btn_glow6": {
+				"button_hilight": { "x": 5.82, "y": -0.97, "width": 75, "height": 77 }
+			},
+			"Btn_glow7": {
+				"button_hilight": { "x": -12.1, "y": 3.23, "rotation": 170.4, "width": 75, "height": 77 }
+			},
+			"Btn_glow8": {
+				"button_hilight": { "x": 0.5, "y": 0.5, "width": 75, "height": 77 }
+			},
+			"Glow": {
+				"glow_organe_B": { "y": 0.5, "width": 85, "height": 85 }
+			},
+			"Glow2": {
+				"glow_organe_B": { "y": 0.5, "width": 85, "height": 85 }
+			},
+			"Guildor_fx": {
+				"Guildor_fx/Guildor_fx_00000": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00002": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00004": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00006": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00008": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00010": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00012": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00014": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00016": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00018": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00020": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00022": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00024": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00026": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00028": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00030": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00032": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00034": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00036": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00038": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00039": { "width": 160, "height": 160 }
+			},
+			"Guildor_fx2": {
+				"Guildor_fx/Guildor_fx_00000": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00002": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00004": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00006": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00008": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00010": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00012": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00014": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00016": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00018": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00020": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00022": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00024": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00026": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00028": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00030": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00032": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00034": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00036": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00038": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00039": { "width": 160, "height": 160 }
+			},
+			"Guildor_fx3": {
+				"Guildor_fx/Guildor_fx_00000": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00002": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00004": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00006": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00008": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00010": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00012": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00014": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00016": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00018": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00020": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00022": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00024": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00026": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00028": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00030": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00032": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00034": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00036": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00038": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00039": { "width": 160, "height": 160 }
+			},
+			"Guildor_fx4": {
+				"Guildor_fx/Guildor_fx_00000": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00002": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00004": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00006": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00008": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00010": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00012": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00014": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00016": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00018": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00020": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00022": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00024": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00026": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00028": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00030": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00032": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00034": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00036": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00038": { "width": 160, "height": 160 },
+				"Guildor_fx/Guildor_fx_00039": { "width": 160, "height": 160 }
+			},
+			"Laser_Fx": {
+				"Laser_Fx/Laser_Fx00": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx02": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx04": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx06": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx08": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx10": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx12": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx14": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx15": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx17": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx19": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx21": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx23": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx25": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx27": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx29": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx30": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx32": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx34": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx36": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx38": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx40": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx42": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx44": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx47": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx49": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx51": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx57": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx59": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 },
+				"Laser_Fx/Laser_Fx60": { "x": 72.61, "y": -0.34, "width": 200, "height": 109 }
+			},
+			"Left_Button": {
+				"Left_Button": { "x": -6.81, "y": 0.12, "width": 95, "height": 97 }
+			},
+			"Right_Button": {
+				"Right_Button": { "x": 8.58, "y": -0.79, "width": 94, "height": 97 }
+			},
+			"Tip": {
+				"Tip": { "x": 2.15, "y": 4.84, "width": 51, "height": 27 }
+			}
+		}
+	}
+],
+"animations": {
+	"action": {
+		"slots": {
+			"Barrel": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Belt": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Big_Spark": {
+				"rgba": [
+					{ "color": "0569fe00", "curve": "stepped" },
+					{ "time": 0.0667, "color": "0569fe00" },
+					{ "time": 0.1333, "color": "0469feff", "curve": "stepped" },
+					{ "time": 0.4667, "color": "0469feff" },
+					{ "time": 0.5, "color": "0368fe00" }
+				],
+				"attachment": [
+					{ "time": 0.1333, "name": "Big_Spark/Big_discharge05" },
+					{ "time": 0.1667, "name": "Big_Spark/Big_discharge07" },
+					{ "time": 0.2, "name": "Big_Spark/Big_discharge09" },
+					{ "time": 0.2333, "name": "Big_Spark/Big_discharge11" },
+					{ "time": 0.2667, "name": "Big_Spark/Big_discharge13" },
+					{ "time": 0.3, "name": "Big_Spark/Big_discharge15" },
+					{ "time": 0.3333, "name": "Big_Spark/Big_discharge17" },
+					{ "time": 0.3667, "name": "Big_Spark/Big_discharge19" },
+					{ "time": 0.4, "name": "Big_Spark/Big_discharge21" },
+					{ "time": 0.4333, "name": "Big_Spark/Big_discharge24" },
+					{ "time": 0.4667, "name": "Big_Spark/Big_discharge26" },
+					{ "time": 0.5, "name": "Big_Spark/Big_discharge27" }
+				]
+			},
+			"body": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Bomb_spark": {
+				"rgba": [
+					{ "time": 0.2333, "color": "ffffff00" },
+					{ "time": 0.2667, "color": "ffffffff" },
+					{ "time": 0.3667, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.2333, "name": "Bomb_spark/eff_fc_sp_01" },
+					{ "time": 0.2667, "name": "Bomb_spark/eff_fc_sp_03" },
+					{ "time": 0.3, "name": "Bomb_spark/eff_fc_sp_05" },
+					{ "time": 0.3333, "name": "Bomb_spark/eff_fc_sp_07" },
+					{ "time": 0.3667, "name": "Bomb_spark/eff_fc_sp_09" }
+				]
+			},
+			"Btn_glow5": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Btn_glow6": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Btn_glow7": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Btn_glow8": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Glow": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Glow2": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Guildor_fx": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "Guildor_fx/Guildor_fx_00002" }
+				]
+			},
+			"Guildor_fx2": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "Guildor_fx/Guildor_fx_00002" }
+				]
+			},
+			"Guildor_fx3": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "Guildor_fx/Guildor_fx_00002" }
+				]
+			},
+			"Guildor_fx4": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "name": "Guildor_fx/Guildor_fx_00002" }
+				]
+			},
+			"Laser_Fx": {
+				"rgba": [
+					{ "color": "ffffff00" },
+					{ "time": 0.1333, "color": "ffffffff" }
+				],
+				"attachment": [
+					{ "name": "Laser_Fx/Laser_Fx02" },
+					{ "time": 0.0333, "name": "Laser_Fx/Laser_Fx06" },
+					{ "time": 0.0667, "name": "Laser_Fx/Laser_Fx10" },
+					{ "time": 0.1, "name": "Laser_Fx/Laser_Fx14" },
+					{ "time": 0.1333, "name": "Laser_Fx/Laser_Fx19" },
+					{ "time": 0.1667, "name": "Laser_Fx/Laser_Fx23" },
+					{ "time": 0.2, "name": "Laser_Fx/Laser_Fx27" },
+					{ "time": 0.2333, "name": "Laser_Fx/Laser_Fx30" },
+					{ "time": 0.2667, "name": "Laser_Fx/Laser_Fx34" },
+					{ "time": 0.3, "name": "Laser_Fx/Laser_Fx38" },
+					{ "time": 0.3333, "name": "Laser_Fx/Laser_Fx42" },
+					{ "time": 0.3667, "name": "Laser_Fx/Laser_Fx47" },
+					{ "time": 0.4, "name": "Laser_Fx/Laser_Fx51" },
+					{ "time": 0.4333, "name": "Laser_Fx/Laser_Fx60" }
+				]
+			},
+			"Left_Button": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Right_Button": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Tip": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"Big_Spark": {
+				"scale": [
+					{},
+					{ "time": 0.5, "x": 2.153, "y": 2.153 }
+				]
+			},
+			"Bomb_spark": {
+				"scale": [
+					{ "x": 2, "y": 2 }
+				]
+			}
+		}
+	}
+}
+}

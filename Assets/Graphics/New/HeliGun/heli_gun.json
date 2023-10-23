@@ -1,0 +1,375 @@
+{
+"skeleton": {
+	"hash": "hYKWgQ76NMU",
+	"spine": "4.1.24",
+	"x": -1320,
+	"y": -737.5,
+	"width": 2641.27,
+	"height": 1475,
+	"images": "./images/",
+	"audio": "J:/LogicLane/Work/Canons/Heli Gun"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "Main_Anim", "parent": "root", "x": -45.59, "y": -28.19 },
+	{ "name": "Rifle_1", "parent": "Main_Anim", "x": 23.12, "y": -43.91 },
+	{ "name": "lever", "parent": "Main_Anim", "length": 53.03, "rotation": 90, "x": 44.85, "y": 25.12 },
+	{ "name": "fan_R", "parent": "Main_Anim", "x": 131.74, "y": -1.94 },
+	{ "name": "Rifle_2", "parent": "Main_Anim", "x": 70.47, "y": -46.44 },
+	{ "name": "Start Button", "parent": "Main_Anim", "x": 45, "y": -27.6 },
+	{ "name": "Lever_panel", "parent": "Main_Anim", "x": 44.63, "y": -39.78 },
+	{ "name": "frame", "parent": "Main_Anim", "length": 138.02, "rotation": 90, "x": 45.06, "y": 0.96 },
+	{ "name": "fan_L", "parent": "Main_Anim", "rotation": 70.83, "x": -42.34, "y": -1.06 },
+	{ "name": "Button_glow", "parent": "Main_Anim", "x": 45.66, "y": -25.94 },
+	{
+		"name": "Flame_Shot_L",
+		"parent": "Main_Anim",
+		"rotation": 87.89,
+		"x": 6.05,
+		"y": 475.52,
+		"scaleX": 2,
+		"scaleY": 2
+	},
+	{ "name": "Blast_Fx_L", "parent": "Rifle_1", "x": -7.78, "y": 188.86, "scaleX": 3, "scaleY": 3 },
+	{ "name": "Blast_Fx_R", "parent": "Rifle_2", "x": 7.5, "y": 192.71, "scaleX": 3, "scaleY": 3 },
+	{ "name": "Bullet_L", "parent": "Main_Anim", "x": 16.59, "y": 86.46 },
+	{ "name": "Bullet_R", "parent": "Main_Anim", "x": 75.42, "y": 85.06 },
+	{
+		"name": "Flame_Shot_R",
+		"parent": "Main_Anim",
+		"rotation": 87.89,
+		"x": 91,
+		"y": 477.41,
+		"scaleX": 2,
+		"scaleY": 2
+	},
+	{ "name": "Backward_BG", "parent": "root" },
+	{ "name": "Forground_BG", "parent": "root" }
+],
+"slots": [
+	{ "name": "Backward_BG", "bone": "Backward_BG" },
+	{ "name": "Forground_BG", "bone": "Forground_BG" },
+	{ "name": "Flame_Shot", "bone": "Flame_Shot_L", "attachment": "Flame_Shot/Flame-02-07", "blend": "additive" },
+	{ "name": "Flame_Shot2", "bone": "Flame_Shot_R", "attachment": "Flame_Shot/Flame-02-07", "blend": "additive" },
+	{ "name": "Bullet", "bone": "Bullet_L", "attachment": "bullet" },
+	{ "name": "Bullet2", "bone": "Bullet_R", "attachment": "bullet" },
+	{ "name": "Rifle_1", "bone": "Rifle_1", "attachment": "Rifle_1" },
+	{ "name": "Rifle_2", "bone": "Rifle_2", "attachment": "Rifle_2" },
+	{ "name": "Rifle_Cover_1", "bone": "Rifle_1", "attachment": "Rifle_Cover_1" },
+	{ "name": "Rifle_Cover_2", "bone": "Rifle_2", "attachment": "Rifle_Cover_2" },
+	{ "name": "Blast_Fx", "bone": "Blast_Fx_L", "attachment": "Blast_Fx/Tools_00001", "blend": "additive" },
+	{ "name": "Blast_Fx2", "bone": "Blast_Fx_R", "attachment": "Blast_Fx/Tools_00001", "blend": "additive" },
+	{ "name": "frame", "bone": "frame", "attachment": "frame" },
+	{ "name": "fan frame_1", "bone": "Main_Anim", "attachment": "fan-frame_1" },
+	{ "name": "fan frame_2", "bone": "Main_Anim", "attachment": "fan-frame_2" },
+	{ "name": "Lever_panel", "bone": "Lever_panel", "attachment": "Lever_panel" },
+	{ "name": "lever", "bone": "lever", "attachment": "lever" },
+	{ "name": "Start Button", "bone": "Start Button", "attachment": "Start-Button" },
+	{ "name": "fan_2", "bone": "fan_R", "attachment": "fan_2" },
+	{ "name": "fan_3", "bone": "fan_L", "attachment": "fan_2" },
+	{ "name": "Button_glow", "bone": "Button_glow", "attachment": "Button_glow", "blend": "additive" },
+	{ "name": "Button_glow2", "bone": "Button_glow", "attachment": "Button_glow", "blend": "additive" },
+	{ "name": "Button_glow3", "bone": "Button_glow", "attachment": "Button_glow", "blend": "additive" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"Blast_Fx": {
+				"Blast_Fx/Tools_00001": { "x": -0.27, "y": 9.64, "width": 50, "height": 45 }
+			},
+			"Blast_Fx2": {
+				"Blast_Fx/Tools_00001": { "x": -0.27, "y": 10.54, "width": 50, "height": 45 }
+			},
+			"Bullet": {
+				"bullet": { "y": 0.5, "width": 15, "height": 68 }
+			},
+			"Bullet2": {
+				"bullet": { "y": 0.5, "width": 15, "height": 68 }
+			},
+			"Button_glow": {
+				"Button_glow": { "width": 50, "height": 50 }
+			},
+			"Button_glow2": {
+				"Button_glow": { "width": 50, "height": 50 }
+			},
+			"Button_glow3": {
+				"Button_glow": { "width": 50, "height": 50 }
+			},
+			"fan frame_1": {
+				"fan-frame_1": { "x": -39.53, "y": -1.12, "width": 88, "height": 90 }
+			},
+			"fan frame_2": {
+				"fan-frame_2": { "x": 131.16, "y": -1.45, "width": 87, "height": 90 }
+			},
+			"fan_2": {
+				"fan_2": { "x": 3.91, "y": -1.77, "width": 61, "height": 64 }
+			},
+			"fan_3": {
+				"fan_2": { "x": 3.11, "y": -1.53, "width": 61, "height": 64 }
+			},
+			"Flame_Shot": {
+				"Flame_Shot/Flame-02-07": { "width": 100, "height": 56 }
+			},
+			"Flame_Shot2": {
+				"Flame_Shot/Flame-02-07": { "width": 100, "height": 56 }
+			},
+			"frame": {
+				"frame": { "x": 3.86, "y": -1.25, "rotation": -90, "width": 93, "height": 180 }
+			},
+			"lever": {
+				"lever": { "x": 5.1, "y": -0.81, "rotation": -90, "width": 14, "height": 36 }
+			},
+			"Lever_panel": {
+				"Lever_panel": { "x": 1.61, "y": 19.95, "width": 78, "height": 124 }
+			},
+			"Rifle_1": {
+				"Rifle_1": { "x": -5.93, "y": 116.85, "width": 39, "height": 158 }
+			},
+			"Rifle_2": {
+				"Rifle_2": { "x": 3.87, "y": 120.33, "width": 39, "height": 158 }
+			},
+			"Rifle_Cover_1": {
+				"Rifle_Cover_1": { "x": -6.73, "y": 173.45, "width": 25, "height": 30 }
+			},
+			"Rifle_Cover_2": {
+				"Rifle_Cover_2": { "x": 4.66, "y": 176.1, "width": 25, "height": 29 }
+			},
+			"Start Button": {
+				"Start-Button": { "x": 1.17, "y": -20.08, "width": 104, "height": 97 }
+			}
+		}
+	}
+],
+"animations": {
+	"action": {
+		"slots": {
+			"Blast_Fx": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Blast_Fx2": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Button_glow": {
+				"rgba": [
+					{ "color": "ffffffff" },
+					{ "time": 0.1, "color": "ffffff5e" },
+					{ "time": 0.1667, "color": "ffffffff" }
+				]
+			},
+			"Button_glow2": {
+				"rgba": [
+					{ "color": "ffffffff" },
+					{ "time": 0.1, "color": "ffffff5e" },
+					{ "time": 0.1667, "color": "ffffffff" }
+				]
+			},
+			"Button_glow3": {
+				"rgba": [
+					{ "color": "ffffffff" },
+					{ "time": 0.1, "color": "ffffff5e" },
+					{ "time": 0.1667, "color": "ffffffff" }
+				]
+			},
+			"Flame_Shot": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Flame_Shot2": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"Rifle_2": {
+				"translate": [
+					{},
+					{ "time": 0.1667, "y": 37.87 },
+					{ "time": 0.3333 }
+				]
+			},
+			"Button_glow": {
+				"scale": [
+					{},
+					{ "time": 0.1, "x": 1.925, "y": 1.925 },
+					{ "time": 0.1667 }
+				]
+			},
+			"fan_R": {
+				"rotate": [
+					{ "time": 0.0333 },
+					{ "time": 0.0667, "value": -180, "curve": "stepped" },
+					{ "time": 0.1, "value": -180 },
+					{ "time": 0.1333, "value": -360 },
+					{ "time": 0.2, "value": -540 },
+					{ "time": 0.2667, "value": -720 },
+					{ "time": 0.3, "value": -900 },
+					{ "time": 0.3667, "value": -1080 },
+					{ "time": 0.4, "curve": "stepped" },
+					{ "time": 0.4333 },
+					{ "time": 0.5333, "value": -180, "curve": "stepped" },
+					{ "time": 0.5667, "value": -180 },
+					{ "time": 0.6, "value": -360 },
+					{ "time": 0.6333, "value": -540 },
+					{ "time": 0.7, "value": -720 },
+					{ "time": 0.7333, "value": -900 },
+					{ "time": 0.8333, "value": -1080 }
+				]
+			},
+			"frame": {
+				"translate": [
+					{ "y": 20.74 },
+					{ "time": 0.1667, "y": 23.33 },
+					{ "time": 0.3333, "y": 20.74 }
+				]
+			},
+			"Lever_panel": {
+				"translate": [
+					{ "y": 9.14 },
+					{ "time": 0.1, "y": 10.8 },
+					{ "time": 0.2667, "y": 9.81 },
+					{ "time": 0.3333, "y": 9.14 }
+				]
+			},
+			"Rifle_1": {
+				"translate": [
+					{},
+					{ "time": 0.1667, "y": 37.87 },
+					{ "time": 0.3333 }
+				]
+			},
+			"Main_Anim": {
+				"translate": [
+					{},
+					{ "time": 0.1, "y": -9.5 },
+					{ "time": 0.1667, "y": 12.72 },
+					{ "time": 0.2667 }
+				]
+			},
+			"fan_L": {
+				"rotate": [
+					{ "time": 0.0333 },
+					{ "time": 0.0667, "value": -180, "curve": "stepped" },
+					{ "time": 0.1, "value": -180 },
+					{ "time": 0.1333, "value": -360 },
+					{ "time": 0.2, "value": -540 },
+					{ "time": 0.2667, "value": -720 },
+					{ "time": 0.3, "value": -900 },
+					{ "time": 0.3667, "value": -1080 },
+					{ "time": 0.4, "curve": "stepped" },
+					{ "time": 0.4333 },
+					{ "time": 0.5333, "value": -180, "curve": "stepped" },
+					{ "time": 0.5667, "value": -180 },
+					{ "time": 0.6, "value": -360 },
+					{ "time": 0.6333, "value": -540 },
+					{ "time": 0.7, "value": -720 },
+					{ "time": 0.7333, "value": -900 },
+					{ "time": 0.8333, "value": -1080 }
+				]
+			}
+		}
+	},
+	"idle": {
+		"slots": {
+			"Blast_Fx": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Blast_Fx2": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Button_glow": {
+				"rgba": [
+					{ "color": "ffffffff" },
+					{ "time": 0.1, "color": "ffffff5e" },
+					{ "time": 0.1667, "color": "ffffffff" }
+				]
+			},
+			"Button_glow2": {
+				"rgba": [
+					{ "color": "ffffffff" },
+					{ "time": 0.1, "color": "ffffff5e" },
+					{ "time": 0.1667, "color": "ffffffff" }
+				]
+			},
+			"Button_glow3": {
+				"rgba": [
+					{ "color": "ffffffff" },
+					{ "time": 0.1, "color": "ffffff5e" },
+					{ "time": 0.1667, "color": "ffffffff" }
+				]
+			},
+			"Flame_Shot": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"Flame_Shot2": {
+				"rgba": [
+					{ "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"Button_glow": {
+				"scale": [
+					{},
+					{ "time": 0.1, "x": 1.925, "y": 1.925 },
+					{ "time": 0.1667 }
+				]
+			},
+			"fan_R": {
+				"rotate": [
+					{ "time": 0.0333 },
+					{ "time": 0.0667, "value": -180, "curve": "stepped" },
+					{ "time": 0.1, "value": -180 },
+					{ "time": 0.1333, "value": -360 },
+					{ "time": 0.1667, "value": -540 },
+					{ "time": 0.2333, "value": -720 },
+					{ "time": 0.2667, "value": -900 },
+					{ "time": 0.3333, "value": -1080 },
+					{ "time": 0.3667, "curve": "stepped" },
+					{ "time": 0.4 },
+					{ "time": 0.4333, "value": -180, "curve": "stepped" },
+					{ "time": 0.4667, "value": -180 },
+					{ "time": 0.5, "value": -360 },
+					{ "time": 0.5333, "value": -540 },
+					{ "time": 0.6, "value": -720 },
+					{ "time": 0.6333, "value": -900 },
+					{ "time": 0.7, "value": -1080 }
+				]
+			},
+			"fan_L": {
+				"rotate": [
+					{ "time": 0.0333 },
+					{ "time": 0.0667, "value": -180, "curve": "stepped" },
+					{ "time": 0.1, "value": -180 },
+					{ "time": 0.1333, "value": -360 },
+					{ "time": 0.1667, "value": -540 },
+					{ "time": 0.2333, "value": -720 },
+					{ "time": 0.2667, "value": -900 },
+					{ "time": 0.3333, "value": -1080 },
+					{ "time": 0.3667, "curve": "stepped" },
+					{ "time": 0.4 },
+					{ "time": 0.4333, "value": -180, "curve": "stepped" },
+					{ "time": 0.4667, "value": -180 },
+					{ "time": 0.5, "value": -360 },
+					{ "time": 0.5333, "value": -540 },
+					{ "time": 0.6, "value": -720 },
+					{ "time": 0.6333, "value": -900 },
+					{ "time": 0.7, "value": -1080 }
+				]
+			}
+		}
+	}
+}
+}

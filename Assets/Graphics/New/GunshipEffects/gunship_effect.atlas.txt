@@ -1,0 +1,71 @@
+gunship_effect.png
+size:1488,1454
+filter:Linear,Linear
+pma:true
+Energy_Ball
+bounds:1262,39,149,148
+offsets:0,1,150,149
+Energy_Ball_fx/Energy_Ball_00000
+bounds:1286,1339,200,113
+Energy_Ball_fx/Energy_Ball_00004
+bounds:858,129,200,113
+Energy_Ball_fx/Energy_Ball_00008
+bounds:1286,1224,200,113
+Energy_Ball_fx/Energy_Ball_00012
+bounds:858,14,200,113
+Energy_Ball_fx/Energy_Ball_00016
+bounds:1060,129,200,113
+Energy_Ball_fx/Energy_Ball_00020
+bounds:1286,1109,200,113
+Energy_Ball_fx/Energy_Ball_00024
+bounds:1060,14,200,113
+Energy_Ball_fx/Energy_Ball_00028
+bounds:1286,994,200,113
+Energy_Ball_fx/Energy_Ball_00032
+bounds:1286,879,200,113
+Energy_Ball_fx/Energy_Ball_00036
+bounds:1286,764,200,113
+Energy_Ball_fx/Energy_Ball_00040
+bounds:1286,649,200,113
+Energy_Ball_fx/Energy_Ball_00044
+bounds:1286,534,200,113
+Energy_Ball_fx/Energy_Ball_00048
+bounds:1286,419,200,113
+Energy_Ball_fx/Energy_Ball_00052
+bounds:1286,304,200,113
+Energy_Ball_fx/Energy_Ball_00056
+bounds:1286,189,200,113
+Laser_Beam/Edited VFX Free to use_00002
+bounds:2,1212,426,240
+Laser_Beam/Edited VFX Free to use_00006
+bounds:2,970,426,240
+Laser_Beam/Edited VFX Free to use_00010
+bounds:430,1212,426,240
+Laser_Beam/Edited VFX Free to use_00014
+bounds:2,728,426,240
+Laser_Beam/Edited VFX Free to use_00018
+bounds:430,970,426,240
+Laser_Beam/Edited VFX Free to use_00022
+bounds:858,1212,426,240
+Laser_Beam/Edited VFX Free to use_00026
+bounds:2,486,426,240
+Laser_Beam/Edited VFX Free to use_00030
+bounds:430,728,426,240
+Laser_Beam/Edited VFX Free to use_00034
+bounds:858,970,426,240
+Laser_Beam/Edited VFX Free to use_00038
+bounds:2,244,426,240
+Laser_Beam/Edited VFX Free to use_00042
+bounds:430,486,426,240
+Laser_Beam/Edited VFX Free to use_00046
+bounds:858,728,426,240
+Laser_Beam/Edited VFX Free to use_00050
+bounds:2,2,426,240
+Laser_Beam/Edited VFX Free to use_00054
+bounds:430,244,426,240
+Laser_Beam/Edited VFX Free to use_00058
+bounds:858,486,426,240
+Laser_Beam/Edited VFX Free to use_00062
+bounds:430,2,426,240
+Laser_Beam/Edited VFX Free to use_00066
+bounds:858,244,426,240
