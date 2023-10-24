@@ -15,12 +15,12 @@ namespace FishShooting
         [Space(10)]
         public float Speed;
         public int Health;
-        public bool Is_Dead;
+        public bool Is_Dead,Is_Reached;
         int PathID;
 
         public void SetInitials()
         {
-            Is_Dead = false;
+            Is_Dead = Is_Reached = false;
             Health = 100;
             PathID = 0;
             CurrentPoint = Path.PathPoints[PathID];
@@ -34,7 +34,7 @@ namespace FishShooting
        
         void Update()
         {
-            if (Is_Dead)
+            if (Is_Dead && Is_Reached)
                 return;
             if(CheckDist()<0.1f)
             {
@@ -42,8 +42,10 @@ namespace FishShooting
                     PathID++;
                 else
                 {
-                    PathID = 0;
-                    transform.SetPositionAndRotation(Path.PathPoints[PathID].position, Path.PathPoints[PathID].rotation);
+                    Is_Reached = true;
+                    gameObject.SetActive(false);
+                    //PathID = 0;
+                    //transform.SetPositionAndRotation(Path.PathPoints[PathID].position, Path.PathPoints[PathID].rotation);
                 }
 
                 CurrentPoint = Path.PathPoints[PathID];

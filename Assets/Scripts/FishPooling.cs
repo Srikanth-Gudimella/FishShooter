@@ -18,7 +18,7 @@ namespace FishShooting
         }
         void PoolFishes()
         {
-            Debug.Log("---- Pooling Fish");
+            Debug.Log("---- Pooling Fish 000");
             GO = GetFish();
             Aquatic Fish = GO.GetComponent<Aquatic>();
             Fish.Path = AllPaths[Random.Range(0, AllPaths.Count)];
@@ -41,6 +41,8 @@ namespace FishShooting
             GO = Instantiate(FishPrefabs[Random.Range(0,FishStage*3)]);
             AllFishes.Add(GO);
             GO.SetActive(true);
+            Debug.Log("---- Pooling Fish 111");
+
             //GO.transform.SetPositionAndRotation(BulletInitPos.position, BulletInitPos.rotation);
             return GO;
         }
