@@ -25,6 +25,13 @@ namespace FishShooting
             PathID = 0;
             CurrentPoint = Path.PathPoints[PathID];
             transform.SetPositionAndRotation(CurrentPoint.position, CurrentPoint.rotation);
+            // Setting Rotattion According to Path
+            if (Path.m_StartFrom == PathController.e_StartFrom.Left)
+                transform.GetChild(0).transform.localEulerAngles = new Vector3(0, 180, 0);
+            else if(Path.m_StartFrom == PathController.e_StartFrom.Right)
+                transform.GetChild(0).transform.localEulerAngles = new Vector3(0, 0, 0);
+            else if (Path.m_StartFrom == PathController.e_StartFrom.Up)
+                transform.GetChild(0).transform.localEulerAngles = new Vector3(0, 0, Path.PathPoints[0].eulerAngles.z);
         }
 
         void Start()
