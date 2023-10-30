@@ -2,28 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GenericSingleton<T> : MonoBehaviour where T : MonoBehaviour
+namespace FishShooting
 {
-
-    private static T instance;
-
-    public static T Instance
+    public class GenericSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {
-        get
-        {
-            return instance;
-        }
-    }
 
-    public virtual void Awake()
-    {
-        if(instance==null)
+        private static T instance;
+
+        public static T Instance
         {
-            instance = this as T;
+            get
+            {
+                return instance;
+            }
         }
-        else
+
+        public virtual void Awake()
         {
-            Destroy(this);
+            if (instance == null)
+            {
+                instance = this as T;
+            }
+            else
+            {
+                Destroy(this);
+            }
         }
     }
 }
