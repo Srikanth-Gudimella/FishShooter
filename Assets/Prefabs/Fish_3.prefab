@@ -203,7 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: {fileID: 0}
   CurrentPoint: {fileID: 0}
-  Speed: 2
+  Speed: 1.5
   Health: 100
   Is_Dead: 0
   Is_Reached: 0
