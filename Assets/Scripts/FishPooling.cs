@@ -8,13 +8,16 @@ namespace FishShooting
     {
         public List<GameObject> FishPrefabs;
         public List<GameObject> AllFishes;
-        public List<PathController> AllPaths;
+        //public List<GameObject> CreaturePrefabs;
+        //public List<GameObject> AllCreatures;
+
+        public List<PathController> AllPaths,CreaturePaths;
 
         public int FishStage;
 
         void Start()
         {
-            InvokeRepeating(nameof(PoolFishes), 1, Random.Range(2,4));
+            InvokeRepeating(nameof(PoolFishes), 0.1f, 2);
         }
         void PoolFishes()
         {

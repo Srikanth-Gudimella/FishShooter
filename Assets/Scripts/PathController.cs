@@ -7,15 +7,13 @@ namespace FishShooting
     public class PathController : MonoBehaviour
     {
         public List<Transform> PathPoints;
-        // public enum e_StartFrom
-        // {
-        //     Left,Right,Up,Down
-        // }
-        // public e_StartFrom m_StartFrom;
         public Vector3 InitialRotatioon = Vector3.zero;
-        //public Vector3 InitialScale = Vector3.one;
-        //public Transform CurrentPoint;
-        int ID;
+        [Header("Creature Region==================================")]
+        [Space(15)]
+        public bool Is_CreaturePool;
+        public GameObject CreaturePrefab;
+        public List<GameObject> AllCreatures;
+       
 
         void Awake()
         {
@@ -23,6 +21,43 @@ namespace FishShooting
             {
                 PathPoints.Add(transform.GetChild(i));
             }
+        }
+        void Start()
+        {
+            if(Is_CreaturePool)
+            {
+                InvokeRepeating(nameof(PoolCreatures), 0.1f, 1.5f);
+            }
+        }
+        void PoolCreatures()
+        {
+            Debug.Log("---- Pooling Fish 000");
+            GO = GetFish();
+            Aquatic Fish = GO.GetComponent<Aquatic>();
+            Fish.Path = this;//AllCreatures[Random.Range(0, AllCreatures.Count)];
+            Fish.SetInitials();
+        }
+        GameObject GO;
+
+        GameObject GetFish()
+        {
+            for (int i = 0; i < AllCreatures.Count; i++)
+            {
+                if (!AllCreatures[i].gameObject.activeInHierarchy)
+                {
+                    GO = AllCreatures[i].gameObject;
+                    GO.SetActive(true);
+                    //GO.transform.SetPositionAndRotation(BulletInitPos.position, BulletInitPos.rotation);
+                    return GO;
+                }
+            }
+            GO = Instantiate(CreaturePrefab);
+            AllCreatures.Add(GO);
+            GO.SetActive(true);
+            Debug.Log("---- Pooling Fish 111");
+
+            //GO.transform.SetPositionAndRotation(BulletInitPos.position, BulletInitPos.rotation);
+            return GO;
         }
     }
 }
