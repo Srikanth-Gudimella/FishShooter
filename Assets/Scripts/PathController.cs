@@ -13,25 +13,41 @@ namespace FishShooting
         public bool Is_CreaturePool;
         public GameObject CreaturePrefab;
         public List<GameObject> AllCreatures;
-       
 
-        void Awake()
+        private void OnEnable()
         {
+            PathPoints.Clear();
             for (int i = 0; i < transform.childCount; i++)
             {
                 PathPoints.Add(transform.GetChild(i));
             }
-        }
-        void Start()
-        {
-            if(Is_CreaturePool)
+            if (Is_CreaturePool)
             {
                 InvokeRepeating(nameof(PoolCreatures), 0.1f, 1.5f);
+                //Invoke(nameof(DisableIt), Random.Range(15, 20));
+            }
+        }
+        void DisableIt()
+        {
+            gameObject.SetActive(false);
+            CancelInvoke(nameof(PoolCreatures));
+        }
+
+        private void OnDisable()
+        {
+            if (Is_CreaturePool)
+            {
+                CancelInvoke(nameof(PoolCreatures));
+                //for (int i = 0; i < AllCreatures.Count; i++)
+                //{
+                //    Destroy(AllCreatures[i].gameObject);
+                //}
+                //AllCreatures.Clear();
             }
         }
         void PoolCreatures()
         {
-            Debug.Log("---- Pooling Fish 000");
+            Debug.Log("---- Pooling Creature 000");
             GO = GetFish();
             Aquatic Fish = GO.GetComponent<Aquatic>();
             Fish.Path = this;//AllCreatures[Random.Range(0, AllCreatures.Count)];

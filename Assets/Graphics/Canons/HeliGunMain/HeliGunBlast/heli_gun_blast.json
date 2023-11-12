@@ -1,0 +1,144 @@
+{
+"skeleton": {
+	"hash": "2k5OXJzeEmU",
+	"spine": "4.1.24",
+	"x": -1320,
+	"y": -737.5,
+	"width": 2641.27,
+	"height": 1475,
+	"images": "./images/",
+	"audio": "J:/LogicLane/Work/Canons/Heli Gun"
+},
+"bones": [
+	{ "name": "root" },
+	{
+		"name": "Flame_Shot_L",
+		"parent": "root",
+		"rotation": 87.89,
+		"x": -39.54,
+		"y": 447.33,
+		"scaleX": 2,
+		"scaleY": 2
+	},
+	{
+		"name": "Flame_Shot_R",
+		"parent": "root",
+		"rotation": 87.89,
+		"x": 45.41,
+		"y": 449.23,
+		"scaleX": 2,
+		"scaleY": 2
+	},
+	{ "name": "Backward_BG", "parent": "root" },
+	{ "name": "Forground_BG", "parent": "root" }
+],
+"slots": [
+	{ "name": "Backward_BG", "bone": "Backward_BG" },
+	{ "name": "Forground_BG", "bone": "Forground_BG" },
+	{ "name": "Flame_Shot", "bone": "Flame_Shot_L", "attachment": "Flame_Shot/Flame-02-07", "blend": "additive" },
+	{ "name": "Flame_Shot2", "bone": "Flame_Shot_R", "attachment": "Flame_Shot/Flame-02-07", "blend": "additive" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"Flame_Shot": {
+				"Flame_Shot/Flame-02-07": { "width": 100, "height": 56 },
+				"Flame_Shot/Flame-02-08": { "width": 100, "height": 56 },
+				"Flame_Shot/Flame-02-09": { "width": 100, "height": 56 },
+				"Flame_Shot/Flame-02-10": { "width": 100, "height": 56 },
+				"Flame_Shot/Flame-02-11": { "width": 100, "height": 56 },
+				"Flame_Shot/Flame-02-12": { "width": 100, "height": 56 },
+				"Flame_Shot/Flame-02-13": { "width": 100, "height": 56 },
+				"Flame_Shot/Flame-02-14": { "width": 100, "height": 56 },
+				"Flame_Shot/Flame-02-15": { "width": 100, "height": 56 },
+				"Flame_Shot/Flame-02-16": { "width": 100, "height": 56 },
+				"Flame_Shot/Flame-02-17": { "width": 100, "height": 56 },
+				"Flame_Shot/Flame-02-18": { "width": 100, "height": 56 },
+				"Flame_Shot/Flame-02-19": { "width": 100, "height": 56 }
+			},
+			"Flame_Shot2": {
+				"Flame_Shot/Flame-02-07": { "width": 100, "height": 56 },
+				"Flame_Shot/Flame-02-08": { "width": 100, "height": 56 },
+				"Flame_Shot/Flame-02-09": { "width": 100, "height": 56 },
+				"Flame_Shot/Flame-02-10": { "width": 100, "height": 56 },
+				"Flame_Shot/Flame-02-11": { "width": 100, "height": 56 },
+				"Flame_Shot/Flame-02-12": { "width": 100, "height": 56 },
+				"Flame_Shot/Flame-02-13": { "width": 100, "height": 56 },
+				"Flame_Shot/Flame-02-14": { "width": 100, "height": 56 },
+				"Flame_Shot/Flame-02-15": { "width": 100, "height": 56 },
+				"Flame_Shot/Flame-02-16": { "width": 100, "height": 56 },
+				"Flame_Shot/Flame-02-17": { "width": 100, "height": 56 },
+				"Flame_Shot/Flame-02-18": { "width": 100, "height": 56 },
+				"Flame_Shot/Flame-02-19": { "width": 100, "height": 56 }
+			}
+		}
+	}
+],
+"animations": {
+	"action": {
+		"slots": {
+			"Flame_Shot": {
+				"rgba": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.3, "color": "ffffff00" },
+					{ "time": 0.3333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.7, "color": "ffffffff" },
+					{ "time": 0.8333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.3667, "name": "Flame_Shot/Flame-02-08" },
+					{ "time": 0.4, "name": "Flame_Shot/Flame-02-09" },
+					{ "time": 0.4333, "name": "Flame_Shot/Flame-02-10" },
+					{ "time": 0.4667, "name": "Flame_Shot/Flame-02-11" },
+					{ "time": 0.5, "name": "Flame_Shot/Flame-02-12" },
+					{ "time": 0.5333, "name": "Flame_Shot/Flame-02-13" },
+					{ "time": 0.5667, "name": "Flame_Shot/Flame-02-14" },
+					{ "time": 0.6, "name": "Flame_Shot/Flame-02-15" },
+					{ "time": 0.6333, "name": "Flame_Shot/Flame-02-16" },
+					{ "time": 0.6667, "name": "Flame_Shot/Flame-02-17" },
+					{ "time": 0.7, "name": "Flame_Shot/Flame-02-18" },
+					{ "time": 0.7333, "name": "Flame_Shot/Flame-02-19" }
+				]
+			},
+			"Flame_Shot2": {
+				"rgba": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.3, "color": "ffffff00" },
+					{ "time": 0.3333, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.7, "color": "ffffffff" },
+					{ "time": 0.8333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.3667, "name": "Flame_Shot/Flame-02-08" },
+					{ "time": 0.4, "name": "Flame_Shot/Flame-02-09" },
+					{ "time": 0.4333, "name": "Flame_Shot/Flame-02-10" },
+					{ "time": 0.4667, "name": "Flame_Shot/Flame-02-11" },
+					{ "time": 0.5, "name": "Flame_Shot/Flame-02-12" },
+					{ "time": 0.5333, "name": "Flame_Shot/Flame-02-13" },
+					{ "time": 0.5667, "name": "Flame_Shot/Flame-02-14" },
+					{ "time": 0.6, "name": "Flame_Shot/Flame-02-15" },
+					{ "time": 0.6333, "name": "Flame_Shot/Flame-02-16" },
+					{ "time": 0.6667, "name": "Flame_Shot/Flame-02-17" },
+					{ "time": 0.7, "name": "Flame_Shot/Flame-02-18" },
+					{ "time": 0.7333, "name": "Flame_Shot/Flame-02-19" }
+				]
+			}
+		},
+		"bones": {
+			"Flame_Shot_L": {
+				"scale": [
+					{ "time": 0.3 },
+					{ "time": 0.7, "x": 1.5, "y": 1.5 }
+				]
+			},
+			"Flame_Shot_R": {
+				"scale": [
+					{ "time": 0.3 },
+					{ "time": 0.7, "x": 1.5, "y": 1.5 }
+				]
+			}
+		}
+	}
+}
+}

@@ -1,0 +1,94 @@
+{
+"skeleton": {
+	"hash": "r7UWN0JvI74",
+	"spine": "4.1.24",
+	"x": -1320,
+	"y": -737.5,
+	"width": 2640,
+	"height": 1475,
+	"images": "./images/",
+	"audio": "J:/LogicLane/Work/Canons/Lase canon"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "Big_Spark", "parent": "root", "y": 473.76, "scaleX": 1.5, "scaleY": 1.5 },
+	{ "name": "Backward_BG", "parent": "root" },
+	{ "name": "Forground_BG", "parent": "root" }
+],
+"slots": [
+	{ "name": "Backward_BG", "bone": "Backward_BG" },
+	{ "name": "Forground_BG", "bone": "Forground_BG" },
+	{ "name": "Big_Spark", "bone": "Big_Spark", "color": "0669feff", "attachment": "Big_Spark/Big_discharge03", "blend": "additive" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"Big_Spark": {
+				"Big_Spark/Big_discharge03": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge04": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge05": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge06": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge07": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge08": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge09": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge10": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge11": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge12": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge13": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge14": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge15": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge16": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge17": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge18": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge19": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge20": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge21": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge22": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge23": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge24": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge25": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge26": { "width": 150, "height": 84 },
+				"Big_Spark/Big_discharge27": { "width": 150, "height": 84 }
+			}
+		}
+	}
+],
+"animations": {
+	"action": {
+		"slots": {
+			"Big_Spark": {
+				"rgba": [
+					{ "color": "0569fe00", "curve": "stepped" },
+					{ "time": 0.0667, "color": "0569fe00" },
+					{ "time": 0.1333, "color": "0469feff", "curve": "stepped" },
+					{ "time": 0.4667, "color": "0469feff" },
+					{ "time": 0.5, "color": "0368fe00" }
+				],
+				"attachment": [
+					{ "time": 0.1333, "name": "Big_Spark/Big_discharge05" },
+					{ "time": 0.1667, "name": "Big_Spark/Big_discharge07" },
+					{ "time": 0.2, "name": "Big_Spark/Big_discharge09" },
+					{ "time": 0.2333, "name": "Big_Spark/Big_discharge11" },
+					{ "time": 0.2667, "name": "Big_Spark/Big_discharge13" },
+					{ "time": 0.3, "name": "Big_Spark/Big_discharge15" },
+					{ "time": 0.3333, "name": "Big_Spark/Big_discharge17" },
+					{ "time": 0.3667, "name": "Big_Spark/Big_discharge19" },
+					{ "time": 0.4, "name": "Big_Spark/Big_discharge21" },
+					{ "time": 0.4333, "name": "Big_Spark/Big_discharge24" },
+					{ "time": 0.4667, "name": "Big_Spark/Big_discharge26" },
+					{ "time": 0.5, "name": "Big_Spark/Big_discharge27" }
+				]
+			}
+		},
+		"bones": {
+			"Big_Spark": {
+				"scale": [
+					{},
+					{ "time": 0.5, "x": 2.153, "y": 2.153 }
+				]
+			}
+		}
+	}
+}
+}

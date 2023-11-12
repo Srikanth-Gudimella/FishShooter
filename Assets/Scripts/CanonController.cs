@@ -132,6 +132,11 @@ namespace FishShooting
                 }
 
             }
+            if(Input.GetMouseButtonUp(0))
+            {
+                //spineAnimationState.AddAnimation(0, Idle, true, 0);
+                spineAnimationState.SetAnimation(2, Idle, true);
+            }
         }
     }
 }

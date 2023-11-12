@@ -1,0 +1,122 @@
+{
+"skeleton": {
+	"hash": "E7v4/BlVAOg",
+	"spine": "4.1.24",
+	"x": -1320,
+	"y": -737.5,
+	"width": 2641.27,
+	"height": 1475,
+	"images": "./images/",
+	"audio": "J:/LogicLane/Work/Canons/Heli Gun"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "Blast_Fx_L", "parent": "root", "x": -30.25, "y": 116.76, "scaleX": 3, "scaleY": 3 },
+	{ "name": "Blast_Fx_R", "parent": "root", "x": 32.38, "y": 118.08, "scaleX": 3, "scaleY": 3 },
+	{ "name": "Bullet_L", "parent": "root", "x": -29.01, "y": 58.27 },
+	{ "name": "Bullet_R", "parent": "root", "x": 29.83, "y": 56.87 },
+	{ "name": "Backward_BG", "parent": "root" },
+	{ "name": "Forground_BG", "parent": "root" }
+],
+"slots": [
+	{ "name": "Backward_BG", "bone": "Backward_BG" },
+	{ "name": "Forground_BG", "bone": "Forground_BG" },
+	{ "name": "Bullet", "bone": "Bullet_L", "attachment": "bullet" },
+	{ "name": "Bullet2", "bone": "Bullet_R", "attachment": "bullet" },
+	{ "name": "Blast_Fx", "bone": "Blast_Fx_L", "attachment": "Blast_Fx/Tools_00001", "blend": "additive" },
+	{ "name": "Blast_Fx2", "bone": "Blast_Fx_R", "attachment": "Blast_Fx/Tools_00001", "blend": "additive" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"Blast_Fx": {
+				"Blast_Fx/Tools_00001": { "x": -0.27, "y": 9.64, "width": 50, "height": 45 },
+				"Blast_Fx/Tools_00002": { "x": -0.27, "y": 9.64, "width": 50, "height": 45 },
+				"Blast_Fx/Tools_00003": { "x": -0.27, "y": 9.64, "width": 50, "height": 45 },
+				"Blast_Fx/Tools_00004": { "x": -0.27, "y": 9.64, "width": 50, "height": 45 },
+				"Blast_Fx/Tools_00005": { "x": -0.27, "y": 9.64, "width": 50, "height": 45 },
+				"Blast_Fx/Tools_00006": { "x": -0.27, "y": 9.64, "width": 50, "height": 45 }
+			},
+			"Blast_Fx2": {
+				"Blast_Fx/Tools_00001": { "x": -0.27, "y": 10.54, "width": 50, "height": 45 },
+				"Blast_Fx/Tools_00002": { "x": -0.27, "y": 10.54, "width": 50, "height": 45 },
+				"Blast_Fx/Tools_00003": { "x": -0.27, "y": 10.54, "width": 50, "height": 45 },
+				"Blast_Fx/Tools_00004": { "x": -0.27, "y": 10.54, "width": 50, "height": 45 },
+				"Blast_Fx/Tools_00005": { "x": -0.27, "y": 10.54, "width": 50, "height": 45 },
+				"Blast_Fx/Tools_00006": { "x": -0.27, "y": 10.54, "width": 50, "height": 45 }
+			},
+			"Bullet": {
+				"bullet": { "y": 0.5, "width": 15, "height": 68 }
+			},
+			"Bullet2": {
+				"bullet": { "y": 0.5, "width": 15, "height": 68 }
+			}
+		}
+	}
+],
+"animations": {
+	"action": {
+		"slots": {
+			"Blast_Fx": {
+				"rgba": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.1667, "color": "ffffff00" },
+					{ "time": 0.2, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.3, "color": "ffffffff" },
+					{ "time": 0.4333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.2, "name": "Blast_Fx/Tools_00002" },
+					{ "time": 0.2333, "name": "Blast_Fx/Tools_00003" },
+					{ "time": 0.2667, "name": "Blast_Fx/Tools_00004" },
+					{ "time": 0.3, "name": "Blast_Fx/Tools_00005" },
+					{ "time": 0.3333, "name": "Blast_Fx/Tools_00006" }
+				]
+			},
+			"Blast_Fx2": {
+				"rgba": [
+					{ "color": "ffffff00", "curve": "stepped" },
+					{ "time": 0.1667, "color": "ffffff00" },
+					{ "time": 0.2, "color": "ffffffff", "curve": "stepped" },
+					{ "time": 0.3, "color": "ffffffff" },
+					{ "time": 0.4333, "color": "ffffff00" }
+				],
+				"attachment": [
+					{ "time": 0.2, "name": "Blast_Fx/Tools_00002" },
+					{ "time": 0.2333, "name": "Blast_Fx/Tools_00003" },
+					{ "time": 0.2667, "name": "Blast_Fx/Tools_00004" },
+					{ "time": 0.3, "name": "Blast_Fx/Tools_00005" },
+					{ "time": 0.3333, "name": "Blast_Fx/Tools_00006" }
+				]
+			},
+			"Bullet": {
+				"rgba": [
+					{ "time": 0.3333, "color": "ffffffff" },
+					{ "time": 0.5, "color": "ffffff00" }
+				]
+			},
+			"Bullet2": {
+				"rgba": [
+					{ "time": 0.3333, "color": "ffffffff" },
+					{ "time": 0.5, "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"Bullet_L": {
+				"translate": [
+					{ "time": 0.1667 },
+					{ "time": 0.3333, "y": 436.48 }
+				]
+			},
+			"Bullet_R": {
+				"translate": [
+					{ "time": 0.1667 },
+					{ "time": 0.3333, "y": 436.48 }
+				]
+			}
+		}
+	}
+}
+}
