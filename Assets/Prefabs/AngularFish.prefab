@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1426893355028737899}
   - component: {fileID: 1426893355028737900}
   - component: {fileID: 1426893355028737901}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spine GameObject (Angler)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1426893355700549160}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 2024306544316095468}
   - component: {fileID: 2121240099936286103}
   - component: {fileID: 1586184434948352628}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AngularFish
   m_TagString: Aquatic
   m_Icon: {fileID: 0}
@@ -207,6 +207,9 @@ MonoBehaviour:
   Health: 100
   Is_Dead: 0
   Is_Reached: 0
+  SkeltonAnim: {fileID: 1426893355028737901}
+  Idle: idle
+  Die: 
 --- !u!61 &2121240099936286103
 BoxCollider2D:
   m_ObjectHideFlags: 0

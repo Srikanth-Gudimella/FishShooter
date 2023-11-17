@@ -11,6 +11,8 @@ namespace FishShooting
         public List<CanonController> AllCanons;
         public int myPositionID;
         public List<Transform> PlayerPositions;
+
+        public GameObject HitEffect;
         #endregion
 
         public override void Awake()
@@ -31,6 +33,11 @@ namespace FishShooting
                 GO.GetComponent<CanonController>().myID = i;
                 AllCanons.Add(GO.GetComponent<CanonController>());
             }
+        }
+
+        public void InstantiateEffect(Vector3 pos)
+        {
+            GameObject _efct = Instantiate(HitEffect, pos, Quaternion.identity);
         }
 
     }

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2740525582752426041}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 2740525582752426042}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 5488260855703442988}
   m_Father: {fileID: 4396878842676949582}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 3967759534786380757}
   - component: {fileID: 3924800162889543086}
   - component: {fileID: 4396878842676949581}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fish_2
   m_TagString: Aquatic
   m_Icon: {fileID: 0}
@@ -83,6 +83,9 @@ MonoBehaviour:
   Health: 100
   Is_Dead: 0
   Is_Reached: 0
+  SkeltonAnim: {fileID: 2842650124280300682}
+  Idle: idle
+  Die: 
 --- !u!61 &3924800162889543086
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -142,7 +145,7 @@ GameObject:
   - component: {fileID: 1545156436403912553}
   - component: {fileID: 4554793347144761942}
   - component: {fileID: 2842650124280300682}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spine GameObject (Fish_2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +161,7 @@ Transform:
   m_GameObject: {fileID: 5109386041878327111}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2740525582752426041}
   m_RootOrder: 0

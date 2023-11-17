@@ -11,10 +11,8 @@ namespace FishShooting
         public int myID = 0;
         [Space(15)]
         public SkeletonAnimation SkeltonAnim;
-        // Spine.AnimationState and Spine.Skeleton are not Unity-serialized objects. You will not see them as fields in the inspector.
         public Spine.AnimationState spineAnimationState;
-        //public Spine.Skeleton skeleton;
-        //public AnimationReferenceAsset Shoot;
+      
         [SpineAnimation]
         public string Idle;
         [SpineAnimation]
@@ -34,8 +32,6 @@ namespace FishShooting
         {
             mainCamera = Camera.main;
             spineAnimationState = SkeltonAnim.AnimationState;
-            //GetBullet();
-            //InvokeRepeating(nameof(ShootFrequently), 1, 1);
         }
 
         GameObject GO;
@@ -104,21 +100,6 @@ namespace FishShooting
                     desiredAngle = angle - 90;
 
                 desiredAngle = Mathf.Clamp(desiredAngle, -RotClampVal, RotClampVal);
-                // Adjust the angle back to the 0-360 range
-                //desiredAngle = (desiredAngle + 360) % 360;
-
-                //if (desiredAngle > 180)
-                //    desiredAngle -= 360;
-
-                ////if (!IgnoreClamp)
-                //Debug.Log("----- desiredAngle 000000 === " + desiredAngle);
-                //    desiredAngle = Mathf.Clamp(desiredAngle ,-RotClampVal, RotClampVal);
-                //Debug.Log("----- desiredAngle 111111 === " + desiredAngle);
-
-                // Apply the rotation to the CanonPivot
-                //Quaternion desiredRotation = Quaternion.AngleAxis(desiredAngle, Vector3.forward);
-                //// Apply the calculated rotation to the local rotation of CanonPivot
-                //CanonPivot.transform.rotation = desiredRotation;
 
                 CanonPivot.transform.rotation = Quaternion.Euler(new Vector3(0, 0, desiredAngle));
                 if(Pointer)

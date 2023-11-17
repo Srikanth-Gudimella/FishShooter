@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 784825186}
   - component: {fileID: 101296573169194265}
   - component: {fileID: 2333883201534652847}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fish_1
   m_TagString: Aquatic
   m_Icon: {fileID: 0}
@@ -52,6 +52,9 @@ MonoBehaviour:
   Health: 100
   Is_Dead: 0
   Is_Reached: 0
+  SkeltonAnim: {fileID: 7831086912113914135}
+  Idle: idle
+  Die: 
 --- !u!61 &101296573169194265
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -108,7 +111,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6492256989575491652}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +145,7 @@ GameObject:
   - component: {fileID: 5696138762964505326}
   - component: {fileID: 6675362771750123609}
   - component: {fileID: 7831086912113914135}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spine GameObject (Fish_1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
