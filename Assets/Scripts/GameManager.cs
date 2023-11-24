@@ -21,16 +21,23 @@ namespace FishShooting
         }
         private void Start()
         {
-            InstantiateCanon();
+           // InstantiateCanon();
         }
         GameObject GO;
 
         public void InstantiateCanon()
         {
-            for (int i = 0; i < PlayerPositions.Count; i++)
+            //for (int i = 0; i < PlayerPositions.Count; i++)
+            //{
+            //    GO = Instantiate(CanonPrefabs.gameObject, PlayerPositions[i].position, PlayerPositions[i].rotation);
+            //    GO.GetComponent<CanonController>().myID = i;
+            //    AllCanons.Add(GO.GetComponent<CanonController>());
+            //}
+
+            //for (int i = 0; i < PlayerPositions.Count; i++)
             {
-                GO = Instantiate(CanonPrefabs.gameObject, PlayerPositions[i].position, PlayerPositions[i].rotation);
-                GO.GetComponent<CanonController>().myID = i;
+                GO = Instantiate(CanonPrefabs.gameObject, PlayerPositions[myPositionID].position, PlayerPositions[myPositionID].rotation);
+                GO.GetComponent<CanonController>().myID = myPositionID;
                 AllCanons.Add(GO.GetComponent<CanonController>());
             }
         }

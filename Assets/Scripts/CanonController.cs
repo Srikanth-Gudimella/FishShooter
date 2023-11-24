@@ -84,7 +84,6 @@ namespace FishShooting
             {
                 Vector2 mousePosition = Input.mousePosition;
                 float swipeValue = touchStartPos.x - mousePosition.x;
-                //touchStartPos = mousePosition;
 
                 Vector3 targetPosition = mainCamera.ScreenToWorldPoint(mousePosition);
 
@@ -94,14 +93,26 @@ namespace FishShooting
                 // Calculate the rotation angle in degrees
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-                //if (myID == 2 || myID == 3)
-                //    desiredAngle = angle + 90;
-                //else
+                if (myID == 2 || myID == 3)
+                {
+                    desiredAngle = angle + 90;
+                    if (desiredAngle <= 270 && desiredAngle >=180)
+                    {
+                        desiredAngle = -65;
+                    }
+                }
+                else
+                {
                     desiredAngle = angle - 90;
+                    if (desiredAngle >= -270 && desiredAngle <= -180)
+                    {
+                        desiredAngle = 65;
+                    }
+                }
 
                 desiredAngle = Mathf.Clamp(desiredAngle, -RotClampVal, RotClampVal);
 
-                CanonPivot.transform.rotation = Quaternion.Euler(new Vector3(0, 0, desiredAngle));
+                CanonPivot.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, desiredAngle));
                 if(Pointer)
                     Pointer.transform.position =  new Vector3(targetPosition.x, targetPosition.y, -1f);
                 
