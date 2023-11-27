@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+namespace FishShooting
+{
 	public class FusionHandler : MonoBehaviour, INetworkRunnerCallbacks
 	{
 		//[Networked] private int MasterPlayerID;
@@ -32,7 +34,7 @@ using UnityEngine.UI;
 		{
 			Instance = this;
 		}
-		
+
 		public static void OnChangedMaster(Changed<NetworkBehaviour> changed)
 		{
 			Debug.LogError("------ OnChangedMaster");
@@ -207,10 +209,12 @@ using UnityEngine.UI;
 				if (runner.IsSharedModeMasterClient)
 				{
 					MasterPlayerTxt.text = "I am Master";
+					GameManager.Instance.IsMaster = true;
 				}
 				else
 				{
 					MasterPlayerTxt.text = "I am Client";
+					GameManager.Instance.IsMaster = false;
 				}
 				//_spawnedCharacters.Add(runner.LocalPlayer, networkPlayerObject);
 			}
@@ -265,3 +269,4 @@ using UnityEngine.UI;
 		public void OnSceneLoadDone(NetworkRunner runner) { }
 		public void OnSceneLoadStart(NetworkRunner runner) { }
 	}
+}

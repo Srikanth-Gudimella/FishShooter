@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &76025022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 76025023}
+  m_Layer: 6
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &76025023
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76025022}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8662659064474854214}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1885305638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1885305639}
+  m_Layer: 6
+  m_Name: Dummy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1885305639
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885305638}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9077540653464534809}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1942903702024814540
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,6 +191,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8662659064474854214}
+  - component: {fileID: 1075994456}
+  - component: {fileID: 1075994455}
   m_Layer: 6
   m_Name: GameObject
   m_TagString: Untagged
@@ -150,9 +212,62 @@ Transform:
   m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_Children:
   - {fileID: 7704725287627158868}
+  - {fileID: 76025023}
   m_Father: {fileID: 9077540653464534809}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1075994456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8662659064474854215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  InterpolationSpace: 0
+  InterpolationTarget: {fileID: 76025023}
+  InterpolateErrorCorrection: 1
+  InterpolatedErrorCorrectionSettings:
+    MinRate: 3.3
+    MaxRate: 10
+    PosBlendStart: 0.25
+    PosBlendEnd: 1
+    PosMinCorrection: 0.025
+    PosTeleportDistance: 2
+    RotBlendStart: 0.1
+    RotBlendEnd: 0.5
+    RotTeleportRadians: 1.5
+  UseLegacySharedModeInterpolation: 0
+  TargetInterpolationDelay: 0.03
+--- !u!114 &1075994455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8662659064474854215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectInterest: 1
+  DefaultInterestGroups: []
+  DestroyWhenStateAuthorityLeaves: 0
+  AllowStateAuthorityOverride: 1
+  AoiPositionSource: {fileID: 0}
+  Flags: 3073
+  NetworkGuid:
+    RawGuidValue: 00000000000000000000000000000000
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 1075994456}
+  SimulationBehaviours: []
 --- !u!1 &9077540653464534808
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,6 +280,8 @@ GameObject:
   - component: {fileID: 8641683538284351106}
   - component: {fileID: 8541795593569575161}
   - component: {fileID: 9077540653464534810}
+  - component: {fileID: 811081048}
+  - component: {fileID: 715958967663756173}
   m_Layer: 6
   m_Name: Fish_3
   m_TagString: Aquatic
@@ -184,6 +301,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8662659064474854214}
+  - {fileID: 1885305639}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -255,3 +373,56 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &811081048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9077540653464534808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectInterest: 1
+  DefaultInterestGroups: []
+  DestroyWhenStateAuthorityLeaves: 0
+  AllowStateAuthorityOverride: 1
+  AoiPositionSource: {fileID: 0}
+  Flags: 2305
+  NetworkGuid:
+    RawGuidValue: bdf3f0ffbfa43044cbe33307d52ff0ef
+  NestedObjects:
+  - {fileID: 1075994455}
+  NetworkedBehaviours:
+  - {fileID: 715958967663756173}
+  SimulationBehaviours: []
+--- !u!114 &715958967663756173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9077540653464534808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  InterpolationSpace: 0
+  InterpolationTarget: {fileID: 1885305639}
+  InterpolateErrorCorrection: 1
+  InterpolatedErrorCorrectionSettings:
+    MinRate: 3.3
+    MaxRate: 10
+    PosBlendStart: 0.25
+    PosBlendEnd: 1
+    PosMinCorrection: 0.025
+    PosTeleportDistance: 2
+    RotBlendStart: 0.1
+    RotBlendEnd: 0.5
+    RotTeleportRadians: 1.5
+  UseLegacySharedModeInterpolation: 0
+  TargetInterpolationDelay: 0.03

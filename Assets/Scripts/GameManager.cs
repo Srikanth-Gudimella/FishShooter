@@ -15,6 +15,7 @@ namespace FishShooting
         public GameObject HitEffect;
         #endregion
 
+        public bool IsMaster;
         public override void Awake()
         {
             base.Awake();
@@ -40,6 +41,17 @@ namespace FishShooting
                 GO.GetComponent<CanonController>().myID = myPositionID;
                 AllCanons.Add(GO.GetComponent<CanonController>());
             }
+        }
+        public void SetCanon(Player _player,GameObject thisCanon,int Position)
+        {
+            Debug.LogError("-- SetCanon ID="+ Position);
+            //GO = Instantiate(CanonPrefabs.gameObject, PlayerPositions[myPositionID].position, PlayerPositions[myPositionID].rotation);
+            thisCanon.transform.localPosition = PlayerPositions[Position].position;
+            thisCanon.transform.localRotation = PlayerPositions[Position].rotation;
+
+            thisCanon.GetComponent<CanonController>().myID = Position;
+            thisCanon.GetComponent<CanonController>().ThisNetworkPlayer = _player;
+            AllCanons.Add(thisCanon.GetComponent<CanonController>());
         }
 
         public void InstantiateEffect(Vector3 pos)

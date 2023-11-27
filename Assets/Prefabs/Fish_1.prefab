@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 784825186}
   - component: {fileID: 101296573169194265}
   - component: {fileID: 2333883201534652847}
+  - component: {fileID: 1092820991}
+  - component: {fileID: 8152186306296234253}
   m_Layer: 6
   m_Name: Fish_1
   m_TagString: Aquatic
@@ -31,6 +33,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6492256989575491652}
+  - {fileID: 8090114213223630869}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -102,6 +105,89 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &1092820991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726357470849223416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectInterest: 1
+  DefaultInterestGroups: []
+  DestroyWhenStateAuthorityLeaves: 0
+  AllowStateAuthorityOverride: 1
+  AoiPositionSource: {fileID: 0}
+  Flags: 2305
+  NetworkGuid:
+    RawGuidValue: b4cbfe651c581ff4fac7ebdaaae5ee12
+  NestedObjects:
+  - {fileID: 4518765947446136718}
+  NetworkedBehaviours:
+  - {fileID: 8152186306296234253}
+  SimulationBehaviours: []
+--- !u!114 &8152186306296234253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726357470849223416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  InterpolationSpace: 0
+  InterpolationTarget: {fileID: 8090114213223630869}
+  InterpolateErrorCorrection: 1
+  InterpolatedErrorCorrectionSettings:
+    MinRate: 3.3
+    MaxRate: 10
+    PosBlendStart: 0.25
+    PosBlendEnd: 1
+    PosMinCorrection: 0.025
+    PosTeleportDistance: 2
+    RotBlendStart: 0.1
+    RotBlendEnd: 0.5
+    RotTeleportRadians: 1.5
+  UseLegacySharedModeInterpolation: 0
+  TargetInterpolationDelay: 0.03
+--- !u!1 &3406457208705335113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7699723756760649692}
+  m_Layer: 6
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7699723756760649692
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3406457208705335113}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6492256989575491652}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6492256989575491655
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,6 +197,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6492256989575491652}
+  - component: {fileID: 1847846550499074440}
+  - component: {fileID: 4518765947446136718}
   m_Layer: 6
   m_Name: GO
   m_TagString: Untagged
@@ -130,8 +218,91 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 3674209747806137913}
+  - {fileID: 7699723756760649692}
   m_Father: {fileID: 726357470849223417}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1847846550499074440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6492256989575491655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  InterpolationSpace: 0
+  InterpolationTarget: {fileID: 7699723756760649692}
+  InterpolateErrorCorrection: 1
+  InterpolatedErrorCorrectionSettings:
+    MinRate: 3.3
+    MaxRate: 10
+    PosBlendStart: 0.25
+    PosBlendEnd: 1
+    PosMinCorrection: 0.025
+    PosTeleportDistance: 2
+    RotBlendStart: 0.1
+    RotBlendEnd: 0.5
+    RotTeleportRadians: 1.5
+  UseLegacySharedModeInterpolation: 0
+  TargetInterpolationDelay: 0.03
+--- !u!114 &4518765947446136718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6492256989575491655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectInterest: 1
+  DefaultInterestGroups: []
+  DestroyWhenStateAuthorityLeaves: 0
+  AllowStateAuthorityOverride: 1
+  AoiPositionSource: {fileID: 0}
+  Flags: 3073
+  NetworkGuid:
+    RawGuidValue: 00000000000000000000000000000000
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 1847846550499074440}
+  SimulationBehaviours: []
+--- !u!1 &7889560799631899238
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8090114213223630869}
+  m_Layer: 6
+  m_Name: Dummy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8090114213223630869
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7889560799631899238}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 726357470849223417}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8842455896082731089
 GameObject:

@@ -138,6 +138,8 @@ GameObject:
   - component: {fileID: 6330927162701483640}
   - component: {fileID: 5889736102270533740}
   - component: {fileID: 1721321743}
+  - component: {fileID: 938977687}
+  - component: {fileID: 8365773527555368131}
   m_Layer: 0
   m_Name: Canon_p1
   m_TagString: Untagged
@@ -218,23 +220,24 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6330927162701483623}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d65ecbf6a1e6e548bec096f489cb293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myID: 0
+  myID: 1
   SkeltonAnim: {fileID: 544981209623891565}
   Idle: idle
   Shoot: action
   Pointer: {fileID: 0}
-  CanonPivot: {fileID: 6330927163124751805}
+  CanonPivot: {fileID: 6330927162701483622}
   BulletInitPos: {fileID: 6330927162969700556}
   NextShootTime: 0
   ShootIntervel: 0.5
   RotClampVal: 65
   AllBullets: []
   BulletPrefab: {fileID: 3518242872058131686, guid: 647fd4c0629c0154d954b7c8e7aab785, type: 3}
+  ThisNetworkPlayer: {fileID: 0}
   IgnoreClamp: 0
 --- !u!114 &5889736102270533740
 MonoBehaviour:
@@ -259,6 +262,7 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 1721321743}
+  - {fileID: 8365773527555368131}
   SimulationBehaviours: []
 --- !u!114 &1721321743
 MonoBehaviour:
@@ -273,6 +277,88 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
+  BulletPrefab: {fileID: 3518242872058131686, guid: 647fd4c0629c0154d954b7c8e7aab785, type: 3}
+  FishPrefabs:
+  - {fileID: 726357470849223416, guid: b4cbfe651c581ff4fac7ebdaaae5ee12, type: 3}
+  - {fileID: 4396878842676949583, guid: e891cbeaee7c85d4ba944122d2eca966, type: 3}
+  - {fileID: 9077540653464534808, guid: bdf3f0ffbfa43044cbe33307d52ff0ef, type: 3}
+  - {fileID: 1586184434948352630, guid: 420b53131cc927e41b7ab2a8db1c3938, type: 3}
+  BossCharPrefabs:
+  - {fileID: 3290942922601831108, guid: 168a5644ae11ef941821f2cbf1d06342, type: 3}
+  AllFishes: []
+  AllPaths:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  AllActivatedPaths:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  AllBossCharPaths:
+  - {fileID: 0}
+  - {fileID: 0}
+  CreaturePaths:
+  - {fileID: 0}
+  - {fileID: 0}
+  FishStage: 1
+--- !u!143 &938977687
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6330927162701483623}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 0.33
+  m_Radius: 0.16
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8365773527555368131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6330927162701483623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  InterpolationSpace: 0
+  InterpolationTarget: {fileID: 6330927163124751805}
+  InterpolateErrorCorrection: 1
+  InterpolatedErrorCorrectionSettings:
+    MinRate: 3.3
+    MaxRate: 10
+    PosBlendStart: 0.25
+    PosBlendEnd: 1
+    PosMinCorrection: 0.025
+    PosTeleportDistance: 2
+    RotBlendStart: 0.1
+    RotBlendEnd: 0.5
+    RotTeleportRadians: 1.5
+  UseLegacySharedModeInterpolation: 0
+  TargetInterpolationDelay: 0.03
 --- !u!1 &6330927162969700557
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,21 +1,36 @@
+using Fusion;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 namespace FishShooting
 {
-    public class BulletController : MonoBehaviour
+    public class BulletController : NetworkBehaviour
     {
         public float Speed = 15f;
         
-        private void OnEnable()
+        //private void OnEnable()
+        //{
+        //    Invoke(nameof(DisableIt), 2f);
+        //}
+        [Networked] private TickTimer life { get; set; }
+
+        public void Init()
         {
-            Invoke(nameof(DisableIt), 2f);
+            Debug.Log("------ Ball Init");
+            life = TickTimer.CreateFromSeconds(Runner, 1.5f);
         }
 
-        void DisableIt()
+        public override void FixedUpdateNetwork()
         {
-            gameObject.SetActive(false);
+            if (life.Expired(Runner))
+                Runner.Despawn(Object);
+            //else
+            //	transform.position += 5 * transform.forward * Runner.DeltaTime;
         }
+        //void DisableIt()
+        //{
+        //    gameObject.SetActive(false);
+        //}
         void Update()
         {
             transform.Translate(Vector3.up * Speed * Time.deltaTime);

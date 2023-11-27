@@ -53,7 +53,7 @@ namespace FishShooting
 
         void Update()
         {
-            if (Is_Dead || Is_Reached)
+            if (Is_Dead || Is_Reached || !GameManager.Instance.IsMaster)
                 return;
 
             if(CheckDist()<0.1f)

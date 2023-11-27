@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
+using Fusion;
 
 namespace FishShooting
 {
@@ -28,6 +29,8 @@ namespace FishShooting
 
         Vector3 touchStartPos;
         Camera mainCamera;
+
+        public Player ThisNetworkPlayer;
         void Start()
         {
             mainCamera = Camera.main;
@@ -36,23 +39,31 @@ namespace FishShooting
 
         GameObject GO;
 
-        GameObject GetBullet()
+        void GetBullet()
         {
-            for (int i = 0; i < AllBullets.Count; i++)
-            {
-                if (!AllBullets[i].gameObject.activeInHierarchy)
-                {
-                    GO = AllBullets[i].gameObject;
-                    GO.SetActive(true);
-                    GO.transform.SetPositionAndRotation(BulletInitPos.position,BulletInitPos.rotation);
-                    return GO;
-                }
-            }
-            GO = Instantiate(BulletPrefab);
-            AllBullets.Add(GO);
-            GO.SetActive(true);
-            GO.transform.SetPositionAndRotation(BulletInitPos.position, BulletInitPos.rotation);
-            return GO;
+            //for (int i = 0; i < AllBullets.Count; i++)
+            //{
+            //    if (!AllBullets[i].gameObject.activeInHierarchy)
+            //    {
+            //        GO = AllBullets[i].gameObject;
+            //        GO.SetActive(true);
+            //        GO.transform.SetPositionAndRotation(BulletInitPos.position,BulletInitPos.rotation);
+            //        return GO;
+            //    }
+            //}
+            //GO = Instantiate(BulletPrefab);
+            // AllBullets.Add(GO);
+            //NetworkObject networkPlayerObject = Runner.Spawn(BulletPrefab, BulletInitPos.position, BulletInitPos.rotation, Runner.LocalPlayer);
+            //ThisNetworkPlayer.CreateBullet();
+
+            //Runner.Spawn(_prefabBall, transform.position + _forward, Quaternion.LookRotation(_forward), Object.InputAuthority, (runner, o) =>
+            //{
+            //    o.GetComponent<Ball>().Init();
+            //});
+
+            //GO.SetActive(true);
+            //GO.transform.SetPositionAndRotation(BulletInitPos.position, BulletInitPos.rotation);
+            //return networkPlayerObject.gameObject;
         }
 
         RaycastHit hit;
@@ -61,7 +72,8 @@ namespace FishShooting
             //if(Physics.Raycast(BulletInitPos.position,BulletInitPos.transform.up,20))
             {
                 Debug.Log("<color=yellow> ---- Shoot :::: </color> ");
-                GetBullet();
+                //GetBullet();
+                ThisNetworkPlayer.CreateBullet(BulletInitPos);
                 //SkeltonAnim.AnimationState.SetAnimation(0, Shoot, false);
                 spineAnimationState.SetAnimation(1, Shoot, false);
                 //spineAnimationState.AddAnimation(0, Idle, true,0);

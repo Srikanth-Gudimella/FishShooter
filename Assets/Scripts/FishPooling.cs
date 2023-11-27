@@ -25,12 +25,18 @@ namespace FishShooting
 
         #endregion
 
+        public static FishPooling Instance;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
         void Start()
         {
-            InvokeRepeating(nameof(PoolFishes), 0.1f, 2);
-            Creaturecoroutine = StartCoroutine(ActivateCreaturePaths(10f));
-            BossCharcoroutine = StartCoroutine(ActivateBossCharPaths(40f));
-            Fishcoroutine = StartCoroutine(ActivateFishPaths(10));
+            //InvokeRepeating(nameof(PoolFishes), 0.1f, 2);
+            //Creaturecoroutine = StartCoroutine(ActivateCreaturePaths(10f));
+            //BossCharcoroutine = StartCoroutine(ActivateBossCharPaths(40f));
+            //Fishcoroutine = StartCoroutine(ActivateFishPaths(10));
         }
 
 
