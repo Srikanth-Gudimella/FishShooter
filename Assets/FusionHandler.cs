@@ -62,11 +62,11 @@ namespace FishShooting
 		{
 			if (_runner == null)
 			{
-				if (GUI.Button(new Rect(0, 0, 200, 40), "Host"))
-				{
-					StartGame(GameMode.Host);
-				}
-				if (GUI.Button(new Rect(0, 40, 200, 40), "Join"))
+				//if (GUI.Button(new Rect(0, 0, 200, 40), "Host"))
+				//{
+				//	StartGame(GameMode.Host);
+				//}
+				if (GUI.Button(new Rect(Screen.width/2-100, Screen.height/2-20, 200, 40), "Connect"))
 				{
 					//StartGame(GameMode.Client);
 					StartGame(GameMode.Shared);
@@ -133,10 +133,14 @@ namespace FishShooting
 			if (runner.IsSharedModeMasterClient)
 			{
 				MasterPlayerTxt.text = "I am Master";
+				GameManager.Instance.IsMaster = true;
+				GameManager.Instance.SpawnFishes(runner);
+
 			}
 			else
 			{
 				MasterPlayerTxt.text = "I am Client";
+				GameManager.Instance.IsMaster = false;
 			}
 			return;
 

@@ -36,7 +36,7 @@ namespace FishShooting
 
 		private void Start()
 		{
-			if (Runner.IsSharedModeMasterClient)
+			if (Object.HasInputAuthority && Runner.IsSharedModeMasterClient)
 			{
 				Invoke(nameof(PoolFishes), 1);
 				//InvokeRepeating(nameof(PoolFishes), 0.1f, 2);
@@ -107,6 +107,8 @@ namespace FishShooting
 		}
 		void PoolFishes()
 		{
+			GameManager.Instance.SpawnFishes(Runner);
+			return;
 			//Debug.Log("---- Pooling Fish 000");
 			GO = GetFish();
 			Debug.LogError("pool fishes go="+ GO);
@@ -143,7 +145,7 @@ namespace FishShooting
 			//GO.transform.SetPositionAndRotation(BulletInitPos.position, BulletInitPos.rotation);
 
 
-			NetworkObject networkPlayerObject = Runner.Spawn(FishPrefabs[Random.Range(0, FishPrefabs.Count)]);
+			NetworkObject networkPlayerObject = Runner.Spawn(FishPrefabs[Random.Range(0, FishPrefabs.Count)], Vector3.one * 1000) ;
 			//networkPlayerObject.GetComponent<BulletController>().Init();
 
 			return networkPlayerObject.gameObject;

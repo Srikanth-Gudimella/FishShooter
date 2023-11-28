@@ -59,6 +59,11 @@ MonoBehaviour:
   SkeltonAnim: {fileID: 7831086912113914135}
   Idle: idle
   Die: 
+  _CurrentPointID: 0
+  _CurrentPathID: 0
+  _spawned:
+    _value: 0
+  IsReady: 0
 --- !u!61 &101296573169194265
 BoxCollider2D:
   m_ObjectHideFlags: 0

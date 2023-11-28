@@ -21,7 +21,7 @@ namespace FishShooting
         public bool Is_Dead,Is_Reached;
 
         private Rigidbody2D rb;
-        int PathID;
+        //int PathID;
 
 
         [Space(15)]
@@ -39,35 +39,41 @@ namespace FishShooting
         [Networked(OnChanged = nameof(OnFishSpawned))]
         public NetworkBool spawned { get; set; }
 
-        public int TempCurrentPointID;
         public bool IsReady = false;
         public void SetInitials()
         {
-            Debug.LogError("--- SetInitials");
+            Debug.LogError("--- SetInitials currentPathID="+CurrentPathID+"::currentPointsID="+CurrentPointID);
             rb = GetComponent<Rigidbody2D>();
             Is_Dead = Is_Reached = false;
             Health = 100;
-            PathID = 0;
-            CurrentPoint = Path.PathPoints[PathID];
+            //PathID = 0;
+            CurrentPoint = Path.PathPoints[CurrentPointID];
             transform.SetPositionAndRotation(CurrentPoint.position, CurrentPoint.rotation);
             rb.bodyType = RigidbodyType2D.Kinematic;
             transform.GetChild(0).transform.localEulerAngles = Path.InitialRotatioon;
             //transform.GetChild(0).transform.localScale = Path.InitialScale;
 
-            CurrentPointID = 10;
+            //CurrentPointID = 10;
             IsReady = true;
         }
         public override void Spawned()
         {
             Debug.LogError("---- FishSpawned");
+            gameObject.SetActive(false);
             //spawned = !spawned;
+        }
+        void Activate()
+        {
+            gameObject.SetActive(true);
         }
         public static void OnFishSpawned(Changed<Aquatic> changed)
         {
             Debug.LogError("------- onFishSpawned");
+            //changed.Behaviour.gameObject.SetActive(true);
             //SetInitials();
             changed.Behaviour.Path = FishPooling.Instance.AllActivatedPaths[changed.Behaviour.CurrentPathID];
             changed.Behaviour.SetInitials();
+            changed.Behaviour.Invoke(nameof(Activate), 0.5f);
             //changed.Behaviour.material.color = Color.white;
         }
         void Start()
@@ -76,18 +82,17 @@ namespace FishShooting
             spineAnimationState.SetAnimation(1, Idle, true);
         }
 
-        void Update()
+        public void Update()
         {
             //Debug.LogError("update");
-            TempCurrentPointID = CurrentPointID;
 
             if (!IsReady ||Is_Dead || Is_Reached || !GameManager.Instance.IsMaster)
                 return;
-
+            //return;
             if(CheckDist()<0.1f)
             {
-                if (PathID < Path.PathPoints.Count - 1)
-                    PathID++;
+                if (CurrentPointID < Path.PathPoints.Count - 1)
+                    CurrentPointID++;
                 else
                 {
                     Is_Reached = true;
@@ -95,8 +100,8 @@ namespace FishShooting
                     //PathID = 0;
                     //transform.SetPositionAndRotation(Path.PathPoints[PathID].position, Path.PathPoints[PathID].rotation);
                 }
-
-                CurrentPoint = Path.PathPoints[PathID];
+                //CurrentPointID = PathID;
+                CurrentPoint = Path.PathPoints[CurrentPointID];
             }
             transform.position = Vector3.MoveTowards(transform.position, CurrentPoint.position, Speed * Time.deltaTime);
             var targetRotation = Quaternion.LookRotation(CurrentPoint.transform.position - transform.position);
@@ -110,6 +115,8 @@ namespace FishShooting
 
         float CheckDist()
         {
+            CurrentPoint = Path.PathPoints[CurrentPointID];//Srikanth optimize this later
+
             Vector3 dir = transform.position - CurrentPoint.position;
             //if(transform.position < dir*dir)
             _dist = Vector3.Distance(transform.position, CurrentPoint.position);
