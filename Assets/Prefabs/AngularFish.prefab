@@ -319,6 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e310fdd75b90084b94b283496b58307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
   Path: {fileID: 0}
   CurrentPoint: {fileID: 0}
   Speed: 1.5
@@ -398,6 +399,7 @@ MonoBehaviour:
   NestedObjects:
   - {fileID: 347604732}
   NetworkedBehaviours:
+  - {fileID: 2024306544316095468}
   - {fileID: 7134915416272964529}
   SimulationBehaviours: []
 --- !u!114 &7134915416272964529

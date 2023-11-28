@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
+using Fusion;
 
 interface IDamagable
 {
@@ -9,7 +10,7 @@ interface IDamagable
 }
 namespace FishShooting
 {
-    public class Aquatic : MonoBehaviour,IDamagable
+    public class Aquatic : NetworkBehaviour, IDamagable
     {
         public PathController Path;
         public Transform CurrentPoint;
@@ -32,8 +33,17 @@ namespace FishShooting
         [SpineAnimation]
         public string Die;
 
+        [Networked] public int CurrentPointID { get; set; }
+        [Networked] public int CurrentPathID { get; set; }
+
+        [Networked(OnChanged = nameof(OnFishSpawned))]
+        public NetworkBool spawned { get; set; }
+
+        public int TempCurrentPointID;
+        public bool IsReady = false;
         public void SetInitials()
         {
+            Debug.LogError("--- SetInitials");
             rb = GetComponent<Rigidbody2D>();
             Is_Dead = Is_Reached = false;
             Health = 100;
@@ -43,8 +53,23 @@ namespace FishShooting
             rb.bodyType = RigidbodyType2D.Kinematic;
             transform.GetChild(0).transform.localEulerAngles = Path.InitialRotatioon;
             //transform.GetChild(0).transform.localScale = Path.InitialScale;
-        }
 
+            CurrentPointID = 10;
+            IsReady = true;
+        }
+        public override void Spawned()
+        {
+            Debug.LogError("---- FishSpawned");
+            //spawned = !spawned;
+        }
+        public static void OnFishSpawned(Changed<Aquatic> changed)
+        {
+            Debug.LogError("------- onFishSpawned");
+            //SetInitials();
+            changed.Behaviour.Path = FishPooling.Instance.AllActivatedPaths[changed.Behaviour.CurrentPathID];
+            changed.Behaviour.SetInitials();
+            //changed.Behaviour.material.color = Color.white;
+        }
         void Start()
         {
             spineAnimationState = SkeltonAnim.AnimationState;
@@ -53,7 +78,10 @@ namespace FishShooting
 
         void Update()
         {
-            if (Is_Dead || Is_Reached || !GameManager.Instance.IsMaster)
+            //Debug.LogError("update");
+            TempCurrentPointID = CurrentPointID;
+
+            if (!IsReady ||Is_Dead || Is_Reached || !GameManager.Instance.IsMaster)
                 return;
 
             if(CheckDist()<0.1f)

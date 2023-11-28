@@ -38,8 +38,8 @@ namespace FishShooting
 		{
 			if (Runner.IsSharedModeMasterClient)
 			{
-
-				InvokeRepeating(nameof(PoolFishes), 0.1f, 2);
+				Invoke(nameof(PoolFishes), 1);
+				//InvokeRepeating(nameof(PoolFishes), 0.1f, 2);
 				//Creaturecoroutine = StartCoroutine(ActivateCreaturePaths(10f));
 				//BossCharcoroutine = StartCoroutine(ActivateBossCharPaths(40f));
 				//Fishcoroutine = StartCoroutine(ActivateFishPaths(10));
@@ -113,9 +113,13 @@ namespace FishShooting
 			Aquatic Fish = GO.GetComponent<Aquatic>();
 			Debug.LogError("pool fishes fish=" + Fish);
 			Debug.Log("AllActivatedPaths length="+AllActivatedPaths.Count);
-			Fish.Path = FishPooling.Instance.AllActivatedPaths[Random.Range(0, AllActivatedPaths.Count)];
-			//Fish.Path = AllActivatedPaths[0];
-			Fish.SetInitials();
+			Fish.CurrentPathID = Random.Range(0, AllActivatedPaths.Count);
+			Fish.CurrentPointID = 0;
+			Debug.LogError("------ Fish Spawn currentPat set");
+			Fish.spawned = !Fish.spawned;
+			//Fish.Path = FishPooling.Instance.AllActivatedPaths[Random.Range(0, AllActivatedPaths.Count)];
+			////Fish.Path = AllActivatedPaths[0];
+			//Fish.SetInitials();
 		}
 
 		GameObject GO;
