@@ -7,7 +7,7 @@ namespace FishShooting
     public class FishPooling : MonoBehaviour
     {
         #region PUBLIC MEMBERS
-        public List<GameObject> FishPrefabs,BossCharPrefabs;
+        public List<GameObject> FishPrefabs,CreaturePrefabs,BossCharPrefabs;
         public List<GameObject> AllFishes;
         [Header("============== Path Info ===============")]
         public List<PathController> AllPaths;

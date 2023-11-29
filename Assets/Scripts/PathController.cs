@@ -21,11 +21,11 @@ namespace FishShooting
             {
                 PathPoints.Add(transform.GetChild(i));
             }
-            if (Is_CreaturePool)
-            {
-                InvokeRepeating(nameof(PoolCreatures), 0.1f, 1.5f);
-                //Invoke(nameof(DisableIt), Random.Range(15, 20));
-            }
+            //if (Is_CreaturePool)
+            //{
+            //    InvokeRepeating(nameof(PoolCreatures), 0.1f, 1.5f);
+            //    //Invoke(nameof(DisableIt), Random.Range(15, 20));
+            //}
         }
         void DisableIt()
         {

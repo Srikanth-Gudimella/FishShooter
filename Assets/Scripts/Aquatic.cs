@@ -35,11 +35,15 @@ namespace FishShooting
 
         [Networked] public int CurrentPointID { get; set; }
         [Networked] public int CurrentPathID { get; set; }
+        [Networked] public int CurrentPathID2 { get; set; }
 
         [Networked(OnChanged = nameof(OnFishSpawned))]
         public NetworkBool spawned { get; set; }
 
         public bool IsReady = false;
+        [Networked] public float StartDealy { get; set; }
+        //[Networked] public bool IsCreature { get; set; }
+        public GameManager.FishTypes _currentFishType; 
         public void SetInitials()
         {
             Debug.LogError("--- SetInitials currentPathID="+CurrentPathID+"::currentPointsID="+CurrentPointID);
@@ -51,9 +55,14 @@ namespace FishShooting
             transform.SetPositionAndRotation(CurrentPoint.position, CurrentPoint.rotation);
             rb.bodyType = RigidbodyType2D.Kinematic;
             transform.GetChild(0).transform.localEulerAngles = Path.InitialRotatioon;
+            //StartDealy = dealyTimeToStart;
             //transform.GetChild(0).transform.localScale = Path.InitialScale;
 
             //CurrentPointID = 10;
+            Invoke(nameof(SetReady), StartDealy);
+        }
+        void SetReady()
+        {
             IsReady = true;
         }
         public override void Spawned()
@@ -71,7 +80,26 @@ namespace FishShooting
             Debug.LogError("------- onFishSpawned");
             //changed.Behaviour.gameObject.SetActive(true);
             //SetInitials();
-            changed.Behaviour.Path = FishPooling.Instance.AllActivatedPaths[changed.Behaviour.CurrentPathID];
+            switch(changed.Behaviour._currentFishType)
+            {
+                case GameManager.FishTypes.NormalFish:
+                    changed.Behaviour.Path = FishPooling.Instance.AllActivatedPaths[changed.Behaviour.CurrentPathID];
+                    break;
+                case GameManager.FishTypes.Creature:
+                    changed.Behaviour.Path = FishPooling.Instance.CreaturePaths[changed.Behaviour.CurrentPathID].transform.GetChild(changed.Behaviour.CurrentPathID2).GetComponent<PathController>();
+                    break;
+                case GameManager.FishTypes.Boss:
+                    changed.Behaviour.Path = FishPooling.Instance.AllBossCharPaths[changed.Behaviour.CurrentPathID];
+                    break;
+            }
+            //if (changed.Behaviour.IsCreature)
+            //{
+            //    changed.Behaviour.Path = FishPooling.Instance.CreaturePaths[changed.Behaviour.CurrentPathID].transform.GetChild(changed.Behaviour.CurrentPathID2).GetComponent<PathController>();
+            //}
+            //else
+            //{
+            //    changed.Behaviour.Path = FishPooling.Instance.AllActivatedPaths[changed.Behaviour.CurrentPathID];
+            //}
             changed.Behaviour.SetInitials();
             changed.Behaviour.Invoke(nameof(Activate), 0.5f);
             //changed.Behaviour.material.color = Color.white;
@@ -85,7 +113,7 @@ namespace FishShooting
         public void Update()
         {
             //Debug.LogError("update");
-
+            //return;
             if (!IsReady ||Is_Dead || Is_Reached || !GameManager.Instance.IsMaster)
                 return;
             //return;

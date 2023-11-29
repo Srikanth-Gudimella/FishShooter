@@ -15,30 +15,24 @@ namespace FishShooting
 		public static Player local { get; set; }
 
 
-		#region PUBLIC MEMBERS
-		public List<GameObject> FishPrefabs, BossCharPrefabs;
-		public List<GameObject> AllFishes;
-		[Header("============== Path Info ===============")]
-		public List<PathController> AllPaths;
-		public List<PathController> AllActivatedPaths;
-		public List<PathController> AllBossCharPaths;
-		public List<GameObject> CreaturePaths;
-		[Space(15)]
-		public int FishStage;
-		#endregion
 
-		#region PRIVATE MEMBERS
-		Coroutine Creaturecoroutine;
-		Coroutine BossCharcoroutine;
-		Coroutine Fishcoroutine;
-
-		#endregion
+		[Networked] private TickTimer CreatureCoroutineTime { get; set; }
+		[Networked] private TickTimer BossCharCoroutineTime { get; set; }
+		[Networked] private TickTimer FishCoroutineTime { get; set; }
 
 		private void Start()
 		{
+			CreatureCoroutineTime = TickTimer.CreateFromSeconds(Runner, 10f);
+			BossCharCoroutineTime = TickTimer.CreateFromSeconds(Runner, 10f);
+
 			if (Object.HasInputAuthority && Runner.IsSharedModeMasterClient)
 			{
-				Invoke(nameof(PoolFishes), 1);
+				GameManager.Instance.SpawnFishes(Runner);
+
+				//BossCharCoroutineTime = TickTimer.CreateFromSeconds(Runner, 40f);
+				FishCoroutineTime = TickTimer.CreateFromSeconds(Runner, 10f);
+
+				//Invoke(nameof(PoolFishes), 1);
 				//InvokeRepeating(nameof(PoolFishes), 0.1f, 2);
 				//Creaturecoroutine = StartCoroutine(ActivateCreaturePaths(10f));
 				//BossCharcoroutine = StartCoroutine(ActivateBossCharPaths(40f));
@@ -100,96 +94,48 @@ namespace FishShooting
 				}
 			}
 		}
+		public override void FixedUpdateNetwork()
+		{
+			//Debug.LogError("------- GameManager Fixed Update Network");
+			
+				if (CreatureCoroutineTime.Expired(Runner))
+				{
+					//StartCoroutine(ActivateCreaturePaths());
+					if (GameManager.Instance.IsMaster)
+					{
+						GameManager.Instance.PoolCreatures();
+					}
+
+				//pool creatures
+				CreatureCoroutineTime = TickTimer.CreateFromSeconds(Runner, UnityEngine.Random.Range(35f, 50f));
+					//false
+				}
+			if (BossCharCoroutineTime.Expired(Runner))
+			{
+				//StartCoroutine(ActivateCreaturePaths());
+				if (GameManager.Instance.IsMaster)
+				{
+					GameManager.Instance.CreateBoss();
+				}
+
+				//pool boss
+				BossCharCoroutineTime = TickTimer.CreateFromSeconds(Runner, 15);// UnityEngine.Random.Range(35f, 50f));
+				//false
+			}
+			//if (BossCharCoroutineTime.Expired(Runner))
+			//{
+			//    StartCoroutine(ActivateBossCharPaths());
+			//}
+			//if (FishCoroutineTime.Expired(Runner))
+			//{
+			//    StartCoroutine(ActivateFishPaths());
+			//}
+		}
 		public void CreateBullet(Transform tr)
         {
 			NetworkObject networkPlayerObject = Runner.Spawn(BulletPrefab, tr.position, tr.rotation, Runner.LocalPlayer);
 			networkPlayerObject.GetComponent<BulletController>().Init();
 		}
-		void PoolFishes()
-		{
-			GameManager.Instance.SpawnFishes(Runner);
-			return;
-			//Debug.Log("---- Pooling Fish 000");
-			GO = GetFish();
-			Debug.LogError("pool fishes go="+ GO);
-			Aquatic Fish = GO.GetComponent<Aquatic>();
-			Debug.LogError("pool fishes fish=" + Fish);
-			Debug.Log("AllActivatedPaths length="+AllActivatedPaths.Count);
-			Fish.CurrentPathID = Random.Range(0, AllActivatedPaths.Count);
-			Fish.CurrentPointID = 0;
-			Debug.LogError("------ Fish Spawn currentPat set");
-			Fish.spawned = !Fish.spawned;
-			//Fish.Path = FishPooling.Instance.AllActivatedPaths[Random.Range(0, AllActivatedPaths.Count)];
-			////Fish.Path = AllActivatedPaths[0];
-			//Fish.SetInitials();
-		}
-
-		GameObject GO;
-		GameObject GetFish()
-		{
-			//for (int i = 0; i < AllFishes.Count; i++)
-			//{
-			//	if (!AllFishes[i].gameObject.activeInHierarchy)
-			//	{
-			//		GO = AllFishes[i].gameObject;
-			//		GO.SetActive(true);
-			//		//GO.transform.SetPositionAndRotation(BulletInitPos.position, BulletInitPos.rotation);
-			//		return GO;
-			//	}
-			//}
-			////GO = Instantiate(FishPrefabs[Random.Range(0,FishStage*3)]);
-			//GO = Instantiate(FishPrefabs[Random.Range(0, FishPrefabs.Count)]);
-			//AllFishes.Add(GO);
-			//GO.SetActive(true);
-			//Debug.Log("---- Pooling Fish 111");
-			//GO.transform.SetPositionAndRotation(BulletInitPos.position, BulletInitPos.rotation);
-
-
-			NetworkObject networkPlayerObject = Runner.Spawn(FishPrefabs[Random.Range(0, FishPrefabs.Count)], Vector3.one * 1000) ;
-			//networkPlayerObject.GetComponent<BulletController>().Init();
-
-			return networkPlayerObject.gameObject;
-		}
-		public IEnumerator ActivateCreaturePaths(float delay)
-		{
-			yield return new WaitForSeconds(delay);
-			GameObject GO = CreaturePaths[Random.Range(0, CreaturePaths.Count)];
-			GO.SetActive(true);
-			yield return new WaitForSeconds(Random.Range(15, 20));
-			GO.SetActive(false);
-			StopCoroutine(Creaturecoroutine);
-			StartCoroutine(ActivateCreaturePaths(Random.Range(20, 30)));
-		}
-
-		public IEnumerator ActivateBossCharPaths(float delay)
-		{
-			yield return new WaitForSeconds(delay);
-			GameObject GO = Instantiate(BossCharPrefabs[0]);
-			Aquatic Fish = GO.GetComponent<Aquatic>();
-			Fish.Path = AllBossCharPaths[Random.Range(0, AllBossCharPaths.Count)];
-			Fish.SetInitials();
-			StopCoroutine(BossCharcoroutine);
-			StartCoroutine(ActivateBossCharPaths(Random.Range(40, 50)));
-		}
-
-		int pathIncrementID = 6;
-		public IEnumerator ActivateFishPaths(float delay)
-		{
-			yield return new WaitForSeconds(delay);
-			for (int i = pathIncrementID; i < pathIncrementID + 2; i++)
-			{
-				AllPaths[i].gameObject.SetActive(true);
-				AllActivatedPaths.Add(AllPaths[i]);
-			}
-
-			if (pathIncrementID <= AllPaths.Count - 2)
-			{
-				pathIncrementID += 2;
-				Debug.LogError("------ pathIncrementID = " + pathIncrementID);
-				StopCoroutine(Fishcoroutine);
-				if (pathIncrementID < AllPaths.Count)
-					Fishcoroutine = StartCoroutine(ActivateFishPaths(Random.Range(10, 15)));
-			}
-		}
+		
 	}
 }
