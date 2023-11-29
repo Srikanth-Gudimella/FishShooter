@@ -9,9 +9,9 @@ namespace FishShooting
 {
 	public class Player : NetworkBehaviour
 	{
-		public GameObject BulletPrefab;
+        //public GameObject BulletPrefab;
 
-		public int playerID { get; private set; }
+        public int playerID { get; private set; }
 		public static Player local { get; set; }
 
 
@@ -23,7 +23,7 @@ namespace FishShooting
 		private void Start()
 		{
 			CreatureCoroutineTime = TickTimer.CreateFromSeconds(Runner, 10f);
-			BossCharCoroutineTime = TickTimer.CreateFromSeconds(Runner, 10f);
+			BossCharCoroutineTime = TickTimer.CreateFromSeconds(Runner, 40f);
 
 			if (Object.HasInputAuthority && Runner.IsSharedModeMasterClient)
 			{
@@ -119,7 +119,7 @@ namespace FishShooting
 				}
 
 				//pool boss
-				BossCharCoroutineTime = TickTimer.CreateFromSeconds(Runner, 15);// UnityEngine.Random.Range(35f, 50f));
+				BossCharCoroutineTime = TickTimer.CreateFromSeconds(Runner, UnityEngine.Random.Range(40f, 50f));
 				//false
 			}
 			//if (BossCharCoroutineTime.Expired(Runner))
@@ -133,7 +133,7 @@ namespace FishShooting
 		}
 		public void CreateBullet(Transform tr)
         {
-			NetworkObject networkPlayerObject = Runner.Spawn(BulletPrefab, tr.position, tr.rotation, Runner.LocalPlayer);
+			NetworkObject networkPlayerObject = Runner.Spawn(FishPooling.Instance.BulletPrefab, tr.position, tr.rotation, Runner.LocalPlayer);
 			networkPlayerObject.GetComponent<BulletController>().Init();
 		}
 		

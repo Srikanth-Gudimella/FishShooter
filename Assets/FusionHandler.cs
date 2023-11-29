@@ -208,7 +208,7 @@ namespace FishShooting
 			//if (runner.IsServer || runner.IsSharedModeMasterClient)
 			{
 				Vector3 spawnPosition = new Vector3((runner.LocalPlayer.RawEncoded % runner.Config.Simulation.DefaultPlayers) * 3, 1, 0);
-				NetworkObject networkPlayerObject = runner.Spawn(_playerPrefab, spawnPosition, Quaternion.identity, runner.LocalPlayer);
+				NetworkObject networkPlayerObject = runner.Spawn(GameManager.Instance.CanonPrefabs, spawnPosition, Quaternion.identity, runner.LocalPlayer);
 
 				if (runner.IsSharedModeMasterClient)
 				{

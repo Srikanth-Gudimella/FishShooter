@@ -67,7 +67,7 @@ namespace FishShooting
         }
         public override void Spawned()
         {
-            Debug.LogError("---- FishSpawned");
+            //Debug.LogError("---- FishSpawned");
             gameObject.SetActive(false);
             //spawned = !spawned;
         }
@@ -77,7 +77,7 @@ namespace FishShooting
         }
         public static void OnFishSpawned(Changed<Aquatic> changed)
         {
-            Debug.LogError("------- onFishSpawned");
+            //Debug.LogError("------- onFishSpawned");
             //changed.Behaviour.gameObject.SetActive(true);
             //SetInitials();
             switch(changed.Behaviour._currentFishType)

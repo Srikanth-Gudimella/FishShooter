@@ -129,15 +129,15 @@ namespace FishShooting
         {
             //Debug.Log("---- Pooling Fish 000");
             FishObj = GetFish(FishTypes.NormalFish);
-            Debug.LogError("pool fishes go=" + FishObj);
+            //Debug.LogError("pool fishes go=" + FishObj);
             Aquatic Fish = FishObj.GetComponent<Aquatic>();
-            Debug.LogError("pool fishes fish=" + Fish);
+            //Debug.LogError("pool fishes fish=" + Fish);
             //Debug.Log("AllActivatedPaths length=" + AllActivatedPaths.Count);
             Fish._currentFishType = FishTypes.NormalFish;
             Fish.StartDealy = 0f;
             Fish.CurrentPathID = UnityEngine.Random.Range(0,FishPooling.Instance.AllActivatedPaths.Count);
             Fish.CurrentPointID = 0;
-            Debug.LogError("------ Fish Spawn currentPat set");
+            //Debug.LogError("------ Fish Spawn currentPat set");
             Fish.spawned = !Fish.spawned;
             //Fish.Path = FishPooling.Instance.AllActivatedPaths[Random.Range(0, AllActivatedPaths.Count)];
             ////Fish.Path = AllActivatedPaths[0];
@@ -147,15 +147,15 @@ namespace FishShooting
         {
             int randBossIndex = UnityEngine.Random.Range(0, FishPooling.Instance.BossCharPrefabs.Count);
             FishObj = GetFish(FishTypes.Boss,0, randBossIndex);
-            Debug.LogError("pool fishes go=" + FishObj);
+            //Debug.LogError("pool fishes go=" + FishObj);
             Aquatic Fish = FishObj.GetComponent<Aquatic>();
-            Debug.LogError("pool fishes fish=" + Fish);
+            //Debug.LogError("pool fishes fish=" + Fish);
             //Debug.Log("AllActivatedPaths length=" + AllActivatedPaths.Count);
             Fish._currentFishType = FishTypes.Boss;
             Fish.StartDealy = 0f;
             Fish.CurrentPathID = UnityEngine.Random.Range(0, FishPooling.Instance.AllBossCharPaths.Count);
             Fish.CurrentPointID = 0;
-            Debug.LogError("------ Fish Spawn currentPat set");
+            //Debug.LogError("------ Fish Spawn currentPat set");
             Fish.spawned = !Fish.spawned;
 
 
@@ -174,31 +174,31 @@ namespace FishShooting
             for (int i = 0; i < 15; i++)
             {
                 FishObj = GetFish(FishTypes.Creature, creatureIndex);
-                Debug.LogError("pool fishes go=" + FishObj);
+                //Debug.LogError("pool fishes go=" + FishObj);
                 Aquatic Fish = FishObj.GetComponent<Aquatic>();
-                Debug.LogError("pool fishes fish=" + Fish);
+                //Debug.LogError("pool fishes fish=" + Fish);
                 //Debug.Log("AllActivatedPaths length=" + AllActivatedPaths.Count);
                 Fish._currentFishType = FishTypes.Creature;
                 Fish.StartDealy = i*1.5f;
                 Fish.CurrentPathID = randPathIndex;
                 Fish.CurrentPathID2 = 0;
                 Fish.CurrentPointID = 0;
-                Debug.LogError("------ Fish Spawn currentPat set");
+                //Debug.LogError("------ Fish Spawn currentPat set");
                 Fish.spawned = !Fish.spawned;
             }
             for (int i = 0; i < 15; i++)
             {
                 FishObj = GetFish(FishTypes.Creature, creatureIndex);
-                Debug.LogError("pool fishes go=" + FishObj);
+                //Debug.LogError("pool fishes go=" + FishObj);
                 Aquatic Fish = FishObj.GetComponent<Aquatic>();
-                Debug.LogError("pool fishes fish=" + Fish);
+                //Debug.LogError("pool fishes fish=" + Fish);
                 //Debug.Log("AllActivatedPaths length=" + AllActivatedPaths.Count);
                 Fish._currentFishType = FishTypes.Creature;
                 Fish.StartDealy = i * 1.5f;
                 Fish.CurrentPathID = randPathIndex;
                 Fish.CurrentPathID2 = 1;
                 Fish.CurrentPointID = 0;
-                Debug.LogError("------ Fish Spawn currentPat set");
+                //Debug.LogError("------ Fish Spawn currentPat set");
                 Fish.spawned = !Fish.spawned;
             }
             //Fish.Path = FishPooling.Instance.AllActivatedPaths[Random.Range(0, AllActivatedPaths.Count)];

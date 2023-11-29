@@ -16,7 +16,7 @@ namespace FishShooting
 
         public void Init()
         {
-            Debug.Log("------ Ball Init");
+            //Debug.Log("------ Ball Init");
             life = TickTimer.CreateFromSeconds(Runner, 1.5f);
         }
 
@@ -44,9 +44,12 @@ namespace FishShooting
                     damagable.ApplyDamage(50);
                 GameManager.Instance.InstantiateEffect(collision.GetContact(0).point);
                 CancelInvoke("DisableIt");
+                //Debug.Log("bullet runner="+Runner);
+                //Debug.Log("bullet Object="+Object);
+                if(Runner!=null && Object!=null)
                 Runner.Despawn(Object);
 
-               // gameObject.SetActive(false);
+                // gameObject.SetActive(false);
             }
         }
 
