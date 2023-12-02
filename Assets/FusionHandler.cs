@@ -10,6 +10,8 @@ namespace FishShooting
 {
 	public class FusionHandler : MonoBehaviour, INetworkRunnerCallbacks
 	{
+		public GameObject ConnectBtnObj;
+		public Text ConnectingTxt;
 		//[Networked] private int MasterPlayerID;
 
 		public List<Player> _allPlayers = new List<Player>();
@@ -33,6 +35,8 @@ namespace FishShooting
 		void Awake()
 		{
 			Instance = this;
+			ConnectingTxt.gameObject.SetActive(false);
+			ConnectBtnObj.SetActive(true);
 		}
 
 		public static void OnChangedMaster(Changed<NetworkBehaviour> changed)
@@ -58,22 +62,27 @@ namespace FishShooting
 			_allPlayers.Insert(insertIndex, player);
 			//_playerQueue.Enqueue(player);
 		}
-		private void OnGUI()
-		{
-			if (_runner == null)
-			{
-				//if (GUI.Button(new Rect(0, 0, 200, 40), "Host"))
-				//{
-				//	StartGame(GameMode.Host);
-				//}
-				if (GUI.Button(new Rect(Screen.width/2-100, Screen.height/2-20, 200, 40), "Connect"))
-				{
-					//StartGame(GameMode.Client);
-					StartGame(GameMode.Shared);
-				}
-			}
+		//private void OnGUI()
+		//{
+		//	if (_runner == null)
+		//	{
+		//		//if (GUI.Button(new Rect(0, 0, 200, 40), "Host"))
+		//		//{
+		//		//	StartGame(GameMode.Host);
+		//		//}
+		//		if (GUI.Button(new Rect(Screen.width/2-100, Screen.height/2-20, 200, 40), "Connect"))
+		//		{
+		//			//StartGame(GameMode.Client);
+		//			StartGame(GameMode.Shared);
+		//		}
+		//	}
+		//}
+		public void ConnectClick()
+        {
+			ConnectBtnObj.SetActive(false);
+			ConnectingTxt.gameObject.SetActive(true);
+			StartGame(GameMode.Shared);
 		}
-
 		async void StartGame(GameMode mode)
 		{
 			// Create the Fusion runner and let it know that we will be providing user input
@@ -207,6 +216,8 @@ namespace FishShooting
 			if (runner.GameMode == GameMode.Shared)
 			//if (runner.IsServer || runner.IsSharedModeMasterClient)
 			{
+				ConnectingTxt.gameObject.SetActive(false);
+
 				Vector3 spawnPosition = new Vector3((runner.LocalPlayer.RawEncoded % runner.Config.Simulation.DefaultPlayers) * 3, 1, 0);
 				NetworkObject networkPlayerObject = runner.Spawn(GameManager.Instance.CanonPrefabs, spawnPosition, Quaternion.identity, runner.LocalPlayer);
 

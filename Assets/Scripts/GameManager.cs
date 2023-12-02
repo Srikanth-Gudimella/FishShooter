@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace FishShooting
 {
@@ -19,6 +20,7 @@ namespace FishShooting
 
         public bool IsMaster;
         public static GameManager Instance;
+        public PlayerRef _playerRef;
 
         #region PRIVATE MEMBERS
         Coroutine Creaturecoroutine;
@@ -89,7 +91,7 @@ namespace FishShooting
         public void SpawnFishes(NetworkRunner _runner)
         {
             runner = _runner;
-            InvokeRepeating(nameof(PoolFishes), 0.1f, 2);
+            InvokeRepeating(nameof(PoolFishes), 0.1f, 4);
 
             //CreatureCoroutineTime = TickTimer.CreateFromSeconds(Runner, 5f);
             //BossCharCoroutineTime = TickTimer.CreateFromSeconds(Runner, 40f);
@@ -269,5 +271,16 @@ namespace FishShooting
         //    }
         //}
 
+        public void HomeBtnClick()
+        {
+            if (Runner != null && _playerRef != null)
+            {
+                Runner.Disconnect(_playerRef);
+                Runner.Shutdown();
+            }
+            SceneManager.LoadScene("Menu");
+        }
+
     }
+   
 }

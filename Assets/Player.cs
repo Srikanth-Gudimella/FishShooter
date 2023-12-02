@@ -25,9 +25,9 @@ namespace FishShooting
 			if (Object.HasInputAuthority)
 			{
 				Debug.LogError("--------- Player Start has input authority");
-				CreatureCoroutineTime = TickTimer.CreateFromSeconds(Runner, 10f);
-				BossCharCoroutineTime = TickTimer.CreateFromSeconds(Runner, 40f);
-
+				CreatureCoroutineTime = TickTimer.CreateFromSeconds(Runner, 20f);
+				BossCharCoroutineTime = TickTimer.CreateFromSeconds(Runner, 50f);
+				GameManager.Instance._playerRef = Object.InputAuthority;
 				if (Runner.IsSharedModeMasterClient)
 				{
 					GameManager.Instance.SpawnFishes(Runner);
@@ -66,7 +66,8 @@ namespace FishShooting
 			Debug.Log("players count" + Runner.SessionInfo.PlayerCount);
 			Debug.Log("players maxplayers" + Runner.SessionInfo.MaxPlayers);
 			Debug.Log("Player USerID" + Runner.GetPlayerUserId(Object.InputAuthority));
-			GameManager.Instance.SetCanon(this,this.gameObject,playerID);
+            GameManager.Instance.SetCanon(this, this.gameObject, playerID);
+            //GameManager.Instance.SetCanon(this,this.gameObject,2);
 		}
 		public async void TriggerDespawn()
 		{

@@ -71,7 +71,7 @@ namespace FishShooting
         {
             //if(Physics.Raycast(BulletInitPos.position,BulletInitPos.transform.up,20))
             {
-                Debug.Log("<color=yellow> ---- Shoot :::: </color> ");
+                //Debug.Log("<color=yellow> ---- Shoot :::: </color> ");
                 //GetBullet();
                 ThisNetworkPlayer.CreateBullet(BulletInitPos);
                 //SkeltonAnim.AnimationState.SetAnimation(0, Shoot, false);
@@ -107,22 +107,39 @@ namespace FishShooting
 
                 if (myID == 2 || myID == 3)
                 {
-                    desiredAngle = angle + 90;
-                    if (desiredAngle <= 270 && desiredAngle >=180)
-                    {
-                        desiredAngle = -65;
-                    }
+                    //Debug.LogError("angle="+angle);
+                   // desiredAngle = angle + 90;
+                    desiredAngle = angle + 270;
+                    //Debug.LogError("desiredAngle=" + desiredAngle);
+                    if (desiredAngle >= 360)
+                        desiredAngle = 100;
+                    if (desiredAngle >= 260 && desiredAngle < 360)
+                        desiredAngle = 260;
+                    //if (desiredAngle <= 180 && desiredAngle >= 90)
+                    //{
+                    //    desiredAngle = -115;
+                    //}
+                    //if (desiredAngle <= 270 && desiredAngle >= 180)
+                    //{
+                    //    desiredAngle = -65;
+                    //}
+                    //desiredAngle = Mathf.Clamp(desiredAngle, -255, -115);
                 }
                 else
                 {
+                    //Debug.LogError("angle="+angle);
                     desiredAngle = angle - 90;
+                    //Debug.LogError("desiredAngle 11 =" + desiredAngle);
+
                     if (desiredAngle >= -270 && desiredAngle <= -180)
                     {
                         desiredAngle = 65;
                     }
+                    //Debug.LogError("desiredAngle22=" + desiredAngle);
+                    desiredAngle = Mathf.Clamp(desiredAngle, -RotClampVal, RotClampVal);
                 }
 
-                desiredAngle = Mathf.Clamp(desiredAngle, -RotClampVal, RotClampVal);
+                //desiredAngle = Mathf.Clamp(desiredAngle, -RotClampVal, RotClampVal);
 
                 CanonPivot.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, desiredAngle));
                 if(Pointer)

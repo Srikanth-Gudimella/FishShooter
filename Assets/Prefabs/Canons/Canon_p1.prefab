@@ -232,7 +232,7 @@ MonoBehaviour:
   BulletInitPos: {fileID: 6420963215210337487}
   NextShootTime: 0
   ShootIntervel: 0.5
-  RotClampVal: 65
+  RotClampVal: 70
   AllBullets: []
   BulletPrefab: {fileID: 3518242872058131686, guid: 647fd4c0629c0154d954b7c8e7aab785, type: 3}
   ThisNetworkPlayer: {fileID: 0}
