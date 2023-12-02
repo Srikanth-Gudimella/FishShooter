@@ -133,7 +133,7 @@ namespace FishShooting
             Aquatic Fish = FishObj.GetComponent<Aquatic>();
             //Debug.LogError("pool fishes fish=" + Fish);
             //Debug.Log("AllActivatedPaths length=" + AllActivatedPaths.Count);
-            Fish._currentFishType = FishTypes.NormalFish;
+            Fish.Fishtype = (int)FishTypes.NormalFish;
             Fish.StartDealy = 0f;
             Fish.CurrentPathID = UnityEngine.Random.Range(0,FishPooling.Instance.AllActivatedPaths.Count);
             Fish.CurrentPointID = 0;
@@ -145,13 +145,14 @@ namespace FishShooting
         }
         public void CreateBoss()
         {
+            Debug.LogError("------- CreateBoss");
             int randBossIndex = UnityEngine.Random.Range(0, FishPooling.Instance.BossCharPrefabs.Count);
             FishObj = GetFish(FishTypes.Boss,0, randBossIndex);
             //Debug.LogError("pool fishes go=" + FishObj);
             Aquatic Fish = FishObj.GetComponent<Aquatic>();
             //Debug.LogError("pool fishes fish=" + Fish);
             //Debug.Log("AllActivatedPaths length=" + AllActivatedPaths.Count);
-            Fish._currentFishType = FishTypes.Boss;
+            Fish.Fishtype = (int)FishTypes.Boss;
             Fish.StartDealy = 0f;
             Fish.CurrentPathID = UnityEngine.Random.Range(0, FishPooling.Instance.AllBossCharPaths.Count);
             Fish.CurrentPointID = 0;
@@ -178,7 +179,7 @@ namespace FishShooting
                 Aquatic Fish = FishObj.GetComponent<Aquatic>();
                 //Debug.LogError("pool fishes fish=" + Fish);
                 //Debug.Log("AllActivatedPaths length=" + AllActivatedPaths.Count);
-                Fish._currentFishType = FishTypes.Creature;
+                Fish.Fishtype = (int)FishTypes.Creature;
                 Fish.StartDealy = i*1.5f;
                 Fish.CurrentPathID = randPathIndex;
                 Fish.CurrentPathID2 = 0;
@@ -193,7 +194,7 @@ namespace FishShooting
                 Aquatic Fish = FishObj.GetComponent<Aquatic>();
                 //Debug.LogError("pool fishes fish=" + Fish);
                 //Debug.Log("AllActivatedPaths length=" + AllActivatedPaths.Count);
-                Fish._currentFishType = FishTypes.Creature;
+                Fish.Fishtype = (int)FishTypes.Creature;
                 Fish.StartDealy = i * 1.5f;
                 Fish.CurrentPathID = randPathIndex;
                 Fish.CurrentPathID2 = 1;

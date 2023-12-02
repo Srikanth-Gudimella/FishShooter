@@ -22,21 +22,25 @@ namespace FishShooting
 
 		private void Start()
 		{
-			CreatureCoroutineTime = TickTimer.CreateFromSeconds(Runner, 10f);
-			BossCharCoroutineTime = TickTimer.CreateFromSeconds(Runner, 40f);
-
-			if (Object.HasInputAuthority && Runner.IsSharedModeMasterClient)
+			if (Object.HasInputAuthority)
 			{
-				GameManager.Instance.SpawnFishes(Runner);
+				Debug.LogError("--------- Player Start has input authority");
+				CreatureCoroutineTime = TickTimer.CreateFromSeconds(Runner, 10f);
+				BossCharCoroutineTime = TickTimer.CreateFromSeconds(Runner, 40f);
 
-				//BossCharCoroutineTime = TickTimer.CreateFromSeconds(Runner, 40f);
-				FishCoroutineTime = TickTimer.CreateFromSeconds(Runner, 10f);
+				if (Runner.IsSharedModeMasterClient)
+				{
+					GameManager.Instance.SpawnFishes(Runner);
 
-				//Invoke(nameof(PoolFishes), 1);
-				//InvokeRepeating(nameof(PoolFishes), 0.1f, 2);
-				//Creaturecoroutine = StartCoroutine(ActivateCreaturePaths(10f));
-				//BossCharcoroutine = StartCoroutine(ActivateBossCharPaths(40f));
-				//Fishcoroutine = StartCoroutine(ActivateFishPaths(10));
+					//BossCharCoroutineTime = TickTimer.CreateFromSeconds(Runner, 40f);
+					FishCoroutineTime = TickTimer.CreateFromSeconds(Runner, 10f);
+
+					//Invoke(nameof(PoolFishes), 1);
+					//InvokeRepeating(nameof(PoolFishes), 0.1f, 2);
+					//Creaturecoroutine = StartCoroutine(ActivateCreaturePaths(10f));
+					//BossCharcoroutine = StartCoroutine(ActivateBossCharPaths(40f));
+					//Fishcoroutine = StartCoroutine(ActivateFishPaths(10));
+				}
 			}
 		}
 		public override void Spawned()
@@ -97,7 +101,8 @@ namespace FishShooting
 		public override void FixedUpdateNetwork()
 		{
 			//Debug.LogError("------- GameManager Fixed Update Network");
-			
+			if (Object.HasInputAuthority)
+			{
 				if (CreatureCoroutineTime.Expired(Runner))
 				{
 					//StartCoroutine(ActivateCreaturePaths());
@@ -106,30 +111,31 @@ namespace FishShooting
 						GameManager.Instance.PoolCreatures();
 					}
 
-				//pool creatures
-				CreatureCoroutineTime = TickTimer.CreateFromSeconds(Runner, UnityEngine.Random.Range(35f, 50f));
+					//pool creatures
+					CreatureCoroutineTime = TickTimer.CreateFromSeconds(Runner, UnityEngine.Random.Range(50f, 60f));
 					//false
 				}
-			if (BossCharCoroutineTime.Expired(Runner))
-			{
-				//StartCoroutine(ActivateCreaturePaths());
-				if (GameManager.Instance.IsMaster)
+				if (BossCharCoroutineTime.Expired(Runner))
 				{
-					GameManager.Instance.CreateBoss();
-				}
+					//StartCoroutine(ActivateCreaturePaths());
+					if (GameManager.Instance.IsMaster)
+					{
+						GameManager.Instance.CreateBoss();
+					}
 
-				//pool boss
-				BossCharCoroutineTime = TickTimer.CreateFromSeconds(Runner, UnityEngine.Random.Range(40f, 50f));
-				//false
+					//pool boss
+					BossCharCoroutineTime = TickTimer.CreateFromSeconds(Runner, UnityEngine.Random.Range(45f, 55f));
+					//false
+				}
+				//if (BossCharCoroutineTime.Expired(Runner))
+				//{
+				//    StartCoroutine(ActivateBossCharPaths());
+				//}
+				//if (FishCoroutineTime.Expired(Runner))
+				//{
+				//    StartCoroutine(ActivateFishPaths());
+				//}
 			}
-			//if (BossCharCoroutineTime.Expired(Runner))
-			//{
-			//    StartCoroutine(ActivateBossCharPaths());
-			//}
-			//if (FishCoroutineTime.Expired(Runner))
-			//{
-			//    StartCoroutine(ActivateFishPaths());
-			//}
 		}
 		public void CreateBullet(Transform tr)
         {

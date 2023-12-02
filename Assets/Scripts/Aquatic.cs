@@ -18,7 +18,10 @@ namespace FishShooting
         [Space(10)]
         public float Speed;
         public int Health;
-        public bool Is_Dead,Is_Reached;
+        public bool Is_Dead;
+
+        [Networked(OnChanged = nameof(OnFishReached))]
+        public NetworkBool Is_Reached { get; set; }
 
         private Rigidbody2D rb;
         //int PathID;
@@ -43,13 +46,26 @@ namespace FishShooting
         public bool IsReady = false;
         [Networked] public float StartDealy { get; set; }
         //[Networked] public bool IsCreature { get; set; }
+        [Networked] public int Fishtype { get; set; }
         public GameManager.FishTypes _currentFishType; 
         public void SetInitials()
         {
-            Debug.LogError("--- SetInitials currentPathID="+CurrentPathID+"::currentPointsID="+CurrentPointID);
+            //Debug.LogError("--- SetInitials currentPathID="+CurrentPathID+"::currentPointsID="+CurrentPointID);
             rb = GetComponent<Rigidbody2D>();
             Is_Dead = Is_Reached = false;
-            Health = 100;
+            switch(_currentFishType)
+            {
+                case GameManager.FishTypes.NormalFish:
+                    Health = 100;
+                    break;
+                case GameManager.FishTypes.Creature:
+                    Health = 100;
+                    break;
+                case GameManager.FishTypes.Boss:
+                    Health = 1000;
+                    break;
+            }
+            //Health = 100;
             //PathID = 0;
             CurrentPoint = Path.PathPoints[CurrentPointID];
             transform.SetPositionAndRotation(CurrentPoint.position, CurrentPoint.rotation);
@@ -75,23 +91,44 @@ namespace FishShooting
         {
             gameObject.SetActive(true);
         }
+        public static void OnFishReached(Changed<Aquatic> changed)
+        {
+            //Debug.LogError("------- OnFishReached");
+            changed.Behaviour.gameObject.SetActive(false);
+        }
         public static void OnFishSpawned(Changed<Aquatic> changed)
         {
             //Debug.LogError("------- onFishSpawned");
             //changed.Behaviour.gameObject.SetActive(true);
             //SetInitials();
-            switch(changed.Behaviour._currentFishType)
+
+            switch((GameManager.FishTypes)changed.Behaviour.Fishtype)
             {
                 case GameManager.FishTypes.NormalFish:
+                    changed.Behaviour._currentFishType = GameManager.FishTypes.NormalFish;
                     changed.Behaviour.Path = FishPooling.Instance.AllActivatedPaths[changed.Behaviour.CurrentPathID];
                     break;
                 case GameManager.FishTypes.Creature:
+                    changed.Behaviour._currentFishType = GameManager.FishTypes.Creature;
                     changed.Behaviour.Path = FishPooling.Instance.CreaturePaths[changed.Behaviour.CurrentPathID].transform.GetChild(changed.Behaviour.CurrentPathID2).GetComponent<PathController>();
                     break;
                 case GameManager.FishTypes.Boss:
+                    changed.Behaviour._currentFishType = GameManager.FishTypes.Boss;
                     changed.Behaviour.Path = FishPooling.Instance.AllBossCharPaths[changed.Behaviour.CurrentPathID];
                     break;
             }
+            //switch(changed.Behaviour._currentFishType)
+            //{
+            //    case GameManager.FishTypes.NormalFish:
+            //        changed.Behaviour.Path = FishPooling.Instance.AllActivatedPaths[changed.Behaviour.CurrentPathID];
+            //        break;
+            //    case GameManager.FishTypes.Creature:
+            //        changed.Behaviour.Path = FishPooling.Instance.CreaturePaths[changed.Behaviour.CurrentPathID].transform.GetChild(changed.Behaviour.CurrentPathID2).GetComponent<PathController>();
+            //        break;
+            //    case GameManager.FishTypes.Boss:
+            //        changed.Behaviour.Path = FishPooling.Instance.AllBossCharPaths[changed.Behaviour.CurrentPathID];
+            //        break;
+            //}
             //if (changed.Behaviour.IsCreature)
             //{
             //    changed.Behaviour.Path = FishPooling.Instance.CreaturePaths[changed.Behaviour.CurrentPathID].transform.GetChild(changed.Behaviour.CurrentPathID2).GetComponent<PathController>();
