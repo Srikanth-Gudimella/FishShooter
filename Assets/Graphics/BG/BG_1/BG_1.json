@@ -1,0 +1,375 @@
+{
+"skeleton": {
+	"hash": "Qn8S92iYaaE",
+	"spine": "4.1.24",
+	"x": -964.05,
+	"y": -534.87,
+	"width": 1929.03,
+	"height": 1072.94,
+	"images": "./images/",
+	"audio": "J:/LogicLane/Work/Background"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "Main_Anim", "parent": "root" },
+	{ "name": "Lighthouse", "parent": "Main_Anim", "x": -3, "y": 1.5 },
+	{ "name": "pillers", "parent": "Main_Anim", "x": -73.38, "y": -204.61 },
+	{ "name": "sea-waves", "parent": "Main_Anim", "x": -156.36, "y": -499.48 },
+	{ "name": "Rocks", "parent": "Main_Anim", "x": -3, "y": -296 },
+	{ "name": "Bubble_Group", "parent": "Main_Anim", "x": 329.46, "y": 435.46 },
+	{ "name": "buble", "parent": "Bubble_Group", "x": 467.52, "y": -444.5 },
+	{ "name": "buble2", "parent": "Bubble_Group", "x": 347.96, "y": -471.65, "scaleX": 0.8, "scaleY": 0.8 },
+	{ "name": "buble3", "parent": "Bubble_Group", "x": 201.36, "y": -546.08, "scaleX": 1.1, "scaleY": 1.1 },
+	{ "name": "Bubble_Group2", "parent": "Main_Anim", "x": -874.14, "y": 13.28 },
+	{ "name": "buble4", "parent": "Bubble_Group2", "x": 467.52, "y": -444.5 },
+	{ "name": "buble5", "parent": "Bubble_Group2", "x": 347.96, "y": -388.7, "scaleX": 0.8, "scaleY": 0.8 },
+	{ "name": "buble6", "parent": "Bubble_Group2", "x": 76.95, "y": -394.02, "scaleX": 1.1, "scaleY": 1.1 },
+	{ "name": "Bubble_Group3", "parent": "Main_Anim", "x": -114.25, "y": -276.32, "scaleX": 0.8, "scaleY": 0.8 },
+	{ "name": "buble7", "parent": "Bubble_Group3", "x": 467.52, "y": -444.5 },
+	{ "name": "buble8", "parent": "Bubble_Group3", "x": 347.96, "y": -388.7, "scaleX": 0.8, "scaleY": 0.8 },
+	{ "name": "buble9", "parent": "Bubble_Group3", "x": 76.95, "y": -394.02, "scaleX": 1.1, "scaleY": 1.1 },
+	{ "name": "Bubble_Group4", "parent": "Main_Anim", "x": 329.46, "y": 435.46 },
+	{ "name": "buble10", "parent": "Bubble_Group4", "x": 467.52, "y": -444.5 },
+	{ "name": "buble11", "parent": "Bubble_Group4", "x": 347.96, "y": -471.65, "scaleX": 0.8, "scaleY": 0.8 },
+	{ "name": "buble12", "parent": "Bubble_Group4", "x": 201.36, "y": -546.08, "scaleX": 1.1, "scaleY": 1.1 },
+	{ "name": "sea-waves2", "parent": "Main_Anim", "x": -156.36, "y": -499.48 },
+	{ "name": "ray", "parent": "Main_Anim", "x": -68.12, "y": 928.92, "scaleX": 1.6946, "scaleY": 1.6946 },
+	{ "name": "Window_Glow", "parent": "Main_Anim", "x": 53.08, "y": 361.28 },
+	{ "name": "Window_Glow2", "parent": "Main_Anim", "x": 27.68, "y": 475.29, "scaleX": 0.7, "scaleY": 0.7 },
+	{ "name": "Window_Glow3", "parent": "Main_Anim", "x": 105.25, "y": 511.74, "scaleX": 0.5, "scaleY": 0.5 },
+	{
+		"name": "Window_Glow4",
+		"parent": "Main_Anim",
+		"rotation": -1.92,
+		"x": 172.51,
+		"y": 322.95,
+		"scaleX": 0.4067,
+		"scaleY": 0.7
+	},
+	{ "name": "ray2", "parent": "Main_Anim", "x": -68.12, "y": 928.92, "scaleX": 1.6946, "scaleY": 1.6946 }
+],
+"slots": [
+	{ "name": "Mask_Anim", "bone": "Main_Anim", "attachment": "Mask_Anim" },
+	{ "name": "Lighthouse", "bone": "Lighthouse", "attachment": "Lighthouse" },
+	{ "name": "pillers", "bone": "pillers", "attachment": "pillers" },
+	{ "name": "sea-waves", "bone": "sea-waves", "color": "ffffff95", "attachment": "sea-waves", "blend": "screen" },
+	{ "name": "sea-waves2", "bone": "sea-waves2", "color": "ffffff95", "attachment": "sea-waves", "blend": "screen" },
+	{ "name": "Window_Glow", "bone": "Window_Glow", "color": "ffffff64", "attachment": "Window_Glow", "blend": "additive" },
+	{ "name": "Window_Glow2", "bone": "Window_Glow2", "color": "ffffff64", "attachment": "Window_Glow", "blend": "additive" },
+	{ "name": "Window_Glow3", "bone": "Window_Glow3", "color": "ffffff64", "attachment": "Window_Glow", "blend": "additive" },
+	{ "name": "Window_Glow4", "bone": "Window_Glow4", "color": "ffffff64", "attachment": "Window_Glow", "blend": "additive" },
+	{ "name": "buble", "bone": "buble", "attachment": "buble" },
+	{ "name": "buble10", "bone": "buble10", "attachment": "buble" },
+	{ "name": "buble4", "bone": "buble4", "attachment": "buble" },
+	{ "name": "buble7", "bone": "buble7", "attachment": "buble" },
+	{ "name": "buble2", "bone": "buble2", "attachment": "buble" },
+	{ "name": "buble11", "bone": "buble11", "attachment": "buble" },
+	{ "name": "buble5", "bone": "buble5", "attachment": "buble" },
+	{ "name": "buble8", "bone": "buble8", "attachment": "buble" },
+	{ "name": "buble3", "bone": "buble3", "attachment": "buble" },
+	{ "name": "buble12", "bone": "buble12", "attachment": "buble" },
+	{ "name": "buble6", "bone": "buble6", "attachment": "buble" },
+	{ "name": "buble9", "bone": "buble9", "attachment": "buble" },
+	{ "name": "Rocks", "bone": "Rocks", "attachment": "rocks" },
+	{ "name": "ray", "bone": "ray", "color": "fcfbfa4f", "attachment": "ray", "blend": "additive" },
+	{ "name": "ray2", "bone": "ray2", "color": "fcfbfa4f", "attachment": "ray", "blend": "additive" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"buble": {
+				"buble": { "width": 63, "height": 65 }
+			},
+			"buble2": {
+				"buble": { "width": 63, "height": 65 }
+			},
+			"buble3": {
+				"buble": { "width": 63, "height": 65 }
+			},
+			"buble4": {
+				"buble": { "width": 63, "height": 65 }
+			},
+			"buble5": {
+				"buble": { "width": 63, "height": 65 }
+			},
+			"buble6": {
+				"buble": { "width": 63, "height": 65 }
+			},
+			"buble7": {
+				"buble": { "width": 63, "height": 65 }
+			},
+			"buble8": {
+				"buble": { "width": 63, "height": 65 }
+			},
+			"buble9": {
+				"buble": { "width": 63, "height": 65 }
+			},
+			"buble10": {
+				"buble": { "width": 63, "height": 65 }
+			},
+			"buble11": {
+				"buble": { "width": 63, "height": 65 }
+			},
+			"buble12": {
+				"buble": { "width": 63, "height": 65 }
+			},
+			"Lighthouse": {
+				"Lighthouse": { "width": 1922, "height": 1075 }
+			},
+			"Mask_Anim": {
+				"Mask_Anim": {
+					"type": "clipping",
+					"end": "ray2",
+					"vertexCount": 5,
+					"vertices": [ -963.04, 537.96, -964.05, -534.45, 956.9, -534.87, 957.02, 538.07, -963.32, 537.96 ],
+					"color": "ce3a3aff"
+				}
+			},
+			"pillers": {
+				"pillers": { "x": 70.38, "y": 206.11, "width": 1922, "height": 1075 }
+			},
+			"ray": {
+				"ray": { "scaleX": 5, "scaleY": 5, "width": 325, "height": 309 }
+			},
+			"ray2": {
+				"ray": { "scaleX": 5, "scaleY": 5, "width": 325, "height": 309 }
+			},
+			"Rocks": {
+				"rocks": { "width": 1922, "height": 480 }
+			},
+			"sea-waves": {
+				"sea-waves": { "width": 2048, "height": 540 }
+			},
+			"sea-waves2": {
+				"sea-waves": { "width": 2048, "height": 540 }
+			},
+			"Window_Glow": {
+				"Window_Glow": { "width": 106, "height": 106 }
+			},
+			"Window_Glow2": {
+				"Window_Glow": { "x": -3.94, "y": 1.31, "width": 106, "height": 106 }
+			},
+			"Window_Glow3": {
+				"Window_Glow": { "x": -3.94, "y": 1.31, "width": 106, "height": 106 }
+			},
+			"Window_Glow4": {
+				"Window_Glow": { "x": -3.94, "y": 1.31, "width": 106, "height": 106 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"slots": {
+			"sea-waves": {
+				"rgba": [
+					{ "color": "ffffff03" },
+					{ "time": 0.1, "color": "fffffffe" }
+				]
+			},
+			"sea-waves2": {
+				"rgba": [
+					{ "color": "ffffff03" },
+					{ "time": 0.1, "color": "fffffffe", "curve": "stepped" },
+					{ "time": 2, "color": "fffffffe" }
+				]
+			}
+		}
+	},
+	"t_base_bg_prop_01": {
+		"slots": {
+			"buble": {
+				"rgba": [
+					{ "time": 3.6667, "color": "ffffffff" },
+					{ "time": 4, "color": "ffffff00" }
+				]
+			},
+			"buble2": {
+				"rgba": [
+					{ "time": 3.3333, "color": "ffffffff" },
+					{ "time": 4, "color": "ffffff00" }
+				]
+			},
+			"buble3": {
+				"rgba": [
+					{ "time": 3, "color": "ffffffff" },
+					{ "time": 4, "color": "ffffff00" }
+				]
+			},
+			"buble4": {
+				"rgba": [
+					{ "time": 3.6667, "color": "ffffffff" },
+					{ "time": 4, "color": "ffffff00" }
+				]
+			},
+			"buble5": {
+				"rgba": [
+					{ "time": 3.3333, "color": "ffffffff" },
+					{ "time": 4, "color": "ffffff00" }
+				]
+			},
+			"buble6": {
+				"rgba": [
+					{ "time": 3, "color": "ffffffff" },
+					{ "time": 4, "color": "ffffff00" }
+				]
+			},
+			"buble7": {
+				"rgba": [
+					{ "time": 3.6667, "color": "ffffffff" },
+					{ "time": 4, "color": "ffffff00" }
+				]
+			},
+			"buble8": {
+				"rgba": [
+					{ "time": 3.3333, "color": "ffffffff" },
+					{ "time": 4, "color": "ffffff00" }
+				]
+			},
+			"buble9": {
+				"rgba": [
+					{ "time": 3, "color": "ffffffff" },
+					{ "time": 4, "color": "ffffff00" }
+				]
+			},
+			"Window_Glow": {
+				"rgba": [
+					{ "color": "ffffff7d" },
+					{ "time": 0.3333, "color": "ffffff64" },
+					{ "time": 2.3333, "color": "ffffffff" },
+					{ "time": 4, "color": "ffffff7d" }
+				]
+			},
+			"Window_Glow2": {
+				"rgba": [
+					{ "color": "ffffff97" },
+					{ "time": 0.6667, "color": "ffffff64" },
+					{ "time": 2.6667, "color": "ffffffff" },
+					{ "time": 4, "color": "ffffff97" }
+				]
+			},
+			"Window_Glow3": {
+				"rgba": [
+					{ "color": "ffffffb1" },
+					{ "time": 1, "color": "ffffff64" },
+					{ "time": 3, "color": "ffffffff" },
+					{ "time": 4, "color": "ffffffb1" }
+				]
+			},
+			"Window_Glow4": {
+				"rgba": [
+					{ "color": "ffffffcb" },
+					{ "time": 1.3333, "color": "ffffff64" },
+					{ "time": 3.3333, "color": "ffffffff" },
+					{ "time": 4, "color": "ffffffcb" }
+				]
+			}
+		},
+		"bones": {
+			"sea-waves": {
+				"translate": [
+					{},
+					{ "time": 4, "x": 1475.74, "y": -40.5 }
+				]
+			},
+			"buble": {
+				"translate": [
+					{},
+					{ "time": 4, "x": 23.91, "y": 674.87 }
+				]
+			},
+			"buble2": {
+				"translate": [
+					{},
+					{ "time": 4, "x": 23.71, "y": 945.57 }
+				]
+			},
+			"buble3": {
+				"translate": [
+					{},
+					{ "time": 4, "x": 23.91, "y": 674.87 }
+				]
+			},
+			"buble4": {
+				"translate": [
+					{},
+					{ "time": 4, "x": 23.91, "y": 1054.81 }
+				]
+			},
+			"buble5": {
+				"translate": [
+					{},
+					{ "time": 4, "x": 23.91, "y": 821 }
+				]
+			},
+			"buble6": {
+				"translate": [
+					{ "y": -103.62 },
+					{ "time": 4, "x": 23.91, "y": 866.17 }
+				]
+			},
+			"buble7": {
+				"translate": [
+					{},
+					{ "time": 4, "x": 23.91, "y": 1054.81 }
+				]
+			},
+			"buble8": {
+				"translate": [
+					{},
+					{ "time": 4, "x": 23.91, "y": 821 }
+				]
+			},
+			"buble9": {
+				"translate": [
+					{ "y": -103.62 },
+					{ "time": 4, "x": 23.91, "y": 866.17 }
+				]
+			},
+			"Bubble_Group3": {
+				"translate": [
+					{},
+					{ "time": 4, "y": 390.57 }
+				]
+			},
+			"buble10": {
+				"translate": [
+					{ "y": -729.22 },
+					{ "time": 4 }
+				]
+			},
+			"buble11": {
+				"translate": [
+					{ "y": -1109.38 },
+					{ "time": 4 }
+				]
+			},
+			"buble12": {
+				"translate": [
+					{ "y": -594.43 },
+					{ "time": 4 }
+				]
+			},
+			"sea-waves2": {
+				"translate": [
+					{ "x": -1970.37 },
+					{ "time": 4 }
+				]
+			},
+			"ray": {
+				"rotate": [
+					{},
+					{ "time": 4, "value": -60 }
+				]
+			},
+			"ray2": {
+				"rotate": [
+					{ "value": -60 },
+					{ "time": 4 }
+				]
+			}
+		}
+	}
+}
+}
