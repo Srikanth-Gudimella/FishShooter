@@ -90,10 +90,17 @@ namespace FishShooting
 			_runner.ProvideInput = true;
 
 			// Start or join (depends on gamemode) a session with a specific name
+			//await _runner.StartGame(new StartGameArgs()
+			//{
+			//	GameMode = mode,
+			//	SessionName = "TestRoom",
+			//	Scene = SceneManager.GetActiveScene().buildIndex,
+			//	SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
+			//});
 			await _runner.StartGame(new StartGameArgs()
 			{
 				GameMode = mode,
-				SessionName = "TestRoom",
+				PlayerCount = 4,
 				Scene = SceneManager.GetActiveScene().buildIndex,
 				SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
 			});
