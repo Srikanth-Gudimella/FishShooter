@@ -24,7 +24,7 @@ namespace FishShooting
         Coroutine Fishcoroutine;
 
         #endregion
-        public GameObject BulletPrefab;
+        //public GameObject BulletPrefab;
 
         public static FishPooling Instance;
 

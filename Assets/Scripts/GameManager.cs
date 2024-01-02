@@ -10,7 +10,7 @@ namespace FishShooting
     public class GameManager : NetworkBehaviour
     {
         #region Public Members
-        public GameObject CanonPrefabs;
+        public GameObject[] CanonPrefabs;
         public List<CanonController> AllCanons;
         public int myPositionID;
         public List<Transform> PlayerPositions;
@@ -21,6 +21,14 @@ namespace FishShooting
         public bool IsMaster;
         public static GameManager Instance;
         public PlayerRef _playerRef;
+        public int[] HealthList;
+        public int[] ScoreList;
+
+        public int[] CreatureHealthList;
+        public int[] CreatureScoreList;
+
+        public int[] BossHealthList;
+        public int[] BossScoreList;
 
         #region PRIVATE MEMBERS
         Coroutine Creaturecoroutine;
@@ -28,7 +36,8 @@ namespace FishShooting
         Coroutine Fishcoroutine;
 
         #endregion
-
+        [Networked] public int GameLevel  { get; set; }
+        public static int SelectedCanonIndex;
         //[Networked] private TickTimer CreatureCoroutineTime { get; set; }
         //[Networked] private TickTimer BossCharCoroutineTime { get; set; }
         //[Networked] private TickTimer FishCoroutineTime { get; set; }
@@ -65,7 +74,7 @@ namespace FishShooting
 
             //for (int i = 0; i < PlayerPositions.Count; i++)
             {
-                GO = Instantiate(CanonPrefabs.gameObject, PlayerPositions[myPositionID].position, PlayerPositions[myPositionID].rotation);
+                GO = Instantiate(CanonPrefabs[SelectedCanonIndex].gameObject, PlayerPositions[myPositionID].position, PlayerPositions[myPositionID].rotation);
                 GO.GetComponent<CanonController>().myID = myPositionID;
                 AllCanons.Add(GO.GetComponent<CanonController>());
             }
@@ -79,7 +88,8 @@ namespace FishShooting
 
             thisCanon.GetComponent<CanonController>().myID = Position;
             thisCanon.GetComponent<CanonController>().ThisNetworkPlayer = _player;
-            AllCanons.Add(thisCanon.GetComponent<CanonController>());
+            AllCanons[Position] = thisCanon.GetComponent<CanonController>();
+            //AllCanons.Add(thisCanon.GetComponent<CanonController>());
         }
 
         public void InstantiateEffect(Vector3 pos)
@@ -91,7 +101,7 @@ namespace FishShooting
         public void SpawnFishes(NetworkRunner _runner)
         {
             runner = _runner;
-            InvokeRepeating(nameof(PoolFishes), 0.1f, 4);
+            InvokeRepeating(nameof(PoolFishes), 0.5f, 4f);// 4);//Srikanth Testing use 0.5f
 
             //CreatureCoroutineTime = TickTimer.CreateFromSeconds(Runner, 5f);
             //BossCharCoroutineTime = TickTimer.CreateFromSeconds(Runner, 40f);
@@ -214,12 +224,35 @@ namespace FishShooting
             switch (_fishtype)
             {
                 case FishTypes.NormalFish:
-                    networkPlayerObject = runner.Spawn(FishPooling.Instance.FishPrefabs[UnityEngine.Random.Range(0, FishPooling.Instance.FishPrefabs.Count)], Vector3.one * 1000);
+                    int maxFishCount = FishPooling.Instance.FishPrefabs.Count;
+                    switch(GameLevel)
+                    {
+                        case 1:
+                            maxFishCount = 5;// FishPooling.Instance.FishPrefabs.Count/3;
+                            break;
+                        case 2:
+                            maxFishCount = 8;//FishPooling.Instance.FishPrefabs.Count/2;
+                            break;
+                        case 3:
+                            maxFishCount = 11;// FishPooling.Instance.FishPrefabs.Count;
+                            break;
+                        default:
+                            maxFishCount = 11;// FishPooling.Instance.FishPrefabs.Count; 
+                            break;
+                    }
+                    //Debug.LogError("GameLevel=" + GameLevel+"::maxFishCount="+maxFishCount);
+
+                    int randFishIndex = UnityEngine.Random.Range(0, maxFishCount);
+                    randFishIndex = 0;//Srikanth Testing
+                    networkPlayerObject = runner.Spawn(FishPooling.Instance.FishPrefabs[randFishIndex], Vector3.one * 1000);//runner.Spawn(FishPooling.Instance.FishPrefabs[0], Vector3.one * 1000);
+                    //networkPlayerObject = runner.Spawn(FishPooling.Instance.FishPrefabs[4], Vector3.one * 1000);//runner.Spawn(FishPooling.Instance.FishPrefabs[0], Vector3.one * 1000);
                     break;
                 case FishTypes.Creature:
+                    creatureIndex = UnityEngine.Random.Range(0, FishPooling.Instance.CreaturePrefabs.Count);
                     networkPlayerObject = runner.Spawn(FishPooling.Instance.CreaturePrefabs[creatureIndex], Vector3.one * 1000);
                     break;
                 case FishTypes.Boss:
+                    bossIndex= UnityEngine.Random.Range(0, FishPooling.Instance.BossCharPrefabs.Count);
                     networkPlayerObject = runner.Spawn(FishPooling.Instance.BossCharPrefabs[bossIndex], Vector3.one * 1000);
                     break;
             }

@@ -226,7 +226,8 @@ namespace FishShooting
 				ConnectingTxt.gameObject.SetActive(false);
 
 				Vector3 spawnPosition = new Vector3((runner.LocalPlayer.RawEncoded % runner.Config.Simulation.DefaultPlayers) * 3, 1, 0);
-				NetworkObject networkPlayerObject = runner.Spawn(GameManager.Instance.CanonPrefabs, spawnPosition, Quaternion.identity, runner.LocalPlayer);
+				GameManager.SelectedCanonIndex = 2;//Srikanth Testing
+				NetworkObject networkPlayerObject = runner.Spawn(GameManager.Instance.CanonPrefabs[GameManager.SelectedCanonIndex], spawnPosition, Quaternion.identity, runner.LocalPlayer);
 
 				if (runner.IsSharedModeMasterClient)
 				{
@@ -239,50 +240,59 @@ namespace FishShooting
 					GameManager.Instance.IsMaster = false;
 				}
 				//_spawnedCharacters.Add(runner.LocalPlayer, networkPlayerObject);
+				//FirebaseDataBaseHandler.Instance.SetScore(1000);
 			}
 		}
 		private bool _mouseButton0;
 		private bool _mouseButton1;
 
-		private void Update()
-		{
-			_mouseButton0 = _mouseButton0 || Input.GetMouseButton(0);
-			_mouseButton1 = _mouseButton1 || Input.GetMouseButton(1);
-		}
+		//private void Update()
+		//{
+		//	_mouseButton0 = _mouseButton0 || Input.GetMouseButton(0);
+		//	_mouseButton1 = _mouseButton1 || Input.GetMouseButton(1);
+		//}
 
 		public void OnInput(NetworkRunner runner, NetworkInput input)
 		{
-			var data = new NetworkInputData();
+			//var data = new NetworkInputData();
 
-			if (Input.GetKey(KeyCode.W))
-				data.direction += Vector3.forward;
+			//if (Input.GetKey(KeyCode.W))
+			//	data.direction += Vector3.forward;
 
-			if (Input.GetKey(KeyCode.S))
-				data.direction += Vector3.back;
+			//if (Input.GetKey(KeyCode.S))
+			//	data.direction += Vector3.back;
 
-			if (Input.GetKey(KeyCode.A))
-				data.direction += Vector3.left;
+			//if (Input.GetKey(KeyCode.A))
+			//	data.direction += Vector3.left;
 
-			if (Input.GetKey(KeyCode.D))
-				data.direction += Vector3.right;
+			//if (Input.GetKey(KeyCode.D))
+			//	data.direction += Vector3.right;
 
-			if (_mouseButton0)
-				data.buttons |= NetworkInputData.MOUSEBUTTON1;
-			_mouseButton0 = false;
+			//if (_mouseButton0)
+			//	data.buttons |= NetworkInputData.MOUSEBUTTON1;
+			//_mouseButton0 = false;
 
-			if (_mouseButton1)
-				data.buttons |= NetworkInputData.MOUSEBUTTON2;
-			_mouseButton1 = false;
+			//if (_mouseButton1)
+			//	data.buttons |= NetworkInputData.MOUSEBUTTON2;
+			//_mouseButton1 = false;
 
-			input.Set(data);
+			//input.Set(data);
 		}
 
 		public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input) { }
-		public void OnShutdown(NetworkRunner runner, ShutdownReason shutdownReason) { }
+		public void OnShutdown(NetworkRunner runner, ShutdownReason shutdownReason) { 
+			Debug.LogError("OnShutdown");
+			GameManager.Instance.HomeBtnClick();
+		}
 
-		public void OnDisconnectedFromServer(NetworkRunner runner) { }
+		public void OnDisconnectedFromServer(NetworkRunner runner) {
+			Debug.LogError("OnDisconnectedFromServer");
+			GameManager.Instance.HomeBtnClick();
+		}
 		public void OnConnectRequest(NetworkRunner runner, NetworkRunnerCallbackArgs.ConnectRequest request, byte[] token) { }
-		public void OnConnectFailed(NetworkRunner runner, NetAddress remoteAddress, NetConnectFailedReason reason) { }
+		public void OnConnectFailed(NetworkRunner runner, NetAddress remoteAddress, NetConnectFailedReason reason) { 
+			Debug.LogError("OnConnectFailed");
+		}
 		public void OnUserSimulationMessage(NetworkRunner runner, SimulationMessagePtr message) { }
 		public void OnSessionListUpdated(NetworkRunner runner, List<SessionInfo> sessionList) { }
 		public void OnCustomAuthenticationResponse(NetworkRunner runner, Dictionary<string, object> data) { }

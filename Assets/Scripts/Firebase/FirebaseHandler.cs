@@ -4,8 +4,8 @@
 using UnityEngine.SocialPlatforms.GameCenter;
 #endif
 
-//namespace Firebase.Sample.Auth
-//{
+namespace Firebase.Sample.Auth
+{
     using Firebase.Extensions;
     using System;
     using System.Collections;
@@ -16,7 +16,7 @@ using UnityEngine.SocialPlatforms.GameCenter;
 
     public class FirebaseHandler : MonoBehaviour
     {
-    public static FirebaseHandler Instance;
+            
         protected Firebase.Auth.FirebaseAuth auth;
         protected Firebase.Auth.FirebaseAuth otherAuth;
         protected Dictionary<string, Firebase.Auth.FirebaseUser> userByAuth =
@@ -49,11 +49,8 @@ using UnityEngine.SocialPlatforms.GameCenter;
         public InputField emailLoginField;
         public InputField passwordLoginField;
 
-    private void Awake()
-    {
-        Instance = this;
-    }
-    public virtual void Start()
+
+        public virtual void Start()
         {
             Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task => {
                 dependencyStatus = task.Result;
@@ -98,6 +95,7 @@ using UnityEngine.SocialPlatforms.GameCenter;
             else
             {
                 Debug.Log(" InitializeFirebase Setting up Firebase Auth otherauthoptions null");
+                //AuthStateChanged(this, null);
             }
             //AuthStateChanged(this, null);
             //email = "srikanth.gamezeniq@gmail.com";
@@ -122,7 +120,7 @@ using UnityEngine.SocialPlatforms.GameCenter;
                 userByAuth[senderAuth.App.Name] = user;
                 if (signedIn)
                 {
-                    Debug.Log("AuthStateChanged Signed in " + user.UserId + "::isverified=" + user.IsEmailVerified);
+                    Debug.Log("AuthStateChanged Signed in " + user.UserId + "::isverified=" + user.IsEmailVerified+"::email="+user.Email);
                     displayName = user.DisplayName ?? "";
                     Debug.LogError("------- Display Detailed User Info");
 
@@ -159,9 +157,17 @@ using UnityEngine.SocialPlatforms.GameCenter;
                     Debug.LogError("------- Display Detailed User Info");
                     if(auth.CurrentUser.IsEmailVerified)
                     {
-                        Debug.LogError("------- Reload user EmailVerified ");
+                        Debug.Log("--------- before open game call 11111111");
+                        Debug.LogError("------- Reload user EmailVerified ="+auth.CurrentUser.Email+"::UserID="+ auth.CurrentUser.UserId);
+                        Debug.Log("--------- before open game call 22222");
+                        UIManager.Instance.UserEmail = auth.CurrentUser.Email;
+                        Debug.Log("--------- before open game call 3333333");
+                        UIManager.Instance.UserID = auth.CurrentUser.UserId;
+                        Debug.Log("--------- before open game call 444444");
                         UIManager.Instance.DisableAllPanels();
+                        Debug.Log("--------- before open game call 55555");
                         //load game scene
+                        Debug.Log("--------- before open game call");
                         UIManager.Instance.OpenGame();
                     }
                     else
@@ -231,7 +237,7 @@ using UnityEngine.SocialPlatforms.GameCenter;
                 // This passes the current displayName through to HandleCreateUserAsync
                 // so that it can be passed to UpdateUserProfile().  displayName will be
                 // reset by AuthStateChanged() when the new user is created and signed in.
-                string newDisplayName = displayName;
+                string _DisplayName = displayName;
                 auth.CreateUserWithEmailAndPasswordAsync(email, password)
                   .ContinueWithOnMainThread((task) =>
                   {
@@ -244,7 +250,7 @@ using UnityEngine.SocialPlatforms.GameCenter;
                           StartCoroutine(SendEmailForVerificationAsyn(user));
                           //DisplayDetailedUserInfo(user, 1);
                           Debug.LogError("DisplayDetailedUserInfo 333333");
-                          return UpdateUserProfileAsync(newDisplayName: newDisplayName);
+                          return UpdateUserProfileAsync(newDisplayName: _DisplayName);
                       }
                       return task;
                   }).Unwrap();
@@ -371,4 +377,4 @@ using UnityEngine.SocialPlatforms.GameCenter;
         }
     }
     
-//}
+}

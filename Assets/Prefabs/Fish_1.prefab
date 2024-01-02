@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 101296573169194265}
   - component: {fileID: 2333883201534652847}
   - component: {fileID: 1092820991}
-  - component: {fileID: 8152186306296234253}
+  - component: {fileID: 5551178158445027252}
   m_Layer: 6
   m_Name: Fish_1
   m_TagString: Aquatic
@@ -53,17 +53,29 @@ MonoBehaviour:
   Path: {fileID: 0}
   CurrentPoint: {fileID: 0}
   Speed: 1.5
-  Health: 100
+  AquaticIndex: 0
+  _Health: 250
+  _Score: 100
   Is_Dead: 0
-  Is_Reached: 0
+  _Is_Reached:
+    _value: 0
+  Mat_ChangeColor: {fileID: 0}
   SkeltonAnim: {fileID: 7831086912113914135}
   Idle: idle
   Die: 
   _CurrentPointID: 0
   _CurrentPathID: 0
+  _CurrentPathID2: 0
+  _position: {x: 0, y: 0, z: 0}
   _spawned:
     _value: 0
   IsReady: 0
+  _StartDealy: 0
+  _Fishtype: 0
+  _currentFishType: 0
+  _HitByPlayerID: 0
+  _AquaticDied:
+    _value: 0
 --- !u!61 &101296573169194265
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -135,9 +147,9 @@ MonoBehaviour:
   - {fileID: 4518765947446136718}
   NetworkedBehaviours:
   - {fileID: 784825186}
-  - {fileID: 8152186306296234253}
+  - {fileID: 5551178158445027252}
   SimulationBehaviours: []
---- !u!114 &8152186306296234253
+--- !u!114 &5551178158445027252
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,7 +192,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7699723756760649692
 Transform:
   m_ObjectHideFlags: 0
@@ -241,9 +253,9 @@ MonoBehaviour:
   m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
+  _interpolationDataSource: 2
   InterpolationSpace: 0
-  InterpolationTarget: {fileID: 7699723756760649692}
+  InterpolationTarget: {fileID: 3674209747806137913}
   InterpolateErrorCorrection: 1
   InterpolatedErrorCorrectionSettings:
     MinRate: 3.3
@@ -323,6 +335,7 @@ GameObject:
   - component: {fileID: 5696138762964505326}
   - component: {fileID: 6675362771750123609}
   - component: {fileID: 7831086912113914135}
+  - component: {fileID: 1915325433}
   m_Layer: 6
   m_Name: Spine GameObject (Fish_1)
   m_TagString: Untagged
@@ -435,3 +448,17 @@ MonoBehaviour:
   _animationName: idle
   loop: 1
   timeScale: 1
+--- !u!114 &1915325433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8842455896082731089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa64221ca2161374dba4c4b7c69db7f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectRenderer: {fileID: 0}
+  material: {fileID: 0}

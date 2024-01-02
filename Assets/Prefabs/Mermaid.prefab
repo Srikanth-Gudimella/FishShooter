@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 566559699866395027}
   - component: {fileID: 4875473846942933544}
   - component: {fileID: 5727983331035213268}
-  - component: {fileID: 4068664375923644774}
+  - component: {fileID: 2768580140390312877}
   m_Layer: 6
   m_Name: Mermaid
   m_TagString: Aquatic
@@ -84,12 +84,29 @@ MonoBehaviour:
   Path: {fileID: 0}
   CurrentPoint: {fileID: 0}
   Speed: 1
-  Health: 1000
+  AquaticIndex: 0
+  _Health: 0
+  _Score: 0
   Is_Dead: 0
-  Is_Reached: 0
+  _Is_Reached:
+    _value: 0
+  Mat_ChangeColor: {fileID: 0}
   SkeltonAnim: {fileID: 6661862903894251501}
   Idle: idle
   Die: 
+  _CurrentPointID: 0
+  _CurrentPathID: 0
+  _CurrentPathID2: 0
+  _position: {x: 0, y: 0, z: 0}
+  _spawned:
+    _value: 0
+  IsReady: 0
+  _StartDealy: 0
+  _Fishtype: 0
+  _currentFishType: 0
+  _HitByPlayerID: 0
+  _AquaticDied:
+    _value: 0
 --- !u!61 &2799178284868896037
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -183,12 +200,13 @@ MonoBehaviour:
   Flags: 2305
   NetworkGuid:
     RawGuidValue: 168a5644ae11ef941821f2cbf1d06342
-  NestedObjects: []
+  NestedObjects:
+  - {fileID: 747629666}
   NetworkedBehaviours:
   - {fileID: 2864092978830945118}
-  - {fileID: 4068664375923644774}
+  - {fileID: 2768580140390312877}
   SimulationBehaviours: []
---- !u!114 &4068664375923644774
+--- !u!114 &2768580140390312877
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -259,6 +277,7 @@ GameObject:
   - component: {fileID: 6661862903894251503}
   - component: {fileID: 6661862903894251500}
   - component: {fileID: 6661862903894251501}
+  - component: {fileID: 3428371518820326529}
   m_Layer: 6
   m_Name: Spine GameObject (Mermaid)
   m_TagString: Untagged
@@ -369,6 +388,20 @@ MonoBehaviour:
   _animationName: idle
   loop: 1
   timeScale: 1
+--- !u!114 &3428371518820326529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6661862903894251490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa64221ca2161374dba4c4b7c69db7f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectRenderer: {fileID: 0}
+  material: {fileID: 0}
 --- !u!1 &9054043080966955131
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,6 +411,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9054043080966955128}
+  - component: {fileID: 747629666}
+  - component: {fileID: 747629667}
   m_Layer: 6
   m_Name: GO
   m_TagString: Untagged
@@ -400,3 +435,55 @@ Transform:
   m_Father: {fileID: 3290942922601831109}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &747629666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9054043080966955131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectInterest: 1
+  DefaultInterestGroups: []
+  DestroyWhenStateAuthorityLeaves: 0
+  AllowStateAuthorityOverride: 1
+  AoiPositionSource: {fileID: 0}
+  Flags: 3073
+  NetworkGuid:
+    RawGuidValue: 00000000000000000000000000000000
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 747629667}
+  SimulationBehaviours: []
+--- !u!114 &747629667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9054043080966955131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  InterpolationSpace: 0
+  InterpolationTarget: {fileID: 6661862903027279936}
+  InterpolateErrorCorrection: 1
+  InterpolatedErrorCorrectionSettings:
+    MinRate: 3.3
+    MaxRate: 10
+    PosBlendStart: 0.25
+    PosBlendEnd: 1
+    PosMinCorrection: 0.025
+    PosTeleportDistance: 2
+    RotBlendStart: 0.1
+    RotBlendEnd: 0.5
+    RotTeleportRadians: 1.5
+  UseLegacySharedModeInterpolation: 1
+  TargetInterpolationDelay: 0.03

@@ -6,7 +6,7 @@ using Fusion;
 
 namespace FishShooting
 {
-    public class CanonController : MonoBehaviour // GenericSingleton<CanonController>
+    public class CanonController : NetworkBehaviour // GenericSingleton<CanonController>
     {
         #region Publice Members
         public int myID = 0;
@@ -19,8 +19,10 @@ namespace FishShooting
         [SpineAnimation]
         public string Shoot;
         [Space(15)]
-        public GameObject Pointer;
-        public Transform CanonPivot,BulletInitPos;
+        //public GameObject Pointer;
+        public Transform CanonPivot;
+        public Transform[] BulletInitPos;
+        //public Transform LaserAngleTransform;
         public float NextShootTime,ShootIntervel,RotClampVal;
 
         public List<GameObject> AllBullets;
@@ -31,8 +33,24 @@ namespace FishShooting
         Camera mainCamera;
 
         public Player ThisNetworkPlayer;
+        public static CanonController Instance;
+        public GameObject LaserBeam;
+        bool isFiring = false;
+        public bool IsLaserCanon = false;
+        [Networked] public bool IsEnableLaserBeam { get;set; }
+
+        public GameObject AutoLockObj;
+        //public GameObject TargetObj;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
         void Start()
         {
+            AutoLockObj = null;
+            IsEnableLaserBeam = false;
+            // RotClampVal = 80;// Adjust this for testing
             mainCamera = Camera.main;
             spineAnimationState = SkeltonAnim.AnimationState;
         }
@@ -73,32 +91,101 @@ namespace FishShooting
             {
                 //Debug.Log("<color=yellow> ---- Shoot :::: </color> ");
                 //GetBullet();
-                ThisNetworkPlayer.CreateBullet(BulletInitPos);
+                for (int i = 0; i < BulletInitPos.Length; i++)
+                {
+                    ThisNetworkPlayer.CreateBullet(BulletInitPos[i],BulletPrefab);
+                }
                 //SkeltonAnim.AnimationState.SetAnimation(0, Shoot, false);
                 spineAnimationState.SetAnimation(1, Shoot, false);
+                if (!IsLaserCanon)
+                {
+                    ThisNetworkPlayer.GunSound.Play();
+                }
+               
                 //spineAnimationState.AddAnimation(0, Idle, true,0);
             }
         }
         float desiredAngle;
         public bool IgnoreClamp;
+        public LayerMask HitLayers;
+        Vector3 targetPosition;
         void Update()
         {
+            if (IsLaserCanon)
+            {
+                if (IsEnableLaserBeam)
+                {
+                    if (!isFiring)
+                    {
+                        isFiring = true;
+                        LaserBeam.SetActive(true);
+                        ThisNetworkPlayer.LaserSound.Play();
+                    }
+
+                    RaycastHit2D hit = Physics2D.Raycast(BulletInitPos[0].position, BulletInitPos[0].transform.up, 20, HitLayers);
+
+                    if (hit.collider != null)
+                    {
+                        targetPosition = hit.point;
+                    }
+                    else
+                    {
+                        targetPosition = BulletInitPos[0].transform.up * 15;
+                    }
+
+                    LaserBeam.GetComponent<F3DBeam>().TargetPoint = new Vector3(targetPosition.x, targetPosition.y, 0);
+                    //LaserBeam.GetComponent<F3DLightning>().TargetPoint = new Vector3(targetPosition.x, targetPosition.y, 0);
+                }
+                else
+                {
+                    isFiring = false;
+                    ////F3DFXController.instance.Stop();
+                    LaserBeam.SetActive(false);
+                    ThisNetworkPlayer.LaserSound.Stop();
+                }
+            }
             if (GameManager.Instance.myPositionID != myID)
                 return;
 
             if (Input.GetMouseButtonDown(0))
             {
                 touchStartPos = Input.mousePosition;
+
+
+                if (IsLaserCanon)
+                {
+                    Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+                    // Cast a ray from the mouse position into the scene
+                    RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+
+                    // Check if the ray hits a collider
+                    if (hit.collider != null)
+                    {
+                        // You can now access information about the hit object
+                        GameObject hitObject = hit.collider.gameObject;
+                        AutoLockObj = hitObject;
+
+                        // Do something with the hitObject
+                        Debug.Log("Mouse clicked on: " + hitObject.name);
+                    }
+                }
+
             }
-            Debug.DrawRay(BulletInitPos.position, BulletInitPos.transform.up * 20, Color.red);
+            for (int i = 0; i < BulletInitPos.Length; i++)
+            {
+                Debug.DrawRay(BulletInitPos[i].position, BulletInitPos[i].transform.up * 20, Color.red);
+            }
             
             if (Input.GetMouseButton(0))
             {
+               // Debug.LogError("------ canon mouse down");
+
                 Vector2 mousePosition = Input.mousePosition;
                 float swipeValue = touchStartPos.x - mousePosition.x;
 
-                Vector3 targetPosition = mainCamera.ScreenToWorldPoint(mousePosition);
-
+                targetPosition = mainCamera.ScreenToWorldPoint(mousePosition);
+               
                 // Calculate the direction from the current position to the target position
                 Vector3 direction = targetPosition - CanonPivot.transform.position;
 
@@ -133,7 +220,7 @@ namespace FishShooting
 
                     if (desiredAngle >= -270 && desiredAngle <= -180)
                     {
-                        desiredAngle = 65;
+                        desiredAngle = 80;
                     }
                     //Debug.LogError("desiredAngle22=" + desiredAngle);
                     desiredAngle = Mathf.Clamp(desiredAngle, -RotClampVal, RotClampVal);
@@ -142,8 +229,7 @@ namespace FishShooting
                 //desiredAngle = Mathf.Clamp(desiredAngle, -RotClampVal, RotClampVal);
 
                 CanonPivot.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, desiredAngle));
-                if(Pointer)
-                    Pointer.transform.position =  new Vector3(targetPosition.x, targetPosition.y, -1f);
+               
                 
                 //Shooting with Delay
                 if(Time.time >= NextShootTime)
@@ -152,12 +238,28 @@ namespace FishShooting
                     NextShootTime = Time.time + ShootIntervel;
                 }
 
+               if(IsLaserCanon)
+                {
+                    IsEnableLaserBeam = true;
+                }
+
             }
-            if(Input.GetMouseButtonUp(0))
+
+           
+
+
+            if (Input.GetMouseButtonUp(0) && AutoLockObj==null)
             {
+                //Debug.LogError("------ canon mouse up");
                 //spineAnimationState.AddAnimation(0, Idle, true, 0);
                 spineAnimationState.SetAnimation(2, Idle, true);
+                if (IsLaserCanon)
+                {
+                    IsEnableLaserBeam = false;
+                }
             }
         }
+       
+
     }
 }

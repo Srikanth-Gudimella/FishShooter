@@ -4,7 +4,7 @@
     "PeerMode": 0,
     "PhysicsEngine": 0,
     "ServerPhysicsMode": 0,
-    "UseLagCompensation": true,
+    "UseLagCompensation": false,
     "LagCompensation": {
         "HitboxBufferSize": 12,
         "HitboxCapacity": 512,

@@ -1,0 +1,17 @@
+Seahorse.png
+size:323,170
+filter:Linear,Linear
+pma:true
+Body
+bounds:2,2,118,166
+offsets:2,0,120,166
+Face
+bounds:122,36,132,111
+offsets:1,1,134,113
+rotate:90
+Tail
+bounds:235,43,86,125
+eye
+bounds:235,2,39,47
+offsets:1,1,41,49
+rotate:90

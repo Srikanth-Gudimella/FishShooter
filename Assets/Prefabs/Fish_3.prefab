@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 5332357860639425835}
   - component: {fileID: 7870451136319777725}
   - component: {fileID: 2493261771907323066}
+  - component: {fileID: 7821445840827867546}
   m_Layer: 6
   m_Name: Spine GameObject (Fish_3)
   m_TagString: Untagged
@@ -182,6 +183,20 @@ MonoBehaviour:
   _animationName: idle
   loop: 1
   timeScale: 1
+--- !u!114 &7821445840827867546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942903702024814540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa64221ca2161374dba4c4b7c69db7f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectRenderer: {fileID: 0}
+  material: {fileID: 0}
 --- !u!1 &8662659064474854215
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,9 +243,9 @@ MonoBehaviour:
   m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
+  _interpolationDataSource: 2
   InterpolationSpace: 0
-  InterpolationTarget: {fileID: 76025023}
+  InterpolationTarget: {fileID: 7704725287627158868}
   InterpolateErrorCorrection: 1
   InterpolatedErrorCorrectionSettings:
     MinRate: 3.3
@@ -242,7 +257,7 @@ MonoBehaviour:
     RotBlendStart: 0.1
     RotBlendEnd: 0.5
     RotTeleportRadians: 1.5
-  UseLegacySharedModeInterpolation: 0
+  UseLegacySharedModeInterpolation: 1
   TargetInterpolationDelay: 0.03
 --- !u!114 &1075994455
 MonoBehaviour:
@@ -281,7 +296,7 @@ GameObject:
   - component: {fileID: 8541795593569575161}
   - component: {fileID: 9077540653464534810}
   - component: {fileID: 811081048}
-  - component: {fileID: 715958967663756173}
+  - component: {fileID: 2791808093293536026}
   m_Layer: 6
   m_Name: Fish_3
   m_TagString: Aquatic
@@ -321,17 +336,29 @@ MonoBehaviour:
   Path: {fileID: 0}
   CurrentPoint: {fileID: 0}
   Speed: 1.5
-  Health: 100
+  AquaticIndex: 3
+  _Health: 0
+  _Score: 0
   Is_Dead: 0
-  Is_Reached: 0
+  _Is_Reached:
+    _value: 0
+  Mat_ChangeColor: {fileID: 0}
   SkeltonAnim: {fileID: 2493261771907323066}
   Idle: idle
   Die: 
   _CurrentPointID: 0
   _CurrentPathID: 0
+  _CurrentPathID2: 0
+  _position: {x: 0, y: 0, z: 0}
   _spawned:
     _value: 0
   IsReady: 0
+  _StartDealy: 0
+  _Fishtype: 0
+  _currentFishType: 0
+  _HitByPlayerID: 0
+  _AquaticDied:
+    _value: 0
 --- !u!61 &8541795593569575161
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -403,9 +430,9 @@ MonoBehaviour:
   - {fileID: 1075994455}
   NetworkedBehaviours:
   - {fileID: 8641683538284351106}
-  - {fileID: 715958967663756173}
+  - {fileID: 2791808093293536026}
   SimulationBehaviours: []
---- !u!114 &715958967663756173
+--- !u!114 &2791808093293536026
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

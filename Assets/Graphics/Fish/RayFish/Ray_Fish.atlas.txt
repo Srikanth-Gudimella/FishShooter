@@ -1,0 +1,13 @@
+Ray_Fish.png
+size:598,150
+filter:Linear,Linear
+pma:true
+Body
+bounds:2,43,246,105
+offsets:0,18,246,124
+Left_Wing
+bounds:429,6,167,142
+Right_Wing
+bounds:250,2,177,146
+Tail
+bounds:2,19,205,22

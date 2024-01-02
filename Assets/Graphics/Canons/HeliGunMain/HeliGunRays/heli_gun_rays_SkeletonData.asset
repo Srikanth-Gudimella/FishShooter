@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: heli_gun_rays_SkeletonData
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: 6cbbcec274b14af4d85b07645c652826, type: 2}
+  - {fileID: 11400000, guid: f320e591f7b9b7a4dad18b72697c8cf2, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: 1bd179c7e79f41b4ea3c1b294b84accf, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: 0a0c62ff1eb988e4fa15fa496ebe504f, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
     requiresBlendModeMaterials: 1
     applyAdditiveMaterial: 1
     additiveMaterials:
     - pageName: heli_gun_rays.png
-      material: {fileID: 2100000, guid: 0eb376fe4d8c9b2449ba30cb93aa82a0, type: 2}
+      material: {fileID: 2100000, guid: bcc72351125984342a12788821d97fbd, type: 2}
     multiplyMaterials: []
     screenMaterials: []
   skeletonDataModifiers: []

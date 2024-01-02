@@ -14,23 +14,29 @@ namespace FishShooting
         public int playerID { get; private set; }
 		public static Player local { get; set; }
 
+		public AudioSource GunSound,LaserSound;
 
 
 		[Networked] private TickTimer CreatureCoroutineTime { get; set; }
 		[Networked] private TickTimer BossCharCoroutineTime { get; set; }
 		[Networked] private TickTimer FishCoroutineTime { get; set; }
 
+		[Networked] private TickTimer LevelTimer { get; set; }
+
+
 		private void Start()
 		{
 			if (Object.HasInputAuthority)
 			{
 				Debug.LogError("--------- Player Start has input authority");
-				CreatureCoroutineTime = TickTimer.CreateFromSeconds(Runner, 20f);
-				BossCharCoroutineTime = TickTimer.CreateFromSeconds(Runner, 50f);
-				GameManager.Instance._playerRef = Object.InputAuthority;
+                //CreatureCoroutineTime = TickTimer.CreateFromSeconds(Runner, 20f);//Uncomment this for final
+                //BossCharCoroutineTime = TickTimer.CreateFromSeconds(Runner, 120f);//Uncomment this for final
+                GameManager.Instance._playerRef = Object.InputAuthority;
 				if (Runner.IsSharedModeMasterClient)
 				{
 					GameManager.Instance.SpawnFishes(Runner);
+
+					LevelTimer = TickTimer.CreateFromSeconds(Runner, 30f);
 
 					//BossCharCoroutineTime = TickTimer.CreateFromSeconds(Runner, 40f);
 					FishCoroutineTime = TickTimer.CreateFromSeconds(Runner, 10f);
@@ -128,6 +134,12 @@ namespace FishShooting
 					BossCharCoroutineTime = TickTimer.CreateFromSeconds(Runner, UnityEngine.Random.Range(45f, 55f));
 					//false
 				}
+				if (LevelTimer.Expired(Runner) && GameManager.Instance.IsMaster)
+				{
+					Debug.LogError("LevelTimer expired");
+					GameManager.Instance.GameLevel++;
+					LevelTimer = TickTimer.CreateFromSeconds(Runner, 30f);
+				}
 				//if (BossCharCoroutineTime.Expired(Runner))
 				//{
 				//    StartCoroutine(ActivateBossCharPaths());
@@ -138,11 +150,10 @@ namespace FishShooting
 				//}
 			}
 		}
-		public void CreateBullet(Transform tr)
+		public void CreateBullet(Transform tr,GameObject Bullet)
         {
-			NetworkObject networkPlayerObject = Runner.Spawn(FishPooling.Instance.BulletPrefab, tr.position, tr.rotation, Runner.LocalPlayer);
-			networkPlayerObject.GetComponent<BulletController>().Init();
+			NetworkObject networkPlayerObject = Runner.Spawn(Bullet, tr.position, tr.rotation, Runner.LocalPlayer);
+			//networkPlayerObject.GetComponent<BulletController>().Init();
 		}
-		
 	}
 }

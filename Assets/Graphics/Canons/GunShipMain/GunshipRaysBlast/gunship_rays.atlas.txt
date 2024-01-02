@@ -1,0 +1,39 @@
+gunship_rays.png
+size:2048,1024
+filter:Linear,Linear
+pma:true
+Laser_Beam/Edited VFX Free to use_00002
+bounds:4,736,426,240
+Laser_Beam/Edited VFX Free to use_00006
+bounds:4,492,426,240
+Laser_Beam/Edited VFX Free to use_00010
+bounds:434,736,426,240
+Laser_Beam/Edited VFX Free to use_00014
+bounds:4,248,426,240
+Laser_Beam/Edited VFX Free to use_00018
+bounds:434,492,426,240
+Laser_Beam/Edited VFX Free to use_00022
+bounds:864,736,426,240
+Laser_Beam/Edited VFX Free to use_00026
+bounds:4,4,426,240
+Laser_Beam/Edited VFX Free to use_00030
+bounds:434,248,426,240
+Laser_Beam/Edited VFX Free to use_00034
+bounds:864,492,426,240
+Laser_Beam/Edited VFX Free to use_00038
+bounds:1294,736,426,240
+Laser_Beam/Edited VFX Free to use_00042
+bounds:434,4,426,240
+Laser_Beam/Edited VFX Free to use_00046
+bounds:864,248,426,240
+Laser_Beam/Edited VFX Free to use_00050
+bounds:1294,492,426,240
+Laser_Beam/Edited VFX Free to use_00054
+bounds:1724,550,426,240
+rotate:90
+Laser_Beam/Edited VFX Free to use_00058
+bounds:864,4,426,240
+Laser_Beam/Edited VFX Free to use_00062
+bounds:1294,248,426,240
+Laser_Beam/Edited VFX Free to use_00066
+bounds:1294,4,426,240
