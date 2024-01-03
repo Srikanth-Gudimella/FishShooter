@@ -38,9 +38,12 @@ namespace FishShooting
         bool isFiring = false;
         public bool IsLaserCanon = false;
         [Networked] public bool IsEnableLaserBeam { get;set; }
-
-        public GameObject AutoLockObj;
+        //[Networked] public Transform AutoLockObj1 { get; set; }
         //public GameObject TargetObj;
+        public GameObject AutoLockObj;
+        [Networked] public NetworkBehaviourId AutoLockObjID { get; set; }
+
+        [Networked] public int TargetAquaticID { get; set; }
 
         private void Awake()
         {
@@ -48,7 +51,7 @@ namespace FishShooting
         }
         void Start()
         {
-            AutoLockObj = null;
+            AutoLockObjID = NetworkBehaviourId.None;
             IsEnableLaserBeam = false;
             // RotClampVal = 80;// Adjust this for testing
             mainCamera = Camera.main;
@@ -93,7 +96,7 @@ namespace FishShooting
                 //GetBullet();
                 for (int i = 0; i < BulletInitPos.Length; i++)
                 {
-                    ThisNetworkPlayer.CreateBullet(BulletInitPos[i],BulletPrefab);
+                    ThisNetworkPlayer.CreateBullet(BulletInitPos[i],BulletPrefab,AutoLockObjID);
                 }
                 //SkeltonAnim.AnimationState.SetAnimation(0, Shoot, false);
                 spineAnimationState.SetAnimation(1, Shoot, false);
@@ -122,18 +125,55 @@ namespace FishShooting
                         ThisNetworkPlayer.LaserSound.Play();
                     }
 
-                    RaycastHit2D hit = Physics2D.Raycast(BulletInitPos[0].position, BulletInitPos[0].transform.up, 20, HitLayers);
+                    
 
-                    if (hit.collider != null)
+                    if (AutoLockObjID != NetworkBehaviourId.None)
                     {
-                        targetPosition = hit.point;
+                        // CanonPivot.transform.LookAt(AutoLockObj.transform);
+                        //CanonPivot.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, desiredAngle));
+                        //Vector3 directionNew = AutoLockObj.transform.position - CanonPivot.transform.position;
+                        //CanonPivot.transform.localRotation = Quaternion.Euler(directionNew);// Quaternion.Euler(new Vector3(0, 0, directionNew.z));
+                        //SkeltonAnim.gameObject.transform.LookAt(AutoLockObj.transform);
+
+                        Vector3 targetObjPosition = mainCamera.ScreenToWorldPoint(AutoLockObj.transform.localPosition);
+
+                        // Calculate the direction from the current position to the target position
+                        Vector3 ReqDirection = targetObjPosition - CanonPivot.transform.localPosition;
+
+                        // Calculate the rotation angle in degrees
+                        float angle = Mathf.Atan2(ReqDirection.y, ReqDirection.x) * Mathf.Rad2Deg;
+                        //float desiredCanonAngle = angle + 270;
+
+                        float desiredCanonAngle = angle - 90;
+                        //Debug.LogError("desiredAngle 11 =" + desiredAngle);
+
+                        if (desiredAngle >= -270 && desiredAngle <= -180)
+                        {
+                            desiredAngle = 80;
+                        }
+                        //Debug.LogError("desiredAngle22=" + desiredAngle);
+                        desiredAngle = Mathf.Clamp(desiredAngle, -RotClampVal, RotClampVal);
+
+                        CanonPivot.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, desiredCanonAngle));
+
+
+                        LaserBeam.transform.LookAt(AutoLockObj.transform);
+                        LaserBeam.GetComponent<F3DBeam>().TargetPoint = new Vector3(AutoLockObj.transform.localPosition.x, AutoLockObj.transform.localPosition.y, 0);
                     }
                     else
                     {
-                        targetPosition = BulletInitPos[0].transform.up * 15;
-                    }
+                        RaycastHit2D hit = Physics2D.Raycast(BulletInitPos[0].position, BulletInitPos[0].transform.up, 20, HitLayers);
 
-                    LaserBeam.GetComponent<F3DBeam>().TargetPoint = new Vector3(targetPosition.x, targetPosition.y, 0);
+                        if (hit.collider != null)
+                        {
+                            targetPosition = hit.point;
+                        }
+                        else
+                        {
+                            targetPosition = BulletInitPos[0].transform.up * 15;
+                        }
+                        LaserBeam.GetComponent<F3DBeam>().TargetPoint = new Vector3(targetPosition.x, targetPosition.y, 0);
+                    }
                     //LaserBeam.GetComponent<F3DLightning>().TargetPoint = new Vector3(targetPosition.x, targetPosition.y, 0);
                 }
                 else
@@ -165,9 +205,15 @@ namespace FishShooting
                         // You can now access information about the hit object
                         GameObject hitObject = hit.collider.gameObject;
                         AutoLockObj = hitObject;
-
+                        AutoLockObjID = hitObject.GetComponent<Aquatic>().ObjectID;
+                        TargetAquaticID = hitObject.GetComponent<Aquatic>().AquaticID;
                         // Do something with the hitObject
-                        Debug.Log("Mouse clicked on: " + hitObject.name);
+                        Debug.Log("Mouse clicked on: " + hitObject.name+"::targetAquaticID="+TargetAquaticID);
+                    }
+                    else
+                    {
+                        Debug.Log("Mouse clicked on no one");
+                        AutoLockObjID = NetworkBehaviourId.None;
                     }
                 }
 
@@ -248,14 +294,15 @@ namespace FishShooting
            
 
 
-            if (Input.GetMouseButtonUp(0) && AutoLockObj==null)
+            if (Input.GetMouseButtonUp(0))// &&AutoLockObj == null)
             {
                 //Debug.LogError("------ canon mouse up");
                 //spineAnimationState.AddAnimation(0, Idle, true, 0);
                 spineAnimationState.SetAnimation(2, Idle, true);
-                if (IsLaserCanon)
+                if (IsLaserCanon && AutoLockObjID == NetworkBehaviourId.None)
                 {
                     IsEnableLaserBeam = false;
+                    AutoLockObj = null;
                 }
             }
         }

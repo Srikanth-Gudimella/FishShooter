@@ -102,7 +102,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b4a09c3938a17fd49822e7d5500367ee, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.003921569}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.8862745}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -163,6 +163,11 @@ MonoBehaviour:
   _interpolationDataSource: 0
   Speed: 20
   PlayerID: 0
+  _TargetObjID:
+    Object:
+      Raw: 0
+    Behaviour: 0
+  _TargetAquaticID: 0
 --- !u!61 &8763888169385776070
 BoxCollider2D:
   m_ObjectHideFlags: 0

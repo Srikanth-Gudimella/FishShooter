@@ -14,10 +14,10 @@ namespace FishShooting
         //    Invoke(nameof(DisableIt), 2f);
         //}
         [Networked] private TickTimer life { get; set; }
+        [Networked] public NetworkBehaviourId TargetObjID { get; set; }
 
         public override void Spawned()
         {
-            //Debug.LogError("---- Bullet Spawned"+Object.InputAuthority);
             PlayerID = Object.InputAuthority;
             Init();
         }
@@ -29,7 +29,8 @@ namespace FishShooting
 
         public override void FixedUpdateNetwork()
         {
-            
+            //Debug.LogError("---- Bullet init TargetAquaticID" + TargetAquaticID);
+
             transform.Translate(Vector3.up * Speed * Runner.DeltaTime);
             if (life.Expired(Runner))
             {
@@ -75,21 +76,32 @@ namespace FishShooting
         //        // gameObject.SetActive(false);
         //    }
         //}
-        private void OnTriggerEnter2D(Collider2D collision)
+        public void OnTriggerEnter2D(Collider2D collision)
         {
-            {
+            //{
                 IDamagable damagable = collision.transform.GetComponent<IDamagable>();
-                if (damagable != null && GameManager.Instance.IsMaster)
+                if (damagable != null)
+                {
+                    if(GameManager.Instance.IsMaster)
                     damagable.ApplyDamage(50, PlayerID);
 
-                damagable.AnimMaterial();
+                    damagable.AnimMaterial();
+                    GameManager.Instance.InstantiateEffect(collision.ClosestPoint(transform.position));
+                    
 
-                //GameManager.Instance.InstantiateEffect(collision.GetContact(0).point);
-                GameManager.Instance.InstantiateEffect(collision.ClosestPoint(transform.position));
+                // if(TargetObjID.Equals(collision.gameObject.GetComponent<Aquatic>().ObjectID))
+                //Debug.Log("--- hitobj TargetAquaticID=" + collision.gameObject.GetComponent<Aquatic>().AquaticID);
 
-                //CancelInvoke("DisableIt");
-                //Debug.Log("bullet runner="+Runner);
-                //Debug.Log("bullet Object="+Object);
+                //if (TargetAquaticID == collision.gameObject.GetComponent<Aquatic>().AquaticID)
+                if (TargetObjID.Equals(collision.gameObject.GetComponent<Aquatic>().ObjectID))
+                {
+                    Debug.LogError("----- Hit with selected target");
+                }
+                else
+                {
+                    Debug.LogError("------ wrong hit");
+                }
+
                 if (Runner != null && Object != null)
                 {
                     //Debug.LogError("--- Despawn this bullet");
@@ -99,9 +111,18 @@ namespace FishShooting
                 {
                     Debug.LogError("--- Despawn not worked");
                 }
+            }
+               
+
+                //GameManager.Instance.InstantiateEffect(collision.GetContact(0).point);
+
+                //CancelInvoke("DisableIt");
+                //Debug.Log("bullet runner="+Runner);
+                //Debug.Log("bullet Object="+Object);
+                
 
                 // gameObject.SetActive(false);
-            }
+            //}
         }
         
     }

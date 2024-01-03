@@ -150,10 +150,16 @@ namespace FishShooting
 				//}
 			}
 		}
-		public void CreateBullet(Transform tr,GameObject Bullet)
+		public void CreateBullet(Transform tr,GameObject Bullet, NetworkBehaviourId AutoLockObjID)
         {
 			NetworkObject networkPlayerObject = Runner.Spawn(Bullet, tr.position, tr.rotation, Runner.LocalPlayer);
-			//networkPlayerObject.GetComponent<BulletController>().Init();
-		}
+            if (AutoLockObjID != null)
+            {
+               // Debug.Log("-- AUtolockObjID=" + AutoLockObjID);
+                networkPlayerObject.GetComponent<BulletController>().TargetObjID = AutoLockObjID;
+                //Debug.Log("-- TargetObjID=" + networkPlayerObject.GetComponent<BulletController>().TargetObjID);
+            }
+            //networkPlayerObject.GetComponent<BulletController>().Init();
+        }
 	}
 }
