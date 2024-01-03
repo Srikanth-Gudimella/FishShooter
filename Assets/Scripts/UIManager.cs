@@ -18,6 +18,9 @@ public class UIManager : MonoBehaviour
     private GameObject emailVerificationPanel;
 
     [SerializeField]
+    private GameObject forgetPasswordPanel;
+
+    [SerializeField]
     private GameObject GamePanel;
     public GameObject LogoutBtn;
     public Text CoinsTxt,ScoreTxt;
@@ -70,6 +73,16 @@ public class UIManager : MonoBehaviour
         DisableAllPanels();
         emailVerificationPanel.SetActive(true);
     }
+    public void OpenForgetPasswordPanel()
+    {
+        DisableAllPanels();
+        forgetPasswordPanel.SetActive(true);
+    }
+    public void CloseForgetPasswordPanel()
+    {
+        DisableAllPanels();
+        loginPanel.SetActive(true);
+    }
     public void OpenGame()
     {
         Debug.Log("---- OpenGame");
@@ -88,6 +101,8 @@ public class UIManager : MonoBehaviour
         registrationPanel.SetActive(false);
         loginPanel.SetActive(false);
         emailVerificationPanel.SetActive(false);
+        forgetPasswordPanel.SetActive(false);
+        registrationPanel.SetActive(false);
         GamePanel.SetActive(false);
         LogoutBtn.SetActive(false);
     }
