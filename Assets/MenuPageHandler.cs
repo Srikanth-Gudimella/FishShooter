@@ -38,7 +38,7 @@ namespace FishShooting
         }
         public void LogOutClick()
         {
-            // FirebaseHandler.Instance.Signout();
+             FirebaseHandler.Instance.Signout();
         }
         public void canon_0_Select()
         {

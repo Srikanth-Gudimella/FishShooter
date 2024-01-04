@@ -4,7 +4,7 @@
 using UnityEngine.SocialPlatforms.GameCenter;
 #endif
 
-namespace Firebase.Sample.Auth
+namespace FishShooting
 {
     using Firebase.Extensions;
     using System;
@@ -16,7 +16,7 @@ namespace Firebase.Sample.Auth
 
     public class FirebaseHandler : MonoBehaviour
     {
-            
+        public static FirebaseHandler Instance;
         protected Firebase.Auth.FirebaseAuth auth;
         protected Firebase.Auth.FirebaseAuth otherAuth;
         protected Dictionary<string, Firebase.Auth.FirebaseUser> userByAuth =
@@ -49,7 +49,10 @@ namespace Firebase.Sample.Auth
         public InputField emailLoginField;
         public InputField passwordLoginField;
 
-
+        private void Awake()
+        {
+            Instance = this;
+        }
         public virtual void Start()
         {
             Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task => {
@@ -114,7 +117,8 @@ namespace Firebase.Sample.Auth
                 if (!signedIn && user != null)
                 {
                     Debug.Log("Signed out " + user.UserId);
-                    UIManager.Instance.OpenRegistrationPanel();
+                    //UIManager.Instance.OpenRegistrationPanel();//Srikanth
+                    UIManager.Instance.OpenLoginPanel();
                 }
                 user = senderAuth.CurrentUser;
                 userByAuth[senderAuth.App.Name] = user;
@@ -131,7 +135,9 @@ namespace Firebase.Sample.Auth
             else
             {
                 Debug.LogError("---- AuthStateChanged Not loggedin");
-                UIManager.Instance.OpenRegistrationPanel();
+                //UIManager.Instance.OpenRegistrationPanel();//Srikanth
+                UIManager.Instance.OpenLoginPanel();
+
             }
         }
         void IdTokenChanged(object sender, System.EventArgs eventArgs)
@@ -370,7 +376,7 @@ namespace Firebase.Sample.Auth
             else
             {
                 Debug.Log("Sign-in before deleting user.");
-                UIManager.Instance.OpenRegistrationPanel();
+                UIManager.Instance.OpenLoginPanel();//Srikanth
                 // Return a finished task.
                 return Task.FromResult(0);
             }
