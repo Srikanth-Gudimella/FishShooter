@@ -10,6 +10,8 @@ namespace FishShooting
     {
         public GameObject SettingsPanel, AddFriendsPanel;
         public GameObject[] TickObjs;
+        public GameObject[] Canons;
+
         private void Start()
         {
             SetCanonToggle();
@@ -21,10 +23,18 @@ namespace FishShooting
         public void Call_SettingsPanel(bool _b)
         {
             SettingsPanel.SetActive(_b);
+            for(int i=0;i<Canons.Length;i++)
+            {
+                Canons[i].SetActive(!_b);
+            }
         }
         public void Call_AddFriendsPanel(bool _b)
         {
             AddFriendsPanel.SetActive(_b);
+            for (int i = 0; i < Canons.Length; i++)
+            {
+                Canons[i].SetActive(!_b);
+            }
         }
         public void LogOutClick()
         {

@@ -29,8 +29,8 @@ namespace FishShooting
 			if (Object.HasInputAuthority)
 			{
 				Debug.LogError("--------- Player Start has input authority");
-                //CreatureCoroutineTime = TickTimer.CreateFromSeconds(Runner, 20f);//Uncomment this for final
-                //BossCharCoroutineTime = TickTimer.CreateFromSeconds(Runner, 120f);//Uncomment this for final
+                CreatureCoroutineTime = TickTimer.CreateFromSeconds(Runner, 20f);//Uncomment this for final
+                BossCharCoroutineTime = TickTimer.CreateFromSeconds(Runner, 120f);//Uncomment this for final
                 GameManager.Instance._playerRef = Object.InputAuthority;
 				if (Runner.IsSharedModeMasterClient)
 				{

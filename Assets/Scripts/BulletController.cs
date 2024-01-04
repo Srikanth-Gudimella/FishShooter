@@ -83,8 +83,10 @@ namespace FishShooting
                 IDamagable damagable = collision.transform.GetComponent<IDamagable>();
             if (damagable != null)
             {
+                Debug.Log("--- trigger 11111 isActiveAndEnabled="+ isActiveAndEnabled);
                 if(isActiveAndEnabled && TargetObjID == NetworkBehaviourId.None)
                 {
+                Debug.Log("--- trigger 22222");
                     if (GameManager.Instance.IsMaster)
                         damagable.ApplyDamage(50, PlayerID);
 

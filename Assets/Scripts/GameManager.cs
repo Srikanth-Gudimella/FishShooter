@@ -249,7 +249,7 @@ namespace FishShooting
                     //Debug.LogError("GameLevel=" + GameLevel+"::maxFishCount="+maxFishCount);
 
                     int randFishIndex = UnityEngine.Random.Range(0, maxFishCount);
-                    randFishIndex = 0;//Srikanth Testing
+                   // randFishIndex = 0;//Srikanth Testing
                     networkPlayerObject = runner.Spawn(FishPooling.Instance.FishPrefabs[randFishIndex], Vector3.one * 1000);//runner.Spawn(FishPooling.Instance.FishPrefabs[0], Vector3.one * 1000);
                     //networkPlayerObject = runner.Spawn(FishPooling.Instance.FishPrefabs[4], Vector3.one * 1000);//runner.Spawn(FishPooling.Instance.FishPrefabs[0], Vector3.one * 1000);
                     break;
