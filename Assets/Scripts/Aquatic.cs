@@ -232,6 +232,8 @@ namespace FishShooting
         {
             if (Is_Dead)
                 return;
+           
+            SoundManager.Instance?.PlaySound(1);
             //Debug.Log("---- Apply Damage -= " + val);
             Health = Health > 0 ? Health -= val : 0;
             Is_Dead = Health <= 0;

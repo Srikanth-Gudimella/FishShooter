@@ -66,6 +66,8 @@ namespace FishShooting
         public IEnumerator StartCoinsAnim()
         {
             yield return new WaitForSeconds(0.3f);
+            SoundManager.Instance?.PlaySound(0);
+
             ScoreTxtCanvas.gameObject.SetActive(false);
             for (int i=0;i< CoinObjList.Count;i++)// CoinBulkItemHandler CoinObj in CoinObjList)
             {

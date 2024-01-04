@@ -30,6 +30,8 @@ namespace FishShooting
         public void SetCoinPosition()
         {
             Debug.Log("----- SetCoinPosition");
+            SoundManager.Instance?.PlaySound(0);
+
             iTween.Stop(CoinObj);
             if (CoinSkeletonAnimation!=null)
                 CoinSkeletonAnimation.AnimationState.SetAnimation(0, "loop", true).TrackTime = 0;
