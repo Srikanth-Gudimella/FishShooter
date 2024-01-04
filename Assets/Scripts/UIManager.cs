@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     private GameObject emailVerificationPanel;
 
     [SerializeField]
-    private GameObject forgetPasswordPanel;
+    private GameObject forgetPasswordPanel,settingsPanel,friendsPanel;
 
     [SerializeField]
     private GameObject GamePanel;
@@ -83,6 +83,23 @@ public class UIManager : MonoBehaviour
         DisableAllPanels();
         loginPanel.SetActive(true);
     }
+
+    public void OpenSettingsPanel()
+    {
+        DisableAllPanels();
+        settingsPanel.SetActive(true);
+    }
+    public void CloseSettingsPanel()
+    {
+        DisableAllPanels();
+        OpenLoginPanel();
+    }
+    public void OpenFriendsPanel()
+    {
+        DisableAllPanels();
+        friendsPanel.SetActive(true);
+    }
+    
     public void OpenGame()
     {
         Debug.Log("---- OpenGame");
@@ -102,6 +119,8 @@ public class UIManager : MonoBehaviour
         loginPanel.SetActive(false);
         emailVerificationPanel.SetActive(false);
         forgetPasswordPanel.SetActive(false);
+        settingsPanel.SetActive(false);
+        friendsPanel.SetActive(false);
         registrationPanel.SetActive(false);
         GamePanel.SetActive(false);
         LogoutBtn.SetActive(false);

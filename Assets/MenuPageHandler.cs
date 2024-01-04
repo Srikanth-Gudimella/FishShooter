@@ -8,6 +8,7 @@ namespace FishShooting
 {
     public class MenuPageHandler : MonoBehaviour
     {
+        public GameObject SettingsPanel, AddFriendsPanel;
         public GameObject[] TickObjs;
         private void Start()
         {
@@ -16,6 +17,14 @@ namespace FishShooting
         public void PlayBtnClick()
         {
             SceneManager.LoadScene("InGame");
+        }
+        public void Call_SettingsPanel(bool _b)
+        {
+            SettingsPanel.SetActive(_b);
+        }
+        public void Call_AddFriendsPanel(bool _b)
+        {
+            AddFriendsPanel.SetActive(_b);
         }
         public void LogOutClick()
         {
