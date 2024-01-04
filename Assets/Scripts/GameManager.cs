@@ -16,6 +16,8 @@ namespace FishShooting
         public List<Transform> PlayerPositions;
 
         public GameObject HitEffect;
+        public GameObject[] HitEffects;
+
         #endregion
 
         public bool IsMaster;
@@ -92,9 +94,13 @@ namespace FishShooting
             //AllCanons.Add(thisCanon.GetComponent<CanonController>());
         }
 
-        public void InstantiateEffect(Vector3 pos)
+        public void InstantiateEffect(Vector3 pos,int HitEffectIndex = 0)
         {
-            GameObject _efct = Instantiate(HitEffect, pos, Quaternion.identity);
+            GameObject _efct = Instantiate(HitEffects[HitEffectIndex], pos, Quaternion.identity);
+            //switch(canonType)
+            //{
+
+            //}
         }
 
         NetworkRunner runner;

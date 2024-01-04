@@ -163,6 +163,11 @@ MonoBehaviour:
   _interpolationDataSource: 0
   Speed: 15
   PlayerID: 0
+  _TargetObjID:
+    Object:
+      Raw: 0
+    Behaviour: 0
+  HitEffectIndex: 0
 --- !u!61 &8763888169385776070
 BoxCollider2D:
   m_ObjectHideFlags: 0

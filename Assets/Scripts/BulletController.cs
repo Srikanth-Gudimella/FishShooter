@@ -15,6 +15,7 @@ namespace FishShooting
         //}
         [Networked] private TickTimer life { get; set; }
         [Networked] public NetworkBehaviourId TargetObjID { get; set; }
+        public int HitEffectIndex;
 
         public override void Spawned()
         {
@@ -88,7 +89,7 @@ namespace FishShooting
                         damagable.ApplyDamage(50, PlayerID);
 
                     damagable.AnimMaterial();
-                    GameManager.Instance.InstantiateEffect(collision.ClosestPoint(transform.position));
+                    GameManager.Instance.InstantiateEffect(collision.ClosestPoint(transform.position), HitEffectIndex);
                     DespawnBullet();
                 }
                 // if(TargetObjID.Equals(collision.gameObject.GetComponent<Aquatic>().ObjectID))
@@ -103,7 +104,7 @@ namespace FishShooting
                         damagable.ApplyDamage(50, PlayerID);
 
                     damagable.AnimMaterial();
-                    GameManager.Instance.InstantiateEffect(collision.ClosestPoint(transform.position));
+                    GameManager.Instance.InstantiateEffect(collision.ClosestPoint(transform.position), HitEffectIndex);
                     DespawnBullet();
                 }
                 else
