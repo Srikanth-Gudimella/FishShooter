@@ -80,49 +80,52 @@ namespace FishShooting
         {
             //{
                 IDamagable damagable = collision.transform.GetComponent<IDamagable>();
-                if (damagable != null)
+            if (damagable != null)
+            {
+                if(isActiveAndEnabled && TargetObjID == NetworkBehaviourId.None)
                 {
-                    if(GameManager.Instance.IsMaster)
-                    damagable.ApplyDamage(50, PlayerID);
+                    if (GameManager.Instance.IsMaster)
+                        damagable.ApplyDamage(50, PlayerID);
 
                     damagable.AnimMaterial();
                     GameManager.Instance.InstantiateEffect(collision.ClosestPoint(transform.position));
-                    
-
+                    DespawnBullet();
+                }
                 // if(TargetObjID.Equals(collision.gameObject.GetComponent<Aquatic>().ObjectID))
                 //Debug.Log("--- hitobj TargetAquaticID=" + collision.gameObject.GetComponent<Aquatic>().AquaticID);
 
                 //if (TargetAquaticID == collision.gameObject.GetComponent<Aquatic>().AquaticID)
-                if (TargetObjID.Equals(collision.gameObject.GetComponent<Aquatic>().ObjectID))
+               // Debug.Log("TargetobjID="+TargetObjID);
+                if (isActiveAndEnabled && TargetObjID.Equals(collision.gameObject.GetComponent<Aquatic>().GetBehaviour<NetworkBehaviour>().Id))
                 {
                     Debug.LogError("----- Hit with selected target");
+                    if (GameManager.Instance.IsMaster)
+                        damagable.ApplyDamage(50, PlayerID);
+
+                    damagable.AnimMaterial();
+                    GameManager.Instance.InstantiateEffect(collision.ClosestPoint(transform.position));
+                    DespawnBullet();
                 }
                 else
                 {
                     Debug.LogError("------ wrong hit");
                 }
 
-                if (Runner != null && Object != null)
-                {
-                    //Debug.LogError("--- Despawn this bullet");
-                    Runner.Despawn(Object);
-                }
-                else
-                {
-                    Debug.LogError("--- Despawn not worked");
-                }
-            }
                
-
-                //GameManager.Instance.InstantiateEffect(collision.GetContact(0).point);
-
-                //CancelInvoke("DisableIt");
-                //Debug.Log("bullet runner="+Runner);
-                //Debug.Log("bullet Object="+Object);
-                
-
-                // gameObject.SetActive(false);
-            //}
+            }
+              
+        }
+        void DespawnBullet()
+        {
+            if (Runner != null && Object != null)
+            {
+                //Debug.LogError("--- Despawn this bullet");
+                Runner.Despawn(Object);
+            }
+            else
+            {
+                Debug.LogError("--- Despawn not worked");
+            }
         }
         
     }

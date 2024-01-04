@@ -241,7 +241,15 @@ MonoBehaviour:
   ThisNetworkPlayer: {fileID: 0}
   LaserBeam: {fileID: 0}
   IsLaserCanon: 0
+  IsAutoLockCanon: 1
   _IsEnableLaserBeam: 0
+  AutoLockObj: {fileID: 0}
+  _AutoLockObjPos: {x: 0, y: 0}
+  _AutoLockObjID:
+    Object:
+      Raw: 0
+    Behaviour: 0
+  _TargetAquaticID: 0
   IgnoreClamp: 0
   HitLayers:
     serializedVersion: 2

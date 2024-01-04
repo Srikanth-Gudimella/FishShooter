@@ -5812,7 +5812,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &135559607
 RectTransform:
   m_ObjectHideFlags: 0
@@ -84889,11 +84889,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7996280896007282093, guid: e5b6b4da1fa373341983fa7e575adb17, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
-      value: -8196091675530411783
+      value: 4775149230995023911
       objectReference: {fileID: 0}
     - target: {fileID: 7996280896007282093, guid: e5b6b4da1fa373341983fa7e575adb17, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[1]
-      value: 7301449500178589860
+      value: 907532788642788772
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5b6b4da1fa373341983fa7e575adb17, type: 3}
@@ -84962,11 +84962,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3681313454260434089, guid: cea9f323b45f8e046b9b2d623c2ef265, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
-      value: -5238700709386842509
+      value: 1748661505561833834
       objectReference: {fileID: 0}
     - target: {fileID: 3681313454260434089, guid: cea9f323b45f8e046b9b2d623c2ef265, type: 3}
       propertyPath: NetworkGuid.RawGuidValue.Array.data[1]
-      value: 3448381095190434465
+      value: -1420222309291615098
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cea9f323b45f8e046b9b2d623c2ef265, type: 3}

@@ -226,7 +226,7 @@ namespace FishShooting
 				ConnectingTxt.gameObject.SetActive(false);
 
 				Vector3 spawnPosition = new Vector3((runner.LocalPlayer.RawEncoded % runner.Config.Simulation.DefaultPlayers) * 3, 1, 0);
-				GameManager.SelectedCanonIndex = 2;//Srikanth Testing
+				//GameManager.SelectedCanonIndex = 0;//Srikanth Testing
 				NetworkObject networkPlayerObject = runner.Spawn(GameManager.Instance.CanonPrefabs[GameManager.SelectedCanonIndex], spawnPosition, Quaternion.identity, runner.LocalPlayer);
 
 				if (runner.IsSharedModeMasterClient)

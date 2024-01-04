@@ -54,7 +54,7 @@ namespace FishShooting
         //[Networked] public bool IsCreature { get; set; }
         [Networked] public int Fishtype { get; set; }
         public GameManager.FishTypes _currentFishType;
-        public NetworkBehaviourId ObjectID;
+        //public NetworkBehaviourId ObjectID;
 
         [Networked] public int AquaticID { get; set; }
 
@@ -162,7 +162,7 @@ namespace FishShooting
             //}
             changed.Behaviour.SetInitials();
             changed.Behaviour.Invoke(nameof(Activate), 1f);
-            changed.Behaviour.ObjectID = changed.Behaviour.Id;
+            //changed.Behaviour.ObjectID = changed.Behaviour.Id;
             //changed.Behaviour.material.color = Color.white;
         }
         void Start()
