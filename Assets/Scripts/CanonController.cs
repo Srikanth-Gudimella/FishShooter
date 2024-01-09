@@ -46,7 +46,8 @@ namespace FishShooting
 
         [Networked] public NetworkBehaviourId AutoLockObjID { get; set; }
 
-        [Networked] public int TargetAquaticID { get; set; }
+        public GameManager.FishTypeIndex TargetFishType = GameManager.FishTypeIndex.FishNone;
+        public bool IsAutoLock;
 
         private void Awake()
         {
@@ -136,6 +137,7 @@ namespace FishShooting
                         //Debug.Log("--- AutoLockObj="+AutoLockObj);
                         if (AutoLockObj == null || (AutoLockObj != null && AutoLockObj.GetComponent<Aquatic>().GetBehaviour<NetworkBehaviour>().isActiveAndEnabled && AutoLockObj.GetComponent<Aquatic>().AquaticDied))
                         {
+                            //set new lock obj
                             AutoLockObjID = NetworkBehaviourId.None;
                             MouseUpAction();
                             return;
@@ -164,21 +166,20 @@ namespace FishShooting
                     LaserBeam.transform.LookAt(AutoLockObjPos);
                     LaserBeam.GetComponent<F3DBeam>().TargetPoint = AutoLockObjPos;// new Vector3(AutoLockObj.transform.localPosition.x, AutoLockObj.transform.localPosition.y, 0);
                 }
-                else
-                {
-                    RaycastHit2D hit = Physics2D.Raycast(BulletInitPos[0].position, BulletInitPos[0].transform.up, 20, HitLayers);
+                //else
+                //{
+                //    RaycastHit2D hit = Physics2D.Raycast(BulletInitPos[0].position, BulletInitPos[0].transform.up, 20, HitLayers);
 
-                    if (hit.collider != null)
-                    {
-                        targetPosition = hit.point;
-                    }
-                    else
-                    {
-                        targetPosition = BulletInitPos[0].transform.up * 15;
-                    }
-                    LaserBeam.GetComponent<F3DBeam>().TargetPoint = new Vector3(targetPosition.x, targetPosition.y, 0);
-                }
-                //LaserBeam.GetComponent<F3DLightning>().TargetPoint = new Vector3(targetPosition.x, targetPosition.y, 0);
+                //    if (hit.collider != null)
+                //    {
+                //        targetPosition = hit.point;
+                //    }
+                //    else
+                //    {
+                //        targetPosition = BulletInitPos[0].transform.up * 15;
+                //    }
+                //    LaserBeam.GetComponent<F3DBeam>().TargetPoint = new Vector3(targetPosition.x, targetPosition.y, 0);
+                //}
             }
             else
             {
@@ -291,14 +292,15 @@ namespace FishShooting
                         GameObject hitObject = hit.collider.gameObject;
                         AutoLockObj = hitObject;
                         AutoLockObjID = hitObject.GetComponent<Aquatic>().GetBehaviour<NetworkBehaviour>().Id;
-                        TargetAquaticID = hitObject.GetComponent<Aquatic>().AquaticID;
-                        // Do something with the hitObject
-                        Debug.Log("Mouse clicked on: " + hitObject.name+"::targetAquaticID="+TargetAquaticID);
+                        TargetFishType = hitObject.GetComponent<Aquatic>().AquaticFishTypeIndex;
+                        //TargetAquaticID = hitObject.GetComponent<Aquatic>().AquaticID;
+                        //// Do something with the hitObject
+                        //Debug.Log("Mouse clicked on: " + hitObject.name+"::targetAquaticID="+TargetAquaticID);
                     }
                     else
                     {
                         Debug.Log("Mouse clicked on no one");
-                        AutoLockObjID = NetworkBehaviourId.None;
+                        //AutoLockObjID = NetworkBehaviourId.None;
                     }
                 }
                 else if (IsAutoLockCanon)
@@ -315,14 +317,16 @@ namespace FishShooting
                         GameObject hitObject = hit.collider.gameObject;
                         AutoLockObj = hitObject;
                         AutoLockObjID = hitObject.GetComponent<Aquatic>().GetBehaviour<NetworkBehaviour>().Id;
-                        TargetAquaticID = hitObject.GetComponent<Aquatic>().AquaticID;
-                        // Do something with the hitObject
-                        Debug.Log("Mouse clicked on: " + hitObject.name + "::targetAquaticID=" + TargetAquaticID);
+                        TargetFishType = hitObject.GetComponent<Aquatic>().AquaticFishTypeIndex;
+
+                        //TargetAquaticID = hitObject.GetComponent<Aquatic>().AquaticID;
+                        //// Do something with the hitObject
+                        //Debug.Log("Mouse clicked on: " + hitObject.name + "::targetAquaticID=" + TargetAquaticID);
                     }
                     else
                     {
                         Debug.Log("Mouse clicked on no one");
-                        AutoLockObjID = NetworkBehaviourId.None;
+                        //AutoLockObjID = NetworkBehaviourId.None;
                     }
                 }
 
@@ -440,6 +444,10 @@ namespace FishShooting
                 //Debug.LogError("desiredAngle22=" + desiredAngle);
                 desiredAngle = Mathf.Clamp(desiredAngle, -RotClampVal, RotClampVal);
             }
+        }
+        public void AutoLockClick()
+        {
+
         }
        
 

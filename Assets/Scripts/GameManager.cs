@@ -51,6 +51,25 @@ namespace FishShooting
             Boss
         }
 
+        public enum FishTypeIndex
+        {
+            FishNone,
+            FishIndex_1,
+            FishIndex_2,
+            FishIndex_3,
+            FishIndex_4,
+            FishIndex_5,
+            FishIndex_6,
+            FishIndex_7,
+            FishIndex_8,
+            FishIndex_9,
+            FishIndex_10,
+            FishIndex_11,
+            CreatureIndex_0,
+            Boss_0,
+            Boss_1,
+        }
+
         void Awake()
         {
             Instance = this;

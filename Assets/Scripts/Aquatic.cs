@@ -57,6 +57,7 @@ namespace FishShooting
         //public NetworkBehaviourId ObjectID;
 
         [Networked] public int AquaticID { get; set; }
+        public GameManager.FishTypeIndex AquaticFishTypeIndex;
 
         void OnEnable()
         {

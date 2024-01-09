@@ -74,6 +74,7 @@ MonoBehaviour:
   _Fishtype: 0
   _currentFishType: 0
   _AquaticID: 0
+  AquaticFishTypeIndex: 1
   _HitByPlayerID: 0
   _AquaticDied:
     _value: 0
