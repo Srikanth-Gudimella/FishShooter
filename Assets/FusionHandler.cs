@@ -226,9 +226,11 @@ namespace FishShooting
 				ConnectingTxt.gameObject.SetActive(false);
 
 				Vector3 spawnPosition = new Vector3((runner.LocalPlayer.RawEncoded % runner.Config.Simulation.DefaultPlayers) * 3, 1, 0);
-                GameManager.SelectedCanonIndex = 2;//Srikanth Testing
-                NetworkObject networkPlayerObject = runner.Spawn(GameManager.Instance.CanonPrefabs[GameManager.SelectedCanonIndex], spawnPosition, Quaternion.identity, runner.LocalPlayer);
+				spawnPosition = Vector3.zero;
 
+				GameManager.SelectedCanonIndex = 2;//Srikanth Testing
+                NetworkObject networkPlayerObject = runner.Spawn(GameManager.Instance.CanonPrefabs[GameManager.SelectedCanonIndex], spawnPosition, Quaternion.identity, runner.LocalPlayer);
+				GameManager.Instance.MyCanon=networkPlayerObject.GetBehaviour<CanonController>();
 				if (runner.IsSharedModeMasterClient)
 				{
 					MasterPlayerTxt.text = "I am Master";

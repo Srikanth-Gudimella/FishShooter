@@ -83,10 +83,10 @@ namespace FishShooting
                 IDamagable damagable = collision.transform.GetComponent<IDamagable>();
             if (damagable != null)
             {
-                Debug.Log("--- trigger 11111 isActiveAndEnabled="+ isActiveAndEnabled);
+                //Debug.Log("--- trigger 11111 isActiveAndEnabled="+ isActiveAndEnabled);
                 if(isActiveAndEnabled && TargetObjID == NetworkBehaviourId.None)
                 {
-                Debug.Log("--- trigger 22222");
+               // Debug.Log("--- trigger 22222");
                     if (GameManager.Instance.IsMaster)
                         damagable.ApplyDamage(50, PlayerID);
 
@@ -101,7 +101,7 @@ namespace FishShooting
                // Debug.Log("TargetobjID="+TargetObjID);
                 if (isActiveAndEnabled && TargetObjID.Equals(collision.gameObject.GetComponent<Aquatic>().GetBehaviour<NetworkBehaviour>().Id))
                 {
-                    Debug.LogError("----- Hit with selected target");
+                   // Debug.LogError("----- Hit with selected target");
                     if (GameManager.Instance.IsMaster)
                         damagable.ApplyDamage(50, PlayerID);
 
@@ -111,7 +111,7 @@ namespace FishShooting
                 }
                 else
                 {
-                    Debug.LogError("------ wrong hit");
+                    //Debug.LogError("------ wrong hit");
                 }
 
                

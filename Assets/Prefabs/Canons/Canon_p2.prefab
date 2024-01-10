@@ -249,7 +249,8 @@ MonoBehaviour:
     Object:
       Raw: 0
     Behaviour: 0
-  _TargetAquaticID: 0
+  TargetFishType: 0
+  IsAutoLock: 0
   IgnoreClamp: 0
   HitLayers:
     serializedVersion: 2
@@ -273,7 +274,7 @@ MonoBehaviour:
   AoiPositionSource: {fileID: 0}
   Flags: 2305
   NetworkGuid:
-    RawGuidValue: e5b6b4da1fa373341983fa7e575adb17
+    RawGuidValue: 07f0ad2708e15ef449d31d3811ded46b
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 6420963214941086331}

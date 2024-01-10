@@ -40,6 +40,8 @@ namespace FishShooting
         #endregion
         [Networked] public int GameLevel  { get; set; }
         public static int SelectedCanonIndex;
+
+        public CanonController MyCanon;
         //[Networked] private TickTimer CreatureCoroutineTime { get; set; }
         //[Networked] private TickTimer BossCharCoroutineTime { get; set; }
         //[Networked] private TickTimer FishCoroutineTime { get; set; }
@@ -80,7 +82,9 @@ namespace FishShooting
         //}
         private void Start()
         {
-           // InstantiateCanon();
+            // InstantiateCanon();
+            AutoLockActiveObj.SetActive(false);
+
         }
         GameObject GO;
 
@@ -268,7 +272,7 @@ namespace FishShooting
                     //Debug.LogError("GameLevel=" + GameLevel+"::maxFishCount="+maxFishCount);
 
                     int randFishIndex = UnityEngine.Random.Range(0, maxFishCount);
-                   // randFishIndex = 0;//Srikanth Testing
+                    randFishIndex = 0;//Srikanth Testing
                     networkPlayerObject = runner.Spawn(FishPooling.Instance.FishPrefabs[randFishIndex], Vector3.one * 1000);//runner.Spawn(FishPooling.Instance.FishPrefabs[0], Vector3.one * 1000);
                     //networkPlayerObject = runner.Spawn(FishPooling.Instance.FishPrefabs[4], Vector3.one * 1000);//runner.Spawn(FishPooling.Instance.FishPrefabs[0], Vector3.one * 1000);
                     break;
@@ -337,6 +341,13 @@ namespace FishShooting
                 Runner.Shutdown();
             }
             SceneManager.LoadScene("Menu");
+        }
+
+        public GameObject AutoLockActiveObj;
+
+        public void AutoLockClick()
+        {
+            MyCanon.AutoLockClick();
         }
 
     }

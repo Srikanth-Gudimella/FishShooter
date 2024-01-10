@@ -48,6 +48,8 @@ namespace FishShooting
 
         public GameManager.FishTypeIndex TargetFishType = GameManager.FishTypeIndex.FishNone;
         public bool IsAutoLock;
+        private bool InMouseAction;
+        //public GameObject IsAutoLockActiveObj;
 
         private void Awake()
         {
@@ -60,6 +62,10 @@ namespace FishShooting
             // RotClampVal = 80;// Adjust this for testing
             mainCamera = Camera.main;
             spineAnimationState = SkeltonAnim.AnimationState;
+
+            //IsAutoLockActiveObj.SetActive(false);
+            IsAutoLock = false;
+            InMouseAction = false;
         }
 
         GameObject GO;
@@ -116,6 +122,10 @@ namespace FishShooting
         public bool IgnoreClamp;
         public LayerMask HitLayers;
         Vector3 targetPosition;
+        void RotateCanon()
+        {
+            CanonPivot.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, desiredAngle));
+        }
         void AutoLockLaserCanonBehaviour()
         {
             if (IsEnableLaserBeam)
@@ -151,8 +161,8 @@ namespace FishShooting
                         float angle = Mathf.Atan2(ReqDirection.y, ReqDirection.x) * Mathf.Rad2Deg;
                         SetDesiredAngle(angle);
 
-
-                        CanonPivot.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, desiredAngle));
+                        RotateCanon();
+                        //CanonPivot.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, desiredAngle));
 
                         if (Time.time >= NextShootTime)
                         {
@@ -222,8 +232,8 @@ namespace FishShooting
                         float angle = Mathf.Atan2(ReqDirection.y, ReqDirection.x) * Mathf.Rad2Deg;
                         SetDesiredAngle(angle);
 
-
-                        CanonPivot.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, desiredAngle));
+                        RotateCanon();
+                        //CanonPivot.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, desiredAngle));
 
                         if (Time.time >= NextShootTime)
                         {
@@ -262,11 +272,11 @@ namespace FishShooting
         }
         void Update()
         {
-            if (IsLaserCanon)
+            if (IsLaserCanon)// && TargetFishType!=GameManager.FishTypeIndex.FishNone && (IsAutoLock || InMouseAction))
             {
                 AutoLockLaserCanonBehaviour();
             }
-            else if(IsAutoLockCanon)
+            else if(IsAutoLockCanon)// && TargetFishType != GameManager.FishTypeIndex.FishNone && (IsAutoLock || InMouseAction))
             {
                 AutoLockCanonBehaviour();
             }
@@ -281,6 +291,9 @@ namespace FishShooting
                 if (IsLaserCanon)
                 {
                     Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    if (mousePosition.y < -4)
+                        return;
+                    Debug.LogError("--- mouse poisiont=" + mousePosition);
 
                     // Cast a ray from the mouse position into the scene
                     RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
@@ -338,25 +351,29 @@ namespace FishShooting
             
             if (Input.GetMouseButton(0))
             {
-                // Debug.LogError("------ canon mouse down");
+                 Debug.LogError("------ canon mouse down");
                 if (AutoLockObjID == NetworkBehaviourId.None)
                 {
                     Vector2 mousePosition = Input.mousePosition;
+                    
                     float swipeValue = touchStartPos.x - mousePosition.x;
 
                     targetPosition = mainCamera.ScreenToWorldPoint(mousePosition);
-
+                    if (targetPosition.y < -4)
+                        return;
+                    InMouseAction = true;
+                    // Debug.LogError("------ canon mouse down pos=" + targetPosition);
                     // Calculate the direction from the current position to the target position
                     Vector3 direction = targetPosition - CanonPivot.transform.position;
 
                     // Calculate the rotation angle in degrees
                     float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                     SetDesiredAngle(angle);
-                    
+
 
                     //desiredAngle = Mathf.Clamp(desiredAngle, -RotClampVal, RotClampVal);
-
-                    CanonPivot.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, desiredAngle));
+                    RotateCanon();
+                    //CanonPivot.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, desiredAngle));
 
                     //Shooting with Delay
                     if (Time.time >= NextShootTime)
@@ -379,21 +396,27 @@ namespace FishShooting
 
             if (Input.GetMouseButtonUp(0))// &&AutoLockObj == null)
             {
-                //Debug.LogError("------ canon mouse up");
+                Debug.LogWarning("------ canon mouse up");
                 //spineAnimationState.AddAnimation(0, Idle, true, 0);
                 MouseUpAction();
             }
         }
         private void MouseUpAction()
         {
+            Debug.LogError("------ MouseUpAction 11111");
             if (IsLaserCanon)
             {
-                if (AutoLockObjID == NetworkBehaviourId.None)
-                {
-                    IsEnableLaserBeam = false;
-                    AutoLockObj = null;
-                    spineAnimationState.SetAnimation(2, Idle, true);
-                }
+            Debug.LogError("------ MouseUpAction 2222");
+                //if (AutoLockObjID == NetworkBehaviourId.None)
+                if (!IsAutoLock)
+                    {
+                            Debug.LogError("------ MouseUpAction 3333");
+                        IsEnableLaserBeam = false;
+                        AutoLockObj = null;
+                        spineAnimationState.SetAnimation(2, Idle, true);
+                        Debug.LogError("------ MouseUpAction IsEnableLaserBeam="+ IsEnableLaserBeam);
+
+                    }
             }
             else if (IsAutoLockCanon)
             {
@@ -407,7 +430,7 @@ namespace FishShooting
             {
                 spineAnimationState.SetAnimation(2, Idle, true);
             }
-
+            InMouseAction = false;
         }
         public void SetDesiredAngle(float angle)
         {
@@ -447,7 +470,12 @@ namespace FishShooting
         }
         public void AutoLockClick()
         {
-
+            IsAutoLock = !IsAutoLock;
+                GameManager.Instance.AutoLockActiveObj.SetActive(false);
+            if (IsAutoLock)
+            {
+                GameManager.Instance.AutoLockActiveObj.SetActive(true);
+            }
         }
        
 
