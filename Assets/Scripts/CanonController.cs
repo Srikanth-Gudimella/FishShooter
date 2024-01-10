@@ -272,7 +272,7 @@ namespace FishShooting
         }
         void Update()
         {
-            if (IsLaserCanon)// && TargetFishType!=GameManager.FishTypeIndex.FishNone && (IsAutoLock || InMouseAction))
+            if (IsLaserCanon && TargetFishType!=GameManager.FishTypeIndex.FishNone)// && (IsAutoLock || InMouseAction))
             {
                 AutoLockLaserCanonBehaviour();
             }
@@ -368,7 +368,16 @@ namespace FishShooting
 
                     // Calculate the rotation angle in degrees
                     float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                    SetDesiredAngle(angle);
+
+                    //if ((IsLaserCanon || IsAutoLockCanon) && TargetFishType != GameManager.FishTypeIndex.FishNone)
+                    //{
+                    //    SetDesiredAngle(angle);
+                    //}
+                    //else 
+                    if(!IsLaserCanon && !IsAutoLockCanon)
+                    {
+                        SetDesiredAngle(angle);
+                    }
 
 
                     //desiredAngle = Mathf.Clamp(desiredAngle, -RotClampVal, RotClampVal);
