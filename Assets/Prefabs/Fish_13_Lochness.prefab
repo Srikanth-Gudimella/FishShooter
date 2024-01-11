@@ -222,6 +222,7 @@ MonoBehaviour:
   _currentFishType: 0
   _AquaticID: 0
   AquaticFishTypeIndex: 13
+  IsInsideGame: 0
   _HitByPlayerID: 0
   _AquaticDied:
     _value: 0
@@ -238,7 +239,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2.3180904, y: 0.7883264}
+  m_Offset: {x: -2.1127188, y: 0.6384189}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -249,7 +250,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6541586, y: 4.4552174}
+  m_Size: {x: 2.3317466, y: 0.83738047}
   m_EdgeRadius: 0
 --- !u!50 &4494946584976766627
 Rigidbody2D:
@@ -285,7 +286,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0034303665, y: -0.7715535}
+  m_Offset: {x: 1.0889637, y: -0.3796258}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -296,7 +297,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.2834787, y: 1.3354583}
+  m_Size: {x: 4.0986905, y: 2.1193137}
   m_EdgeRadius: 0
 --- !u!114 &2909888635689124656
 MonoBehaviour:
