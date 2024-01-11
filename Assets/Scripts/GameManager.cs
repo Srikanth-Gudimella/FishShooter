@@ -42,6 +42,9 @@ namespace FishShooting
         public static int SelectedCanonIndex;
 
         public CanonController MyCanon;
+        public GameObject Test;
+        public List<Aquatic> AquaticList=new List<Aquatic>();
+        public GameObject AutoLockBtn;
         //[Networked] private TickTimer CreatureCoroutineTime { get; set; }
         //[Networked] private TickTimer BossCharCoroutineTime { get; set; }
         //[Networked] private TickTimer FishCoroutineTime { get; set; }
@@ -67,6 +70,9 @@ namespace FishShooting
             FishIndex_9,
             FishIndex_10,
             FishIndex_11,
+            FishIndex_12,
+            FishIndex_13,
+            FishIndex_14,
             CreatureIndex_0,
             Boss_0,
             Boss_1,
@@ -84,7 +90,7 @@ namespace FishShooting
         {
             // InstantiateCanon();
             AutoLockActiveObj.SetActive(false);
-
+            AutoLockBtn.SetActive(false);
         }
         GameObject GO;
 
@@ -130,7 +136,7 @@ namespace FishShooting
         public void SpawnFishes(NetworkRunner _runner)
         {
             runner = _runner;
-            InvokeRepeating(nameof(PoolFishes), 0.5f, 4f);// 4);//Srikanth Testing use 0.5f
+            InvokeRepeating(nameof(PoolFishes), 0.5f, 4);// 4f);// 4);//Srikanth Testing use 0.5f
 
             //CreatureCoroutineTime = TickTimer.CreateFromSeconds(Runner, 5f);
             //BossCharCoroutineTime = TickTimer.CreateFromSeconds(Runner, 40f);
@@ -186,6 +192,7 @@ namespace FishShooting
         }
         public void CreateBoss()
         {
+           // return;
             Debug.LogError("------- CreateBoss");
             int randBossIndex = UnityEngine.Random.Range(0, FishPooling.Instance.BossCharPrefabs.Count);
             FishObj = GetFish(FishTypes.Boss,0, randBossIndex);
@@ -210,6 +217,7 @@ namespace FishShooting
         }
         public void PoolCreatures()
         {
+           // return;
             //Debug.Log("---- Pooling Fish 000");
             int randPathIndex= UnityEngine.Random.Range(0, FishPooling.Instance.CreaturePaths.Count);
             int creatureIndex = UnityEngine.Random.Range(0, FishPooling.Instance.CreaturePrefabs.Count);
@@ -250,6 +258,7 @@ namespace FishShooting
         GameObject GetFish(FishTypes _fishtype,int creatureIndex=0,int bossIndex=0)
         {
             NetworkObject networkPlayerObject = null;
+           // Debug.LogError("-------- GetFish level="+GameLevel);
             switch (_fishtype)
             {
                 case FishTypes.NormalFish:
@@ -265,14 +274,14 @@ namespace FishShooting
                         case 3:
                             maxFishCount = 11;// FishPooling.Instance.FishPrefabs.Count;
                             break;
-                        default:
-                            maxFishCount = 11;// FishPooling.Instance.FishPrefabs.Count; 
-                            break;
+                        //default:
+                        //    maxFishCount = 11;// FishPooling.Instance.FishPrefabs.Count; 
+                        //    break;
                     }
                     //Debug.LogError("GameLevel=" + GameLevel+"::maxFishCount="+maxFishCount);
 
                     int randFishIndex = UnityEngine.Random.Range(0, maxFishCount);
-                    randFishIndex = 0;//Srikanth Testing
+                    randFishIndex = 11;//Srikanth Testing
                     networkPlayerObject = runner.Spawn(FishPooling.Instance.FishPrefabs[randFishIndex], Vector3.one * 1000);//runner.Spawn(FishPooling.Instance.FishPrefabs[0], Vector3.one * 1000);
                     //networkPlayerObject = runner.Spawn(FishPooling.Instance.FishPrefabs[4], Vector3.one * 1000);//runner.Spawn(FishPooling.Instance.FishPrefabs[0], Vector3.one * 1000);
                     break;
@@ -347,6 +356,7 @@ namespace FishShooting
 
         public void AutoLockClick()
         {
+            if(MyCanon)
             MyCanon.AutoLockClick();
         }
 

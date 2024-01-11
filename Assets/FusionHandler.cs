@@ -231,6 +231,7 @@ namespace FishShooting
 				GameManager.SelectedCanonIndex = 2;//Srikanth Testing
                 NetworkObject networkPlayerObject = runner.Spawn(GameManager.Instance.CanonPrefabs[GameManager.SelectedCanonIndex], spawnPosition, Quaternion.identity, runner.LocalPlayer);
 				GameManager.Instance.MyCanon=networkPlayerObject.GetBehaviour<CanonController>();
+				GameManager.Instance.AutoLockBtn.SetActive(true);
 				if (runner.IsSharedModeMasterClient)
 				{
 					MasterPlayerTxt.text = "I am Master";

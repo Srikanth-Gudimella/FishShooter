@@ -43,10 +43,10 @@ namespace FishShooting
         //public GameObject TargetObj;
         public GameObject AutoLockObj;
         [Networked] public Vector2 AutoLockObjPos { get; set; }
+        public GameManager.FishTypeIndex TargetFishType = GameManager.FishTypeIndex.FishNone;
 
         [Networked] public NetworkBehaviourId AutoLockObjID { get; set; }
 
-        public GameManager.FishTypeIndex TargetFishType = GameManager.FishTypeIndex.FishNone;
         public bool IsAutoLock;
         private bool InMouseAction;
         //public GameObject IsAutoLockActiveObj;
@@ -126,82 +126,9 @@ namespace FishShooting
         {
             CanonPivot.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, desiredAngle));
         }
-        void AutoLockLaserCanonBehaviour()
-        {
-            if (IsEnableLaserBeam)
-            {
-                if (!isFiring)
-                {
-                    isFiring = true;
-                    LaserBeam.SetActive(true);
-                    ThisNetworkPlayer.LaserSound.Play();
-                }
-
-
-
-                if (AutoLockObjID != NetworkBehaviourId.None)
-                {
-
-                    if (GameManager.Instance.myPositionID == myID)
-                    {
-                        //Debug.Log("--- AutoLockObj="+AutoLockObj);
-                        if (AutoLockObj == null || (AutoLockObj != null && AutoLockObj.GetComponent<Aquatic>().GetBehaviour<NetworkBehaviour>().isActiveAndEnabled && AutoLockObj.GetComponent<Aquatic>().AquaticDied))
-                        {
-                            //set new lock obj
-                            AutoLockObjID = NetworkBehaviourId.None;
-                            MouseUpAction();
-                            return;
-                        }
-
-                        AutoLockObjPos = AutoLockObj.transform.position;
-                        Vector3 targetObjPosition = new Vector2(AutoLockObj.transform.position.x, AutoLockObj.transform.position.y);// mainCamera.ScreenToWorldPoint(new Vector2(AutoLockObj.transform.position.x, AutoLockObj.transform.position.y));
-
-                        Vector3 ReqDirection = targetObjPosition - CanonPivot.transform.position;
-
-                        float angle = Mathf.Atan2(ReqDirection.y, ReqDirection.x) * Mathf.Rad2Deg;
-                        SetDesiredAngle(angle);
-
-                        RotateCanon();
-                        //CanonPivot.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, desiredAngle));
-
-                        if (Time.time >= NextShootTime)
-                        {
-                            ShootFrequently();
-                            NextShootTime = Time.time + ShootIntervel;
-                        }
-                    }
-                    
-
-                    //LaserBeam.transform.LookAt(AutoLockObj.transform);
-                    LaserBeam.transform.LookAt(AutoLockObjPos);
-                    LaserBeam.GetComponent<F3DBeam>().TargetPoint = AutoLockObjPos;// new Vector3(AutoLockObj.transform.localPosition.x, AutoLockObj.transform.localPosition.y, 0);
-                }
-                //else
-                //{
-                //    RaycastHit2D hit = Physics2D.Raycast(BulletInitPos[0].position, BulletInitPos[0].transform.up, 20, HitLayers);
-
-                //    if (hit.collider != null)
-                //    {
-                //        targetPosition = hit.point;
-                //    }
-                //    else
-                //    {
-                //        targetPosition = BulletInitPos[0].transform.up * 15;
-                //    }
-                //    LaserBeam.GetComponent<F3DBeam>().TargetPoint = new Vector3(targetPosition.x, targetPosition.y, 0);
-                //}
-            }
-            else
-            {
-                isFiring = false;
-                ////F3DFXController.instance.Stop();
-                LaserBeam.SetActive(false);
-                ThisNetworkPlayer.LaserSound.Stop();
-            }
-        }
         void AutoLockCanonBehaviour()
         {
-           // if (IsEnableLaserBeam)
+            // if (IsEnableLaserBeam)
             {
                 //if (!isFiring)
                 //{
@@ -212,35 +139,35 @@ namespace FishShooting
 
 
 
-                if (GameManager.Instance.myPositionID == myID &&AutoLockObjID != NetworkBehaviourId.None)
+                if (GameManager.Instance.myPositionID == myID && AutoLockObjID != NetworkBehaviourId.None)
                 {
 
-                    
-                        //Debug.Log("--- AutoLockObj="+AutoLockObj);
-                        if (AutoLockObj == null || (AutoLockObj != null && AutoLockObj.GetComponent<Aquatic>().GetBehaviour<NetworkBehaviour>().isActiveAndEnabled && AutoLockObj.GetComponent<Aquatic>().AquaticDied))
-                        {
-                            AutoLockObjID = NetworkBehaviourId.None;
-                            MouseUpAction();
-                            return;
-                        }
 
-                        AutoLockObjPos = AutoLockObj.transform.position;
-                        Vector3 targetObjPosition = new Vector2(AutoLockObj.transform.position.x, AutoLockObj.transform.position.y);// mainCamera.ScreenToWorldPoint(new Vector2(AutoLockObj.transform.position.x, AutoLockObj.transform.position.y));
+                    //Debug.Log("--- AutoLockObj="+AutoLockObj);
+                    if (AutoLockObj == null || (AutoLockObj != null && AutoLockObj.GetComponent<Aquatic>().GetBehaviour<NetworkBehaviour>().isActiveAndEnabled && AutoLockObj.GetComponent<Aquatic>().AquaticDied))
+                    {
+                        AutoLockObjID = NetworkBehaviourId.None;
+                        MouseUpAction();
+                        return;
+                    }
 
-                        Vector3 ReqDirection = targetObjPosition - CanonPivot.transform.position;
+                    AutoLockObjPos = AutoLockObj.transform.position;
+                    Vector3 targetObjPosition = new Vector2(AutoLockObj.transform.position.x, AutoLockObj.transform.position.y);// mainCamera.ScreenToWorldPoint(new Vector2(AutoLockObj.transform.position.x, AutoLockObj.transform.position.y));
 
-                        float angle = Mathf.Atan2(ReqDirection.y, ReqDirection.x) * Mathf.Rad2Deg;
-                        SetDesiredAngle(angle);
+                    Vector3 ReqDirection = targetObjPosition - CanonPivot.transform.position;
 
-                        RotateCanon();
-                        //CanonPivot.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, desiredAngle));
+                    float angle = Mathf.Atan2(ReqDirection.y, ReqDirection.x) * Mathf.Rad2Deg;
+                    SetDesiredAngle(angle);
 
-                        if (Time.time >= NextShootTime)
-                        {
-                            ShootFrequently();
-                            NextShootTime = Time.time + ShootIntervel;
-                        }
-                   
+                    RotateCanon();
+                    //CanonPivot.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, desiredAngle));
+
+                    if (Time.time >= NextShootTime)
+                    {
+                        ShootFrequently();
+                        NextShootTime = Time.time + ShootIntervel;
+                    }
+
 
                     //LaserBeam.transform.LookAt(AutoLockObj.transform);
                     //LaserBeam.transform.LookAt(AutoLockObjPos);
@@ -270,13 +197,126 @@ namespace FishShooting
             //    ThisNetworkPlayer.LaserSound.Stop();
             //}
         }
+        void AutoLockLaserCanonBehaviour()
+        {
+            if (IsEnableLaserBeam)
+            {
+
+                //if (AutoLockObjID != NetworkBehaviourId.None)
+                //{
+                    if (!isFiring)
+                    {
+                        isFiring = true;
+                        LaserBeam.SetActive(true);
+                        ThisNetworkPlayer.LaserSound.Play();
+                    }
+                    if (GameManager.Instance.myPositionID == myID)
+                    {
+                        //Debug.Log("--- AutoLockObj="+AutoLockObj);
+                        if (AutoLockObj == null || (AutoLockObj != null && AutoLockObj.GetComponent<Aquatic>().GetBehaviour<NetworkBehaviour>().isActiveAndEnabled && AutoLockObj.GetComponent<Aquatic>().AquaticDied))
+                        {
+                            Debug.Log("--- AUto lock Obj is null");
+                            //set new lock obj
+                            AutoLockObj = null;
+                            AutoLockObjID = NetworkBehaviourId.None;
+                            MouseUpAction();
+                            return;
+                        }
+
+                        AutoLockObjPos = AutoLockObj.transform.position;
+                        Vector3 targetObjPosition = new Vector2(AutoLockObj.transform.position.x, AutoLockObj.transform.position.y);// mainCamera.ScreenToWorldPoint(new Vector2(AutoLockObj.transform.position.x, AutoLockObj.transform.position.y));
+
+                        Vector3 ReqDirection = targetObjPosition - CanonPivot.transform.position;
+
+                        float angle = Mathf.Atan2(ReqDirection.y, ReqDirection.x) * Mathf.Rad2Deg;
+                        SetDesiredAngle(angle);
+
+                        RotateCanon();
+                        //CanonPivot.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, desiredAngle));
+
+                        if (Time.time >= NextShootTime)
+                        {
+                            ShootFrequently();
+                            NextShootTime = Time.time + ShootIntervel;
+                        }
+                       
+                    }
+                    //Debug.Log("--- laser dispay");
+
+                    LaserBeam.transform.LookAt(AutoLockObjPos);
+                    LaserBeam.GetComponent<F3DBeam>().TargetPoint = AutoLockObjPos;
+
+                    //LaserBeam.transform.LookAt(AutoLockObjPos);
+                    //LaserBeam.GetComponent<F3DBeam>().TargetPoint = AutoLockObjPos;// new Vector3(AutoLockObj.transform.localPosition.x, AutoLockObj.transform.localPosition.y, 0);
+                //}
+               
+                //else
+                //{
+                //    RaycastHit2D hit = Physics2D.Raycast(BulletInitPos[0].position, BulletInitPos[0].transform.up, 20, HitLayers);
+
+                //    if (hit.collider != null)
+                //    {
+                //        targetPosition = hit.point;
+                //    }
+                //    else
+                //    {
+                //        targetPosition = BulletInitPos[0].transform.up * 15;
+                //    }
+                //    LaserBeam.GetComponent<F3DBeam>().TargetPoint = new Vector3(targetPosition.x, targetPosition.y, 0);
+                //}
+            }
+            else if(isFiring)
+            {
+                MouseUpAction();
+                //isFiring = false;
+                //////F3DFXController.instance.Stop();
+                //LaserBeam.SetActive(false);
+                //ThisNetworkPlayer.LaserSound.Stop();
+            }
+        }
+        void FindAquaticToAim()
+        {
+            InvokeRepeating(nameof(FindAquatic), 0.1f, 2);// 4f);// 4);//Srikanth Testing use 0.5f
+
+            
+        }
+        void FindAquatic()
+        {
+            Debug.LogError("-- FindAquatic");
+            foreach (Aquatic _aquatic in GameManager.Instance.AquaticList)
+            {
+                if (TargetFishType == _aquatic.AquaticFishTypeIndex  && !_aquatic.Is_Dead && _aquatic.IsInsideGame)
+                {
+                    AutoLockObj = _aquatic.gameObject;
+                    AutoLockObjID = _aquatic.GetBehaviour<NetworkBehaviour>().Id;
+                    CancelInvoke(nameof(FindAquatic));
+                    if (IsAutoLock)
+                        IsEnableLaserBeam = true;
+                    break;
+                }
+            }
+        }
         void Update()
         {
-            if (IsLaserCanon && TargetFishType!=GameManager.FishTypeIndex.FishNone)// && (IsAutoLock || InMouseAction))
+            if(((IsLaserCanon || IsAutoLockCanon) && GameManager.Instance.myPositionID == myID) && ((AutoLockObj != null && !AutoLockObj.GetComponent<Aquatic>().IsInsideGame)||
+                (AutoLockObj != null && AutoLockObj.GetComponent<Aquatic>().GetBehaviour<NetworkBehaviour>().isActiveAndEnabled && AutoLockObj.GetComponent<Aquatic>().AquaticDied)))
+            {
+                Debug.LogError("Aquatic died or out of screen");
+                AutoLockObj = null;
+                AutoLockObjID = NetworkBehaviourId.None;
+                FindAquaticToAim();
+                //MouseUpAction();
+                //Find New
+            }
+            if((IsLaserCanon || IsAutoLockCanon) && AutoLockObjID == NetworkBehaviourId.None && isFiring)
+            {
+                MouseUpAction();//in client also it should call
+            }
+            if (IsLaserCanon && AutoLockObjID != NetworkBehaviourId.None)// && (IsAutoLock || InMouseAction))
             {
                 AutoLockLaserCanonBehaviour();
             }
-            else if(IsAutoLockCanon)// && TargetFishType != GameManager.FishTypeIndex.FishNone && (IsAutoLock || InMouseAction))
+            else if(IsAutoLockCanon && AutoLockObjID != NetworkBehaviourId.None)// && TargetFishType != GameManager.FishTypeIndex.FishNone && (IsAutoLock || InMouseAction))
             {
                 AutoLockCanonBehaviour();
             }
@@ -351,7 +391,7 @@ namespace FishShooting
             
             if (Input.GetMouseButton(0))
             {
-                 Debug.LogError("------ canon mouse down");
+                 //Debug.LogError("------ canon mouse down");
                 if (AutoLockObjID == NetworkBehaviourId.None)
                 {
                     Vector2 mousePosition = Input.mousePosition;
@@ -377,23 +417,24 @@ namespace FishShooting
                     if(!IsLaserCanon && !IsAutoLockCanon)
                     {
                         SetDesiredAngle(angle);
+                        //desiredAngle = Mathf.Clamp(desiredAngle, -RotClampVal, RotClampVal);
+                        RotateCanon();
+                        //CanonPivot.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, desiredAngle));
+
+                        //Shooting with Delay
+                        if (Time.time >= NextShootTime)
+                        {
+                            ShootFrequently();
+                            NextShootTime = Time.time + ShootIntervel;
+                        }
                     }
 
 
-                    //desiredAngle = Mathf.Clamp(desiredAngle, -RotClampVal, RotClampVal);
-                    RotateCanon();
-                    //CanonPivot.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, desiredAngle));
-
-                    //Shooting with Delay
-                    if (Time.time >= NextShootTime)
-                    {
-                        ShootFrequently();
-                        NextShootTime = Time.time + ShootIntervel;
-                    }
+                    
                 }
 
 
-                if (IsLaserCanon)
+                if (IsLaserCanon && AutoLockObjID != NetworkBehaviourId.None)
                     {
                         IsEnableLaserBeam = true;
                     }
@@ -412,17 +453,22 @@ namespace FishShooting
         }
         private void MouseUpAction()
         {
-            Debug.LogError("------ MouseUpAction 11111");
+            //Debug.LogError("------ MouseUpAction 11111");
             if (IsLaserCanon)
             {
-            Debug.LogError("------ MouseUpAction 2222");
+            //Debug.LogError("------ MouseUpAction 2222");
                 //if (AutoLockObjID == NetworkBehaviourId.None)
-                if (!IsAutoLock)
+                if (!IsAutoLock || AutoLockObjID == NetworkBehaviourId.None)
                     {
-                            Debug.LogError("------ MouseUpAction 3333");
+                            //Debug.LogError("------ MouseUpAction 3333");
                         IsEnableLaserBeam = false;
-                        AutoLockObj = null;
-                        spineAnimationState.SetAnimation(2, Idle, true);
+
+                    isFiring = false;
+                    LaserBeam.SetActive(false);
+                    ThisNetworkPlayer.LaserSound.Stop();
+
+                    //AutoLockObj = null;
+                    spineAnimationState.SetAnimation(2, Idle, true);
                         Debug.LogError("------ MouseUpAction IsEnableLaserBeam="+ IsEnableLaserBeam);
 
                     }
@@ -431,6 +477,7 @@ namespace FishShooting
             {
                 if (AutoLockObjID == NetworkBehaviourId.None)
                 {
+                    Debug.LogError("-------- Set AutoLockObj null");
                     AutoLockObj = null;
                     spineAnimationState.SetAnimation(2, Idle, true);
                 }

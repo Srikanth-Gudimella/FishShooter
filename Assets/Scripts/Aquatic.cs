@@ -59,8 +59,11 @@ namespace FishShooting
         [Networked] public int AquaticID { get; set; }
         public GameManager.FishTypeIndex AquaticFishTypeIndex;
 
+        public bool IsInsideGame;
+
         void OnEnable()
         {
+            IsInsideGame = false;
             Mat_ChangeColor = SkeltonAnim.GetComponent<ChangeColor>();
         }
         public void SetInitials()
@@ -110,9 +113,14 @@ namespace FishShooting
             gameObject.SetActive(false);
             //spawned = !spawned;
         }
+        public override void Despawned(NetworkRunner runner, bool hasState)
+        {
+            GameManager.Instance.AquaticList.Remove(this);
+        }
         void Activate()
         {
             gameObject.SetActive(true);
+            GameManager.Instance.AquaticList.Add(this);
         }
         public static void OnFishReached(Changed<Aquatic> changed)
         {
