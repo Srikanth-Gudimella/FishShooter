@@ -136,7 +136,7 @@ namespace FishShooting
         public void SpawnFishes(NetworkRunner _runner)
         {
             runner = _runner;
-            InvokeRepeating(nameof(PoolFishes), 0.5f, 4);// 4f);// 4);//Srikanth Testing use 0.5f
+            InvokeRepeating(nameof(PoolFishes), 0.5f, 10);// 4f);// 4);//Srikanth Testing use 0.5f
 
             //CreatureCoroutineTime = TickTimer.CreateFromSeconds(Runner, 5f);
             //BossCharCoroutineTime = TickTimer.CreateFromSeconds(Runner, 40f);
@@ -192,7 +192,7 @@ namespace FishShooting
         }
         public void CreateBoss()
         {
-           // return;
+            return;
             Debug.LogError("------- CreateBoss");
             int randBossIndex = UnityEngine.Random.Range(0, FishPooling.Instance.BossCharPrefabs.Count);
             FishObj = GetFish(FishTypes.Boss,0, randBossIndex);
@@ -217,7 +217,7 @@ namespace FishShooting
         }
         public void PoolCreatures()
         {
-           // return;
+            return;
             //Debug.Log("---- Pooling Fish 000");
             int randPathIndex= UnityEngine.Random.Range(0, FishPooling.Instance.CreaturePaths.Count);
             int creatureIndex = UnityEngine.Random.Range(0, FishPooling.Instance.CreaturePrefabs.Count);
@@ -281,7 +281,7 @@ namespace FishShooting
                     //Debug.LogError("GameLevel=" + GameLevel+"::maxFishCount="+maxFishCount);
 
                     int randFishIndex = UnityEngine.Random.Range(0, maxFishCount);
-                    randFishIndex = 11;//Srikanth Testing
+                    randFishIndex = 0;//Srikanth Testing
                     networkPlayerObject = runner.Spawn(FishPooling.Instance.FishPrefabs[randFishIndex], Vector3.one * 1000);//runner.Spawn(FishPooling.Instance.FishPrefabs[0], Vector3.one * 1000);
                     //networkPlayerObject = runner.Spawn(FishPooling.Instance.FishPrefabs[4], Vector3.one * 1000);//runner.Spawn(FishPooling.Instance.FishPrefabs[0], Vector3.one * 1000);
                     break;
