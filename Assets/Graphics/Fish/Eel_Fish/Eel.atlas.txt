@@ -1,0 +1,6 @@
+Eel.png
+size:543,60
+filter:Linear,Linear
+pma:true
+Eel_Fish
+bounds:2,2,539,56

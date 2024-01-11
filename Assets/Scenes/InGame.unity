@@ -1821,6 +1821,9 @@ MonoBehaviour:
   - {fileID: 3583255994054730787, guid: 57fed4ad17b237d49bb640d591674f57, type: 3}
   - {fileID: 6350245913809391606, guid: 5e71b566f891b4e4494a50b5f6a04e89, type: 3}
   - {fileID: 5506059899856975643, guid: b15d1ea6d880aa94dac9caf887fc3d19, type: 3}
+  - {fileID: 7180176998660194952, guid: fc7329ac2d1c7a348a21c943251c841e, type: 3}
+  - {fileID: 4494946584976766625, guid: 751f8f1da601bbc4b8b05dd0a89b7d2a, type: 3}
+  - {fileID: 3580770248493467397, guid: dbdd0a4b857cedc41b0bec80b41b5dd2, type: 3}
   CreaturePrefabs:
   - {fileID: 2081333813353607417, guid: f2b668a92542f5743bd6a6bac96b6960, type: 3}
   BossCharPrefabs:
