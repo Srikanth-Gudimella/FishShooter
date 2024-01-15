@@ -23,6 +23,59 @@ namespace FishShooting
 
 		[Networked] private TickTimer LevelTimer { get; set; }
 
+		public GameObject CanvasObj;
+		public GameObject Btn_Plus,Btn_Minus;
+		public GameObject CoinsText;
+
+		public GameObject[] Canons;
+        [Networked(OnChanged = nameof(OnSetCanon))]
+		public NetworkBool CanonChanged { get; set; }
+		[Networked]public int CanonIndex { get; set; }
+
+		public bool IsAutoLock;
+		public GameObject AutoLockObj;
+		[Networked] public Vector2 AutoLockObjPos { get; set; }
+		public GameManager.FishTypeIndex TargetFishType = GameManager.FishTypeIndex.FishNone;
+
+		[Networked] public NetworkBehaviourId AutoLockObjID { get; set; }
+
+		//public int myID = 0;
+
+		public void OnSelectCanon()
+        {
+			if (GameManager.SelectedCanonIndex < Canons.Length-1)
+				GameManager.SelectedCanonIndex++;
+			else
+				GameManager.SelectedCanonIndex = 0;
+
+			CanonIndex = GameManager.SelectedCanonIndex;
+			CanonChanged = !CanonChanged;
+			//OnSetCanon();
+			if (GameManager.Instance.myPositionID == playerID)
+			{
+				Debug.Log("------- Player OnSelectcanon");
+
+				//GameManager.Instance.MyPlayer = Canons[CanonIndex].GetComponent<CanonController>();
+				GameManager.Instance.MyPlayer.IsAutoLock = GameManager.Instance.IsAutoLock;
+			}
+		}
+		public static void OnSetCanon(Changed<Player> changed)
+        {
+			for (int i = 0; i < changed.Behaviour.Canons.Length; i++)
+				changed.Behaviour.Canons[i].SetActive(false);
+
+				changed.Behaviour.Canons[changed.Behaviour.CanonIndex].SetActive(true);
+
+				GameManager.Instance.SetCanon(changed.Behaviour, changed.Behaviour.Canons[changed.Behaviour.CanonIndex], changed.Behaviour.playerID);
+
+				if (GameManager.Instance.myPositionID == changed.Behaviour.playerID && changed.Behaviour.CanonIndex==2 && changed.Behaviour.IsAutoLock)
+				{
+					changed.Behaviour.Canons[changed.Behaviour.CanonIndex].GetComponent<CanonController>().IsEnableLaserBeam = true;
+				}
+				//GameManager.Instance.SetCanon(this, this.gameObject, 2);
+				//playerID = 2;
+
+			}
 
 		private void Start()
 		{
@@ -47,6 +100,8 @@ namespace FishShooting
 					//BossCharcoroutine = StartCoroutine(ActivateBossCharPaths(40f));
 					//Fishcoroutine = StartCoroutine(ActivateFishPaths(10));
 				}
+				AutoLockObjID = NetworkBehaviourId.None;
+
 			}
 		}
 		public override void Spawned()
@@ -56,10 +111,13 @@ namespace FishShooting
 			{
 				local = this;
 				GameManager.Instance.myPositionID = Object.InputAuthority;
+
+				//playerID = 2;
+				//GameManager.Instance.myPositionID = playerID;
 			}
 
 			// Getting this here because it will revert to -1 if the player disconnects, but we still want to remember the Id we were assigned for clean-up purposes
-			playerID = Object.InputAuthority;
+			playerID = Object.InputAuthority; // Activate this Srikanth
 			FusionHandler.Instance.AddPlayer(this);
 			Debug.Log("---- Player Spawned playerID=" + playerID);
 			var AllPlayers = Runner.ActivePlayers;
@@ -72,8 +130,33 @@ namespace FishShooting
 			Debug.Log("players count" + Runner.SessionInfo.PlayerCount);
 			Debug.Log("players maxplayers" + Runner.SessionInfo.MaxPlayers);
 			Debug.Log("Player USerID" + Runner.GetPlayerUserId(Object.InputAuthority));
-            GameManager.Instance.SetCanon(this, this.gameObject, playerID);
-            //GameManager.Instance.SetCanon(this,this.gameObject,2);
+			//GameManager.Instance.SetCanon(this, this.gameObject, playerID);
+			if (GameManager.Instance.myPositionID == playerID)
+			{
+				CanonIndex = GameManager.SelectedCanonIndex;
+			}
+
+			for (int i = 0; i < Canons.Length; i++)
+				Canons[i].SetActive(false);
+			Debug.Log("------- canonindex="+CanonIndex +" && Length = "+Canons.Length);
+			Canons[CanonIndex].SetActive(true);
+			//playerID = 2;
+			GameManager.Instance.SetCanon(this, Canons[CanonIndex], playerID);
+
+			if (playerID > 1)
+            {
+				CanvasObj.transform.SetPositionAndRotation(Canons[CanonIndex].transform.position + new Vector3(0, 0.7f, 0), Canons[CanonIndex].transform.rotation);
+				CoinsText.transform.eulerAngles = Canons[CanonIndex].transform.eulerAngles + new Vector3(0, 0, 180);
+			}
+			else
+            {
+				CanvasObj.transform.SetPositionAndRotation(Canons[CanonIndex].transform.position + new Vector3(0, -0.7f, 0), Canons[CanonIndex].transform.rotation);
+			}
+
+			Btn_Plus.SetActive(GameManager.Instance.myPositionID == playerID);
+			Btn_Minus.SetActive(GameManager.Instance.myPositionID == playerID);
+
+			
 		}
 		public async void TriggerDespawn()
 		{
@@ -161,5 +244,14 @@ namespace FishShooting
             }
             //networkPlayerObject.GetComponent<BulletController>().Init();
         }
+		public void AutoLockClick()
+		{
+			IsAutoLock = GameManager.Instance.IsAutoLock;
+			GameManager.Instance.AutoLockActiveObj.SetActive(false);
+			if (IsAutoLock)
+			{
+				GameManager.Instance.AutoLockActiveObj.SetActive(true);
+			}
+		}
 	}
 }

@@ -41,7 +41,8 @@ namespace FishShooting
         [Networked] public int GameLevel  { get; set; }
         public static int SelectedCanonIndex;
 
-        public CanonController MyCanon;
+        //public CanonController MyCanon;
+        public Player MyPlayer;
         public GameObject Test;
         public List<Aquatic> AquaticList=new List<Aquatic>();
         public GameObject AutoLockBtn;
@@ -91,6 +92,7 @@ namespace FishShooting
             // InstantiateCanon();
             AutoLockActiveObj.SetActive(false);
             AutoLockBtn.SetActive(false);
+            IsAutoLock = false;
         }
         GameObject GO;
 
@@ -105,9 +107,9 @@ namespace FishShooting
 
             //for (int i = 0; i < PlayerPositions.Count; i++)
             {
-                GO = Instantiate(CanonPrefabs[SelectedCanonIndex].gameObject, PlayerPositions[myPositionID].position, PlayerPositions[myPositionID].rotation);
-                GO.GetComponent<CanonController>().myID = myPositionID;
-                AllCanons.Add(GO.GetComponent<CanonController>());
+                //GO = Instantiate(CanonPrefabs[SelectedCanonIndex].gameObject, PlayerPositions[myPositionID].position, PlayerPositions[myPositionID].rotation);
+                //GO.GetComponent<CanonController>().myID = myPositionID;
+               // AllCanons.Add(GO.GetComponent<CanonController>());
             }
         }
         public void SetCanon(Player _player,GameObject thisCanon,int Position)
@@ -117,7 +119,7 @@ namespace FishShooting
             thisCanon.transform.localPosition = PlayerPositions[Position].position;
             thisCanon.transform.localRotation = PlayerPositions[Position].rotation;
 
-            thisCanon.GetComponent<CanonController>().myID = Position;
+            //_player.myID = Position;
             thisCanon.GetComponent<CanonController>().ThisNetworkPlayer = _player;
             AllCanons[Position] = thisCanon.GetComponent<CanonController>();
             //AllCanons.Add(thisCanon.GetComponent<CanonController>());
@@ -354,10 +356,14 @@ namespace FishShooting
 
         public GameObject AutoLockActiveObj;
 
+        public bool IsAutoLock;
         public void AutoLockClick()
         {
-            if(MyCanon)
-            MyCanon.AutoLockClick();
+            if (MyPlayer)
+            {
+                IsAutoLock = !IsAutoLock;
+                MyPlayer.AutoLockClick();
+            }
         }
 
     }

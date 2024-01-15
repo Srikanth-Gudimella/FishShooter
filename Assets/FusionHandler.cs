@@ -228,9 +228,12 @@ namespace FishShooting
 				Vector3 spawnPosition = new Vector3((runner.LocalPlayer.RawEncoded % runner.Config.Simulation.DefaultPlayers) * 3, 1, 0);
 				spawnPosition = Vector3.zero;
 
-				GameManager.SelectedCanonIndex = 1;//Srikanth Testing
-                NetworkObject networkPlayerObject = runner.Spawn(GameManager.Instance.CanonPrefabs[GameManager.SelectedCanonIndex], spawnPosition, Quaternion.identity, runner.LocalPlayer);
-				GameManager.Instance.MyCanon=networkPlayerObject.GetBehaviour<CanonController>();
+				//GameManager.SelectedCanonIndex = 2;//Srikanth Testing
+                NetworkObject networkPlayerObject = runner.Spawn(GameManager.Instance.CanonPrefabs[0], spawnPosition, Quaternion.identity, runner.LocalPlayer);
+				//GameManager.Instance.MyCanon=networkPlayerObject.GetBehaviour<CanonController>();
+				//NetworkObject actualCanon = networkPlayerObject.transform.GetChild(GameManager.SelectedCanonIndex+1).GetComponent<NetworkObject>();
+				GameManager.Instance.MyPlayer = networkPlayerObject.GetBehaviour<Player>();
+
 				GameManager.Instance.AutoLockBtn.SetActive(true);
 				if (runner.IsSharedModeMasterClient)
 				{
