@@ -6,7 +6,9 @@ using UnityEngine.SocialPlatforms.GameCenter;
 
 namespace FishShooting
 {
+    using Firebase;
     using Firebase.Extensions;
+    using Firebase.Firestore;
     using System;
     using System.Collections;
     using System.Collections.Generic;
@@ -48,6 +50,8 @@ namespace FishShooting
         [Header("Login")]
         public InputField emailLoginField;
         public InputField passwordLoginField;
+        public FirebaseFirestore DataBase;
+
 
         private void Awake()
         {
@@ -60,6 +64,9 @@ namespace FishShooting
                 if (dependencyStatus == Firebase.DependencyStatus.Available)
                 {
                     InitializeFirebase();
+                    FirebaseApp app = FirebaseApp.DefaultInstance;
+                    DataBase = FirebaseFirestore.GetInstance(app);
+                    Debug.LogError("-----------------Database=" + DataBase);
                 }
                 else
                 {
@@ -67,6 +74,16 @@ namespace FishShooting
                       "Could not resolve all Firebase dependencies: " + dependencyStatus);
                 }
             });
+
+            //FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
+            //{
+            //    FirebaseApp app = FirebaseApp.DefaultInstance;
+            //    DataBase = FirebaseFirestore.GetInstance(app);
+            //    Debug.LogError("-----------------Database=" + DataBase);
+            //    //SetDataToFirestore();
+            //    //// Call the method to fetch data
+            //    //FetchDataFromFirestore();
+            //});
         }
 
         protected void InitializeFirebase()
@@ -82,7 +99,7 @@ namespace FishShooting
                   String.IsNullOrEmpty(otherAuthOptions.ProjectId)))
             {
                 Debug.Log(" InitializeFirebase Setting up Firebase Auth otherauthoptions not null");
-
+                
                 try
                 {
                     otherAuth = Firebase.Auth.FirebaseAuth.GetAuth(Firebase.FirebaseApp.Create(
@@ -151,6 +168,7 @@ namespace FishShooting
         }
         public void ReloadUser()
         {
+            Debug.Log("------- ReloadUser");
             if (auth.CurrentUser == null)
             {
                 Debug.Log("Not signed in, unable to reload user.");

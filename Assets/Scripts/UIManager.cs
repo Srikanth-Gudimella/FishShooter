@@ -105,12 +105,13 @@ namespace FishShooting
 
         public void OpenGame()
         {
-            Debug.Log("---- OpenGame");
+            Debug.Log("---- OpenGame 11111");
             DisableAllPanels();
             //GamePanel.SetActive(true);
             //LogoutBtn.SetActive(true);
             //FirebaseDataBaseHandler.Instance.SetUserData();
             FirebaseDataBaseHandler.Instance.FetchData();
+            Debug.Log("---- OpenGame 22222");
 
             //Use set data to save user data in database
             SceneManager.LoadScene("Menu");

@@ -18,9 +18,11 @@ MonoBehaviour:
   skeletonJSON: {fileID: 4900000, guid: 2d2734c5939bad642a5652a56620504e, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
-    requiresBlendModeMaterials: 0
+    requiresBlendModeMaterials: 1
     applyAdditiveMaterial: 1
-    additiveMaterials: []
+    additiveMaterials:
+    - pageName: Crab.png
+      material: {fileID: 2100000, guid: 8b93c1bcb54536e4987710421b819717, type: 2}
     multiplyMaterials: []
     screenMaterials: []
   skeletonDataModifiers: []

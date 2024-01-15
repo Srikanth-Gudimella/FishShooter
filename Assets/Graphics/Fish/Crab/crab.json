@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "mfYdjH2k5Vg",
+	"hash": "uwtMYcB8Qro",
 	"spine": "4.1.24",
 	"x": -396,
 	"y": -221.25,
@@ -32,7 +32,9 @@
 	{ "name": "Claw_L2", "parent": "Claw_L", "length": 46.5, "rotation": -80.67, "x": 24.47, "y": 0.05 },
 	{ "name": "Claw_L4", "parent": "Claw_L", "length": 37.34, "rotation": -82.72, "x": 14.85, "y": -4.28 },
 	{ "name": "Body2", "parent": "Body", "length": 28.72, "rotation": -0.08, "x": 32.78, "y": 0.16 },
-	{ "name": "Eyes", "parent": "Body2", "rotation": -49.14, "x": 24.26, "y": 0.19, "color": "05fb02ff" }
+	{ "name": "Eyes", "parent": "Body2", "rotation": -49.14, "x": 24.26, "y": 0.19, "color": "05fb02ff" },
+	{ "name": "Bomb", "parent": "Body", "rotation": -89.69, "x": 24.63, "y": 1.76 },
+	{ "name": "Blast", "parent": "Bomb", "x": -35.66, "y": 27.28, "scaleX": 0.7, "scaleY": 0.7 }
 ],
 "slots": [
 	{ "name": "Backward_BG", "bone": "root" },
@@ -46,12 +48,26 @@
 	{ "name": "Claw_L", "bone": "Claw_L", "attachment": "Claw_L" },
 	{ "name": "Claw_R", "bone": "Claw_R", "attachment": "Claw_R" },
 	{ "name": "Body", "bone": "Body", "attachment": "Body" },
-	{ "name": "Eyes", "bone": "Eyes", "attachment": "Eyes" }
+	{ "name": "Eyes", "bone": "Eyes", "attachment": "Eyes" },
+	{ "name": "Bomb", "bone": "Bomb", "attachment": "Bomb" },
+	{ "name": "Blast", "bone": "Blast", "attachment": "blast/fc_fire01", "blend": "additive" }
 ],
 "skins": [
 	{
 		"name": "default",
 		"attachments": {
+			"Blast": {
+				"blast/fc_fire01": { "x": 0.5, "y": 0.5, "width": 73, "height": 71 },
+				"blast/fc_fire02": { "x": 0.5, "y": 0.5, "width": 73, "height": 71 },
+				"blast/fc_fire03": { "x": 0.5, "y": 0.5, "width": 73, "height": 71 },
+				"blast/fc_fire04": { "x": 0.5, "y": 0.5, "width": 73, "height": 71 },
+				"blast/fc_fire05": { "x": 0.5, "y": 0.5, "width": 73, "height": 71 },
+				"blast/fc_fire06": { "x": 0.5, "y": 0.5, "width": 73, "height": 71 },
+				"blast/fc_fire07": { "x": 0.5, "y": 0.5, "width": 73, "height": 71 },
+				"blast/fc_fire08": { "x": 0.5, "y": 0.5, "width": 73, "height": 71 },
+				"blast/fc_fire09": { "x": 0.5, "y": 0.5, "width": 73, "height": 71 },
+				"blast/fc_fire10": { "x": 0.5, "y": 0.5, "width": 73, "height": 71 }
+			},
 			"Body": {
 				"Body": {
 					"type": "mesh",
@@ -63,6 +79,9 @@
 					"width": 82,
 					"height": 70
 				}
+			},
+			"Bomb": {
+				"Bomb": { "width": 87, "height": 65 }
 			},
 			"Claw_L": {
 				"Claw_L": {
@@ -177,6 +196,41 @@
 ],
 "animations": {
 	"action": {
+		"slots": {
+			"Blast": {
+				"attachment": [
+					{ "time": 0.0333, "name": "blast/fc_fire02" },
+					{ "time": 0.0667, "name": "blast/fc_fire03" },
+					{ "time": 0.1, "name": "blast/fc_fire04" },
+					{ "time": 0.1333, "name": "blast/fc_fire05" },
+					{ "time": 0.1667, "name": "blast/fc_fire06" },
+					{ "time": 0.2, "name": "blast/fc_fire07" },
+					{ "time": 0.2333, "name": "blast/fc_fire08" },
+					{ "time": 0.2667, "name": "blast/fc_fire09" },
+					{ "time": 0.3, "name": "blast/fc_fire10" },
+					{ "time": 0.3333, "name": "blast/fc_fire01" },
+					{ "time": 0.3667, "name": "blast/fc_fire02" },
+					{ "time": 0.4, "name": "blast/fc_fire03" },
+					{ "time": 0.4333, "name": "blast/fc_fire04" },
+					{ "time": 0.4667, "name": "blast/fc_fire05" },
+					{ "time": 0.5, "name": "blast/fc_fire06" },
+					{ "time": 0.5333, "name": "blast/fc_fire07" },
+					{ "time": 0.5667, "name": "blast/fc_fire08" },
+					{ "time": 0.6, "name": "blast/fc_fire09" },
+					{ "time": 0.6333, "name": "blast/fc_fire10" },
+					{ "time": 0.6667, "name": "blast/fc_fire01" },
+					{ "time": 0.7, "name": "blast/fc_fire02" },
+					{ "time": 0.7333, "name": "blast/fc_fire03" },
+					{ "time": 0.7667, "name": "blast/fc_fire04" },
+					{ "time": 0.8, "name": "blast/fc_fire05" },
+					{ "time": 0.8333, "name": "blast/fc_fire06" },
+					{ "time": 0.8667, "name": "blast/fc_fire07" },
+					{ "time": 0.9, "name": "blast/fc_fire08" },
+					{ "time": 0.9333, "name": "blast/fc_fire09" },
+					{ "time": 0.9667, "name": "blast/fc_fire10" }
+				]
+			}
+		},
 		"bones": {
 			"W_Leg_R1": {
 				"rotate": [
@@ -470,6 +524,20 @@
 					{ "x": 1.014 },
 					{ "time": 0.5 },
 					{ "time": 1, "x": 1.014 }
+				]
+			},
+			"Bomb": {
+				"scale": [
+					{
+						"curve": [ 0.167, 1, 0.333, 0.882, 0.167, 1, 0.333, 0.882 ]
+					},
+					{
+						"time": 0.5,
+						"x": 0.882,
+						"y": 0.882,
+						"curve": [ 0.667, 0.882, 0.833, 1, 0.667, 0.882, 0.833, 1 ]
+					},
+					{ "time": 1 }
 				]
 			}
 		}
