@@ -91,7 +91,7 @@ namespace FishShooting
                 if (task.IsCompleted)
                 {
                     Debug.Log("Data has been successfully stored in the database.");
-                   // FetchData();
+                    FetchData();
                 }
                 else if (task.IsFaulted)
                 {
