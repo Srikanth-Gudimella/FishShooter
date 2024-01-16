@@ -25,14 +25,14 @@ namespace FishShooting
                 //return;
             IsFetched = true;
             Debug.Log("---- Fetch 11111");
-            if (FirebaseHandler.Instance != null && FirebaseHandler.Instance.DataBase != null)
-            {
-                Debug.Log("---- Fetch 22222");
-                //FirebaseFirestore _docRef = FirebaseHandler.Instance.DataBase;//.Collection("users").Document(StoreManager.UserID);
-                //if(FirebaseHandler.Instance.DataBase.Collection)
-                docRef = FirebaseHandler.Instance.DataBase.Collection("users").Document(StoreManager.UserID);
-            }
-            Debug.Log("---- Fetch 333333");
+            //if (FirebaseHandler.Instance != null && FirebaseHandler.Instance.DataBase != null)
+            //{
+            //    Debug.Log("---- Fetch 22222");
+            //    //FirebaseFirestore _docRef = FirebaseHandler.Instance.DataBase;//.Collection("users").Document(StoreManager.UserID);
+            //    //if(FirebaseHandler.Instance.DataBase.Collection)
+            //    docRef = FirebaseHandler.Instance.DataBase.Collection("users").Document(StoreManager.UserID);
+            //}
+            //Debug.Log("---- Fetch 333333");
 
             return;
             try
