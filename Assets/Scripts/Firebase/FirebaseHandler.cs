@@ -18,7 +18,6 @@ namespace FishShooting
 
     public class FirebaseHandler : MonoBehaviour
     {
-        public static FirebaseHandler Instance;
         protected Firebase.Auth.FirebaseAuth auth;
         protected Firebase.Auth.FirebaseAuth otherAuth;
         protected Dictionary<string, Firebase.Auth.FirebaseUser> userByAuth =
@@ -50,12 +49,43 @@ namespace FishShooting
         [Header("Login")]
         public InputField emailLoginField;
         public InputField passwordLoginField;
-        public FirebaseFirestore DataBase;
 
+        public static FirebaseFirestore DataBase;
+
+        //public static FirebaseHandler Instance;
+
+        private static FirebaseHandler _instance;
+        public static FirebaseHandler Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = FindObjectOfType<FirebaseHandler>();
+                    if (_instance == null)
+                    {
+                        Debug.LogError("FirebaseHandler not found! Please add a FirebaseHandler to your scene.");
+                    }
+                }
+                return _instance;
+            }
+        }
 
         private void Awake()
         {
-            Instance = this;
+            //Instance = this;
+            if (_instance != null && _instance != this)
+            {
+                Destroy(this);
+            }
+            else
+            {
+                DontDestroyOnLoad(this);
+                //FirebaseApp app = FirebaseApp.DefaultInstance;
+                //DataBase = FirebaseFirestore.GetInstance(app);
+                DataBase = FirebaseFirestore.DefaultInstance;
+                DataBase.ClearPersistenceAsync();
+            }
         }
         public virtual void Start()
         {
@@ -65,7 +95,7 @@ namespace FishShooting
                 {
                     InitializeFirebase();
                     FirebaseApp app = FirebaseApp.DefaultInstance;
-                    DataBase = FirebaseFirestore.GetInstance(app);
+                   // DataBase = FirebaseFirestore.DefaultInstance;// GetInstance(app);
                     Debug.LogError("-----------------Database=" + DataBase);
                 }
                 else
@@ -177,6 +207,48 @@ namespace FishShooting
             }
             Debug.Log("Reload User Data");
             auth.CurrentUser.ReloadAsync().ContinueWithOnMainThread(task => {
+
+                if (task.IsCanceled)
+                {
+                    Debug.Log("ReloadUser canceled.");
+                }
+                else if (task.IsFaulted)
+                {
+                    Debug.Log("ReloadUser IsFaulted.");
+                }
+                else if (task.IsCompleted)
+                {
+                    Debug.Log("ReloadUser IsCompleted.");
+                    //Debug.Log(operation + " completed");
+                    //complete = true;
+                    if (auth.CurrentUser.IsEmailVerified)
+                    {
+                        StoreManager.UserName = auth.CurrentUser.DisplayName;
+                        //Debug.Log("--------- before open game call 11111111 name="+auth.CurrentUser.DisplayName);
+                        //Debug.LogError("------- Reload user EmailVerified ="+auth.CurrentUser.Email+"::UserID="+ auth.CurrentUser.UserId);
+                        //Debug.Log("--------- before open game call 22222");
+                        StoreManager.UserEmail = auth.CurrentUser.Email;
+                        //Debug.Log("--------- before open game call 3333333");
+                        StoreManager.UserID = auth.CurrentUser.UserId;
+                        //Debug.Log("--------- before open game call 444444");
+                        UIManager.Instance.DisableAllPanels();
+                        //Debug.Log("--------- before open game call 55555");
+                        //load game scene
+                        Debug.Log("--------- before open game call");
+                        UIManager.Instance.StartCoroutine(UIManager.Instance.OpenGame());
+                    }
+                    else
+                    {
+                        Debug.LogError("------- Reload user Email Not Verified ");
+                        UIManager.Instance.OpenEmailVerificationPanel();
+                    }
+                }
+                else
+                {
+                    Debug.Log("----------- LogTaskCompletion else");
+
+                }
+                return;
                 if (LogTaskCompletion(task, "Reload"))
                 {
                     Debug.LogError("------- Display Detailed User Info");
@@ -194,7 +266,7 @@ namespace FishShooting
                         //Debug.Log("--------- before open game call 55555");
                         //load game scene
                         Debug.Log("--------- before open game call");
-                        UIManager.Instance.OpenGame();
+                        //UIManager.Instance.OpenGame();
                     }
                     else
                     {
