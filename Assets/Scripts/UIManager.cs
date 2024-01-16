@@ -26,10 +26,8 @@ namespace FishShooting
         private GameObject GamePanel;
         public GameObject LogoutBtn;
         public Text CoinsTxt, ScoreTxt;
-        public string UserEmail;
-        public string UserID;
+        
 
-        public int userCoins, userScore;
         private void Awake()
         {
             CreateInstance();
@@ -128,40 +126,6 @@ namespace FishShooting
             registrationPanel.SetActive(false);
             GamePanel.SetActive(false);
             LogoutBtn.SetActive(false);
-        }
-        public void SetCoinsValue()
-        {
-            Debug.LogError("------ SetCoinsValue coins=" + userCoins + "::userScore=" + userScore);
-            //UnityThread.QueueOnMainThread(() =>
-            //{
-            //    textField.text = data; // Update the text field with the fetched data
-            //});
-            CoinsTxt.text = "Coins : " + userCoins;
-            ScoreTxt.text = "Score : " + userScore;
-
-            //CoinsTxt.gameObject.SetActive(false);
-            //CoinsTxt.gameObject.SetActive(true);
-
-
-            //ScoreTxt.gameObject.SetActive(false);
-            //ScoreTxt.gameObject.SetActive(true);
-
-        }
-        public IEnumerator SetValues()
-        {
-            yield return new WaitForSeconds(0);
-            //Debug.LogError("------ SetValues coins=" + userCoins + "::userScore=" + userScore);
-            //CoinsTxt.text = "Coins : " + userCoins;
-            //ScoreTxt.text = "Score : " + userScore;
-
-            //CoinsTxt.gameObject.SetActive(false);
-            //CoinsTxt.gameObject.SetActive(true);
-
-
-            //ScoreTxt.gameObject.SetActive(false);
-
-            //ScoreTxt.gameObject.SetActive(true);
-
         }
     }
 

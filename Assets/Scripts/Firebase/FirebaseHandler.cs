@@ -143,9 +143,10 @@ namespace FishShooting
                 {
                     Debug.Log("AuthStateChanged Signed in " + user.UserId + "::isverified=" + user.IsEmailVerified+"::email="+user.Email);
                     displayName = user.DisplayName ?? "";
-                    Debug.LogError("------- Display Detailed User Info");
+                    Debug.LogError("------- AuthStateChanged Display Detailed User Info");
 
                     // DisplayDetailedUserInfo(user, 1);
+                    Debug.LogError("***************** Reload User Call 11111111");
                     ReloadUser();
                 }
             }
@@ -181,15 +182,16 @@ namespace FishShooting
                     Debug.LogError("------- Display Detailed User Info");
                     if(auth.CurrentUser.IsEmailVerified)
                     {
-                        Debug.Log("--------- before open game call 11111111");
-                        Debug.LogError("------- Reload user EmailVerified ="+auth.CurrentUser.Email+"::UserID="+ auth.CurrentUser.UserId);
-                        Debug.Log("--------- before open game call 22222");
-                        UIManager.Instance.UserEmail = auth.CurrentUser.Email;
-                        Debug.Log("--------- before open game call 3333333");
-                        UIManager.Instance.UserID = auth.CurrentUser.UserId;
-                        Debug.Log("--------- before open game call 444444");
+                        StoreManager.UserName = auth.CurrentUser.DisplayName;
+                        //Debug.Log("--------- before open game call 11111111 name="+auth.CurrentUser.DisplayName);
+                        //Debug.LogError("------- Reload user EmailVerified ="+auth.CurrentUser.Email+"::UserID="+ auth.CurrentUser.UserId);
+                        //Debug.Log("--------- before open game call 22222");
+                        StoreManager.UserEmail = auth.CurrentUser.Email;
+                        //Debug.Log("--------- before open game call 3333333");
+                        StoreManager.UserID = auth.CurrentUser.UserId;
+                        //Debug.Log("--------- before open game call 444444");
                         UIManager.Instance.DisableAllPanels();
-                        Debug.Log("--------- before open game call 55555");
+                        //Debug.Log("--------- before open game call 55555");
                         //load game scene
                         Debug.Log("--------- before open game call");
                         UIManager.Instance.OpenGame();
@@ -206,29 +208,41 @@ namespace FishShooting
         protected bool LogTaskCompletion(Task task, string operation)
         {
             bool complete = false;
-            if (task.IsCanceled)
+            try
             {
-                Debug.Log(operation + " canceled.");
-            }
-            else if (task.IsFaulted)
-            {
-                Debug.Log(operation + " encounted an error.");
-                foreach (Exception exception in task.Exception.Flatten().InnerExceptions)
+                if (task.IsCanceled)
                 {
-                    string authErrorCode = "";
-                    Firebase.FirebaseException firebaseEx = exception as Firebase.FirebaseException;
-                    if (firebaseEx != null)
+                    Debug.Log(operation + " canceled.");
+                }
+                else if (task.IsFaulted)
+                {
+                    Debug.Log(operation + " encounted an error.");
+                    foreach (Exception exception in task.Exception.Flatten().InnerExceptions)
                     {
-                        authErrorCode = String.Format("AuthError.{0}: ",
-                          ((Firebase.Auth.AuthError)firebaseEx.ErrorCode).ToString());
+                        string authErrorCode = "";
+                        Firebase.FirebaseException firebaseEx = exception as Firebase.FirebaseException;
+                        if (firebaseEx != null)
+                        {
+                            authErrorCode = String.Format("AuthError.{0}: ",
+                              ((Firebase.Auth.AuthError)firebaseEx.ErrorCode).ToString());
+                        }
+                        Debug.Log(authErrorCode + exception.ToString());
                     }
-                    Debug.Log(authErrorCode + exception.ToString());
+                }
+                else if (task.IsCompleted)
+                {
+                    Debug.Log(operation + " completed");
+                    complete = true;
+                }
+                else
+                {
+                    Debug.Log("----------- LogTaskCompletion else");
+
                 }
             }
-            else if (task.IsCompleted)
+            catch(Exception e)
             {
-                Debug.Log(operation + " completed");
-                complete = true;
+                Debug.LogError("LogTaskCompletion Exception");
             }
             return complete;
         }
@@ -261,7 +275,7 @@ namespace FishShooting
                 // This passes the current displayName through to HandleCreateUserAsync
                 // so that it can be passed to UpdateUserProfile().  displayName will be
                 // reset by AuthStateChanged() when the new user is created and signed in.
-                string _DisplayName = displayName;
+                string _DisplayName = name;
                 auth.CreateUserWithEmailAndPasswordAsync(email, password)
                   .ContinueWithOnMainThread((task) =>
                   {
@@ -312,6 +326,7 @@ namespace FishShooting
             if (LogTaskCompletion(task, "Sign-in"))
             {
                 Debug.Log("------- HandleSignInwithuser ReloadUser call");
+                    Debug.LogError("***************** Reload User Call 222222222");
                 ReloadUser();
             }
         }
@@ -354,6 +369,7 @@ namespace FishShooting
                 {
                     Debug.LogError("--------- Email verification sent successfully");
                     UIManager.Instance.OpenEmailVerificationPanel();
+                    Debug.LogError("***************** Reload User Call 33333333");
                     ReloadUser();
 
                     //ReloadUser();

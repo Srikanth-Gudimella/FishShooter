@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace FishShooting
 {
@@ -11,10 +12,22 @@ namespace FishShooting
         public GameObject SettingsPanel, AddFriendsPanel;
         public GameObject[] TickObjs;
         public GameObject[] Canons;
+        public Text t_Balance, t_Winnings;
 
         private void Start()
         {
             SetCanonToggle();
+            Debug.LogError("------------ MenuPageHandler Start usercredits="+StoreManager.UserCredits+"::wins="+StoreManager.UserWins);
+            t_Balance.text = StoreManager.UserCredits+"";
+            t_Winnings.text = StoreManager.UserWins+"";
+            Invoke(nameof(UpdateCredits), 2);
+        }
+        void UpdateCredits()
+        {
+            Debug.LogError("------------ UpdateCredits=" + StoreManager.UserCredits + "::wins=" + StoreManager.UserWins);
+
+            t_Balance.text = StoreManager.UserCredits + "";
+            t_Winnings.text = StoreManager.UserWins + "";
         }
         public void PlayBtnClick()
         {

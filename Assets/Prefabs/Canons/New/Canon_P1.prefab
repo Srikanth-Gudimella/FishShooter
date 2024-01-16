@@ -2737,7 +2737,7 @@ MonoBehaviour:
   CanvasObj: {fileID: 7911142601740515812}
   Btn_Plus: {fileID: 7911142602342617156}
   Btn_Minus: {fileID: 7911142602944694583}
-  CoinsText: {fileID: 3703465043715590939}
+  CoinsText: {fileID: 3703465043715590934}
   Canons:
   - {fileID: 1751660090043884827}
   - {fileID: 8033446211854948218}
@@ -2753,6 +2753,7 @@ MonoBehaviour:
     Object:
       Raw: 0
     Behaviour: 0
+  _BulletStrength: 0
 --- !u!1 &7911142602224685581
 GameObject:
   m_ObjectHideFlags: 0
@@ -2952,7 +2953,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7911142602342617177}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7114725765249744777}
+        m_TargetAssemblyTypeName: FishShooting.Player, Assembly-CSharp
+        m_MethodName: PlusBtnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7911142602944694583
 GameObject:
   m_ObjectHideFlags: 0
@@ -3073,7 +3086,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7911142602944694580}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7114725765249744777}
+        m_TargetAssemblyTypeName: FishShooting.Player, Assembly-CSharp
+        m_MethodName: MinusBtnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7911142602974840797
 GameObject:
   m_ObjectHideFlags: 0

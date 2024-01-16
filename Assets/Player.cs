@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace FishShooting
 {
@@ -25,11 +26,13 @@ namespace FishShooting
 
 		public GameObject CanvasObj;
 		public GameObject Btn_Plus,Btn_Minus;
-		public GameObject CoinsText;
+		public Text CoinsText;
 
 		public GameObject[] Canons;
+
         [Networked(OnChanged = nameof(OnSetCanon))]
 		public NetworkBool CanonChanged { get; set; }
+
 		[Networked]public int CanonIndex { get; set; }
 
 		public bool IsAutoLock;
@@ -39,6 +42,9 @@ namespace FishShooting
 
 		[Networked] public NetworkBehaviourId AutoLockObjID { get; set; }
 
+		[Networked] public int BulletStrength { get; set; }
+		[Networked(OnChanged = nameof(updateBulletStrength))]
+		public NetworkBool BulletStrengthChanged { get; set; }
 		//public int myID = 0;
 
 		public void OnSelectCanon()
@@ -102,7 +108,14 @@ namespace FishShooting
 				}
 				AutoLockObjID = NetworkBehaviourId.None;
 
+				BulletStrength = 5;
+				BulletStrengthChanged = !BulletStrengthChanged;
+				//updateBulletStrength();
 			}
+		}
+		public static void updateBulletStrength(Changed<Player> changed)
+		{
+			changed.Behaviour.CoinsText.text = changed.Behaviour.BulletStrength +"";
 		}
 		public override void Spawned()
 		{
@@ -252,6 +265,21 @@ namespace FishShooting
 			{
 				GameManager.Instance.AutoLockActiveObj.SetActive(true);
 			}
+		}
+		public void PlusBtnClick()
+        {
+			BulletStrength += 5;
+			BulletStrengthChanged = !BulletStrengthChanged;
+
+        }
+		public void MinusBtnClick()
+        {
+			if (BulletStrength >= 10)
+			{
+				BulletStrength -= 5;
+				BulletStrengthChanged = !BulletStrengthChanged;
+			}
+
 		}
 	}
 }

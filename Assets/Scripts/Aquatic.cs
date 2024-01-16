@@ -320,9 +320,12 @@ namespace FishShooting
             if (changed.Behaviour.HitByPlayerID == GameManager.Instance.myPositionID)
             {
                 //Debug.Log("------- I Killed");
-                if(UIManager.Instance)
-                UIManager.Instance.userScore += changed.Behaviour.Score;
-                FirebaseDataBaseHandler.Instance?.SetScore(UIManager.Instance.userScore);
+                StoreManager.UserWins += changed.Behaviour.Score;
+                FirebaseDataBaseHandler.Instance?.SetWinnings();
+                GameUIHandler.Instance.UpdateCredits();
+                //if (UIManager.Instance)
+                //UIManager.Instance.userScore += changed.Behaviour.Score;
+                //FirebaseDataBaseHandler.Instance?.SetScore(UIManager.Instance.userScore);
             }
             else
             {

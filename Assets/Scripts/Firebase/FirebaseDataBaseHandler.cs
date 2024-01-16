@@ -17,52 +17,113 @@ namespace FishShooting
         {
             Instance = this;
         }
+        bool IsFetched = false;
         public void FetchData()
         {
-            Debug.LogError("---------- FetchData userID=" + UIManager.Instance.UserID+"---Database="+ FirebaseHandler.Instance.DataBase);
+            Debug.LogError("---------- FetchData userID=" + StoreManager.UserID+"---Database="+ FirebaseHandler.Instance.DataBase);
+           // if (IsFetched)
+                //return;
+            IsFetched = true;
+            Debug.Log("---- Fetch 11111");
+            if (FirebaseHandler.Instance != null && FirebaseHandler.Instance.DataBase != null)
+            {
+                Debug.Log("---- Fetch 22222");
+                //FirebaseFirestore _docRef = FirebaseHandler.Instance.DataBase;//.Collection("users").Document(StoreManager.UserID);
+                //if(FirebaseHandler.Instance.DataBase.Collection)
+                docRef = FirebaseHandler.Instance.DataBase.Collection("users").Document(StoreManager.UserID);
+            }
+            Debug.Log("---- Fetch 333333");
+
+            return;
             try
             {
-                docRef = FirebaseHandler.Instance.DataBase.Collection("users").Document("SrikanthTestID2");
-            }
-            catch(Exception e)
-            {
-                Debug.LogError("---------- FetchData exception="+e);
-
-            }
-
-            //return;
-            docRef.GetSnapshotAsync().ContinueWithOnMainThread(task =>
-            {
-                DocumentSnapshot snapshot = task.Result;
-                if (snapshot.Exists)
+                if (FirebaseHandler.Instance.DataBase != null)
                 {
-                    Debug.Log(String.Format("Document data for {0} document:", snapshot.Id));
-                    Dictionary<string, object> city = snapshot.ToDictionary();
-                    foreach (KeyValuePair<string, object> pair in city)
-                    {
-                        Debug.Log(String.Format("{0}: {1}", pair.Key, pair.Value));
-                    }
-                    //SetScore(250);
-                    //get this data and set data
+                    docRef = FirebaseHandler.Instance.DataBase.Collection("users").Document(StoreManager.UserID);
                 }
                 else
                 {
-                    Debug.Log(String.Format("Document {0} does not exist!", snapshot.Id));
-                    //Set init values
-                    SetDataToFirestore();
+                    Debug.LogError("---- Database issue");
                 }
-            });
+           
+
+                docRef.GetSnapshotAsync().ContinueWithOnMainThread(task =>
+                {
+                    DocumentSnapshot snapshot = task.Result;
+                    if (snapshot.Exists)
+                    {
+                        Debug.Log(String.Format("Document data for {0} document:", snapshot.Id));
+                        Dictionary<string, object> UserData = snapshot.ToDictionary();
+                        foreach (KeyValuePair<string, object> data in UserData)
+                        {
+                            Debug.Log(String.Format("{0}: {1}", data.Key, data.Value));
+                        }
+                        Debug.LogError("---- Fetch data userCredits 1111 =" + StoreManager.UserCredits + "::wins=" + StoreManager.UserWins);
+                    
+                        try
+                        {
+                            //check these with local data
+                            StoreManager.UserCredits = (int)((long)UserData[StoreManager.CreditsStr]);
+                            StoreManager.UserWins = (int)((long)UserData[StoreManager.WinsStr]);
+                        }
+                        catch(Exception e)
+                        {
+                            Debug.Log("--------- fetch error="+e);
+                        }
+
+
+                        Debug.LogError("---- Fetch data userCredits 222 ="+StoreManager.UserCredits+"::wins="+StoreManager.UserWins);
+
+                       // if(StoreManager.UserName==string.Empty)
+                        {
+                            StoreManager.UserName= (string)UserData[StoreManager.DispalyNameStr];
+                        }
+
+                        //if (StoreManager.UserEmail == string.Empty)
+                        {
+                            StoreManager.UserEmail = (string)UserData[StoreManager.DispalyNameStr];
+                        }
+                        //if (StoreManager.UserID == string.Empty)
+                        {
+                            StoreManager.UserID = (string)UserData[StoreManager.UserIDStr];
+                        }
+
+                        Debug.LogError("---- Fetch data 33333 ");
+
+                        //SetScore(250);
+                        //get this data and set data
+                    }
+                    else
+                    {
+                        Debug.Log(String.Format("Document {0} does not exist!", snapshot.Id));
+                        StoreManager.UserCredits = StoreManager.DefaultUserScore;
+                        StoreManager.UserWins = 0;
+                        //Set init values
+                        SetDataToFirestore();
+                    }
+                });
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("---------- FetchData exception=" + e);
+
+            }
 
         }
         void SetDataToFirestore()
         {
+            //{ "userid", UIManager.Instance.UserID },
+        //        { "email", UIManager.Instance.UserEmail },
+        //        { "coins", 10000 },
+        //        { "score", 0 }
+
             CollectionReference citiesRef = FirebaseHandler.Instance.DataBase.Collection("users");
-            citiesRef.Document("SrikanthTestID2").SetAsync(new Dictionary<string, object>(){
-            { "Email", "srikanth.gamezeniq@gmail.com" },
-            { "Name", "Srikanth" },
-            { "PlayerID", "IND" },
-            { "Score", 1000 },
-            { "Winnings", 200 }
+            citiesRef.Document(StoreManager.UserID).SetAsync(new Dictionary<string, object>(){
+            { "Email", StoreManager.UserEmail },
+            { "Name", StoreManager.UserName },
+            { "PlayerID", StoreManager.UserID },
+            { "Score", StoreManager.UserCredits },
+            { "Winnings", StoreManager.UserWins }
             }).ContinueWithOnMainThread(task =>
             {
                 if (task.IsCompleted)
@@ -78,15 +139,36 @@ namespace FishShooting
 
             
         }
-        public void SetScore(int score)
+        public void SetWinnings()
         {
-            Debug.Log("------ Set User Data");
+            Debug.Log("------ Set User winns");
             CollectionReference citiesRef = FirebaseHandler.Instance.DataBase.Collection("users");
             Dictionary<string, object> updateUserDB = new Dictionary<string, object>
             {
-                    { "Winnings", score }
+                    { StoreManager.WinsStr, StoreManager.UserWins }
             };
-            citiesRef.Document("SrikanthTestID2").SetAsync(updateUserDB,SetOptions.MergeAll).ContinueWithOnMainThread(task =>
+            citiesRef.Document(StoreManager.UserID).SetAsync(updateUserDB,SetOptions.MergeAll).ContinueWithOnMainThread(task =>
+            {
+                if (task.IsCompleted)
+                {
+                    Debug.Log("Data has been successfully stored in the database.");
+                    FetchData();
+                }
+                else if (task.IsFaulted)
+                {
+                    Debug.LogError("Error storing data: " + task.Exception);
+                }
+            });
+        }
+        public void SetScore()//nothing but credits
+        {
+            Debug.Log("------ Set User credit");
+            CollectionReference citiesRef = FirebaseHandler.Instance.DataBase.Collection("users");
+            Dictionary<string, object> updateUserDB = new Dictionary<string, object>
+            {
+                    { StoreManager.CreditsStr, StoreManager.UserCredits }
+            };
+            citiesRef.Document(StoreManager.UserID).SetAsync(updateUserDB, SetOptions.MergeAll).ContinueWithOnMainThread(task =>
             {
                 if (task.IsCompleted)
                 {

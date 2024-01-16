@@ -99,6 +99,13 @@ namespace FishShooting
         RaycastHit hit;
         void ShootFrequently()
         {
+            spineAnimationState.SetAnimation(1, Shoot, false);
+
+            if (StoreManager.UserCredits< BulletInitPos.Length* ThisNetworkPlayer.BulletStrength)
+            {
+                Debug.LogError("------ out of credits");
+                return;
+            }
             //if(Physics.Raycast(BulletInitPos.position,BulletInitPos.transform.up,20))
             //{
                 //Debug.Log("<color=yellow> ---- Shoot :::: </color> ");
@@ -106,16 +113,19 @@ namespace FishShooting
                 for (int i = 0; i < BulletInitPos.Length; i++)
                 {
                     ThisNetworkPlayer.CreateBullet(BulletInitPos[i],BulletPrefab,ThisNetworkPlayer.AutoLockObjID);
+                    
                 }
-                //SkeltonAnim.AnimationState.SetAnimation(0, Shoot, false);
-                spineAnimationState.SetAnimation(1, Shoot, false);
+            StoreManager.UserCredits -= BulletInitPos.Length * ThisNetworkPlayer.BulletStrength;
+            GameUIHandler.Instance.UpdateCredits();
+            //SkeltonAnim.AnimationState.SetAnimation(0, Shoot, false);
                 if (!IsLaserCanon)
                 {
                     ThisNetworkPlayer.GunSound.Play();
                 }
-               
-                //spineAnimationState.AddAnimation(0, Idle, true,0);
-           // }
+                FirebaseDataBaseHandler.Instance?.SetScore();
+
+            //spineAnimationState.AddAnimation(0, Idle, true,0);
+            // }
         }
         float desiredAngle;
         public bool IgnoreClamp;
