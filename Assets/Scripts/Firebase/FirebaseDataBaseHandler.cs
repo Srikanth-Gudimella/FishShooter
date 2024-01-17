@@ -18,7 +18,7 @@ namespace FishShooting
             Instance = this;
         }
         public static CollectionReference _coll;
-        public void FetchData()
+        public void FetchData1()
         {
             Debug.Log("---- FetchData Database=" + FirebaseHandler.DataBase);
             //yield return new WaitForSeconds(2);
@@ -47,139 +47,58 @@ namespace FishShooting
             }
 
         }
-        public async void FetchData1()
-        {
-            Debug.LogError("---------- FetchData userID=" + StoreManager.UserID + "---Database=" + FirebaseHandler.DataBase);
-            Debug.Log("---- Fetch 11111");
-
-
-            //return;
-            try
-            {
-                StoreManager.UserCredits =0;
-                StoreManager.UserWins = 0;
-                docRef = FirebaseHandler.DataBase.Collection("users").Document(StoreManager.UserID);
-                DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
-
-                //docRef.GetSnapshotAsync().ContinueWith(task =>
-                //{
-                // DocumentSnapshot snapshot = task.Result;
-                if (snapshot.Exists)
-                {
-                    Debug.Log(String.Format("Document data for {0} document:", snapshot.Id));
-                    Dictionary<string, object> UserData = snapshot.ToDictionary();
-
-                    Debug.LogError("---- Fetch data userCredits 1111 =" + StoreManager.UserCredits + "::wins=" + StoreManager.UserWins);
-
-                    try
-                    {
-                        //check these with local data
-                        StoreManager.UserCredits = (int)((long)UserData[StoreManager.CreditsStr]);
-                        StoreManager.UserWins = (int)((long)UserData[StoreManager.WinsStr]);
-                    }
-                    catch (Exception e)
-                    {
-                        Debug.Log("--------- fetch error=" + e);
-                    }
-
-
-
-                    StoreManager.UserName = (string)UserData[StoreManager.DispalyNameStr];
-                    StoreManager.UserEmail = (string)UserData[StoreManager.DispalyNameStr];
-                    StoreManager.UserID = (string)UserData[StoreManager.UserIDStr];
-
-                }
-                else
-                {
-                    Debug.Log(String.Format("Document {0} does not exist!", snapshot.Id));
-                    StoreManager.UserCredits = StoreManager.DefaultUserScore;
-                    StoreManager.UserWins = 0;
-                    //Set init values
-                    SetDataToFirestore();
-                }
-                //});
-            }
-            catch (Exception e)
-            {
-                Debug.LogError("---------- FetchData exception=" + e);
-
-            }
-
-        }
-        //public void FetchData()
+        //public async void FetchData()
         //{
-        //    Debug.LogError("---------- FetchData userID=" + StoreManager.UserID + "---Database=" + FirebaseHandler.Instance.DataBase);
-        //    // if (IsFetched)
-        //    //return;
+        //    Debug.LogError("---------- FetchData userID=" + StoreManager.UserID + "---Database=" + FirebaseHandler.DataBase);
         //    Debug.Log("---- Fetch 11111");
 
 
         //    //return;
         //    try
         //    {
-        //        //FirebaseHandler.Instance.DataBase = FirebaseFirestore.DefaultInstance;
-        //        //CollectionReference usersRef = FirebaseHandler.Instance.DataBase.Collection("users");
-        //        //docRef = usersRef.Document(StoreManager.UserID);
-        //        //if (FirebaseHandler.Instance.DataBase != null)
-        //        // {
-        //        docRef = FirebaseHandler.Instance.DataBase.Collection("users").Document(StoreManager.UserID);
-        //        //}
+        //        StoreManager.UserCredits =0;
+        //        StoreManager.UserWins = 0;
+        //        docRef = FirebaseHandler.DataBase.Collection("users").Document(StoreManager.UserID);
+        //        DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
 
-        //        docRef.GetSnapshotAsync().ContinueWith(task =>
+        //        //docRef.GetSnapshotAsync().ContinueWith(task =>
+        //        //{
+        //        // DocumentSnapshot snapshot = task.Result;
+        //        if (snapshot.Exists)
         //        {
-        //            DocumentSnapshot snapshot = task.Result;
-        //            if (snapshot.Exists)
+        //            Debug.Log(String.Format("Document data for {0} document:", snapshot.Id));
+        //            Dictionary<string, object> UserData = snapshot.ToDictionary();
+
+        //            Debug.LogError("---- Fetch data userCredits 1111 =" + StoreManager.UserCredits + "::wins=" + StoreManager.UserWins);
+
+        //            try
         //            {
-        //                Debug.Log(String.Format("Document data for {0} document:", snapshot.Id));
-        //                Dictionary<string, object> UserData = snapshot.ToDictionary();
-        //                foreach (KeyValuePair<string, object> data in UserData)
-        //                {
-        //                    Debug.Log(String.Format("{0}: {1}", data.Key, data.Value));
-        //                }
-        //                Debug.LogError("---- Fetch data userCredits 1111 =" + StoreManager.UserCredits + "::wins=" + StoreManager.UserWins);
-
-        //                try
-        //                {
-        //                    //check these with local data
-        //                    StoreManager.UserCredits = (int)((long)UserData[StoreManager.CreditsStr]);
-        //                    StoreManager.UserWins = (int)((long)UserData[StoreManager.WinsStr]);
-        //                }
-        //                catch (Exception e)
-        //                {
-        //                    Debug.Log("--------- fetch error=" + e);
-        //                }
+        //                //check these with local data
+        //                StoreManager.UserCredits = (int)((long)UserData[StoreManager.CreditsStr]);
+        //                StoreManager.UserWins = (int)((long)UserData[StoreManager.WinsStr]);
 
 
-        //                Debug.LogError("---- Fetch data userCredits 222 =" + StoreManager.UserCredits + "::wins=" + StoreManager.UserWins);
 
-        //                // if(StoreManager.UserName==string.Empty)
-        //                {
-        //                    StoreManager.UserName = (string)UserData[StoreManager.DispalyNameStr];
-        //                }
 
-        //                //if (StoreManager.UserEmail == string.Empty)
-        //                {
-        //                    StoreManager.UserEmail = (string)UserData[StoreManager.DispalyNameStr];
-        //                }
-        //                //if (StoreManager.UserID == string.Empty)
-        //                {
-        //                    StoreManager.UserID = (string)UserData[StoreManager.UserIDStr];
-        //                }
-
-        //                Debug.LogError("---- Fetch data 33333 ");
-
-        //                //SetScore(250);
-        //                //get this data and set data
+        //            StoreManager.UserName = (string)UserData[StoreManager.DispalyNameStr];
+        //            StoreManager.UserEmail = (string)UserData[StoreManager.DispalyNameStr];
+        //            StoreManager.UserID = (string)UserData[StoreManager.UserIDStr];
         //            }
-        //            else
+        //            catch (Exception e)
         //            {
-        //                Debug.Log(String.Format("Document {0} does not exist!", snapshot.Id));
-        //                StoreManager.UserCredits = StoreManager.DefaultUserScore;
-        //                StoreManager.UserWins = 0;
-        //                //Set init values
-        //                SetDataToFirestore();
+        //                Debug.Log("--------- fetch error=" + e);
         //            }
-        //        });
+
+        //        }
+        //        else
+        //        {
+        //            Debug.Log(String.Format("Document {0} does not exist!", snapshot.Id));
+        //            StoreManager.UserCredits = StoreManager.DefaultUserScore;
+        //            StoreManager.UserWins = 0;
+        //            //Set init values
+        //            SetDataToFirestore();
+        //        }
+        //        //});
         //    }
         //    catch (Exception e)
         //    {
@@ -188,6 +107,91 @@ namespace FishShooting
         //    }
 
         //}
+        public void FetchData()
+        {
+            Debug.LogError("---------- FetchData userID=" + StoreManager.UserID + "---Database=" + FirebaseHandler.DataBase);
+            // if (IsFetched)
+            //return;
+            Debug.Log("---- Fetch 11111");
+
+
+            //return;
+            try
+            {
+                //FirebaseHandler.Instance.DataBase = FirebaseFirestore.DefaultInstance;
+                //CollectionReference usersRef = FirebaseHandler.Instance.DataBase.Collection("users");
+                //docRef = usersRef.Document(StoreManager.UserID);
+                //if (FirebaseHandler.Instance.DataBase != null)
+                // {
+                docRef = FirebaseHandler.DataBase.Collection("users").Document(StoreManager.UserID);
+                //}
+
+                docRef.GetSnapshotAsync().ContinueWithOnMainThread(task =>
+                {
+                    DocumentSnapshot snapshot = task.Result;
+                    if (snapshot.Exists)
+                    {
+                        Debug.Log(String.Format("Document data for {0} document:", snapshot.Id));
+                        Dictionary<string, object> UserData = snapshot.ToDictionary();
+                        Debug.LogError("---- SnapShot Exists");
+                        try
+                        {
+                            foreach (KeyValuePair<string, object> data in UserData)
+                            {
+                                Debug.Log(String.Format("{0}: {1}", data.Key, data.Value));
+                            }
+                            Debug.LogError("---- Fetch data userCredits 1111 =" + StoreManager.UserCredits + "::wins=" + StoreManager.UserWins);
+
+
+                            //Debug.LogError("--------- Fetch Data usercredits=" + ((int)((long)UserData[StoreManager.CreditsStr])));
+                            //check these with local data
+                            StoreManager.UserCredits = (int)((long)UserData[StoreManager.CreditsStr]);
+                            StoreManager.UserWins = (int)((long)UserData[StoreManager.WinsStr]);
+                        }
+                        catch (Exception e)
+                        {
+                            Debug.Log("--------- fetch error=" + e);
+                        }
+
+
+                        Debug.LogError("---- Fetch data userCredits 222 =" + StoreManager.UserCredits + "::wins=" + StoreManager.UserWins);
+
+                        // if(StoreManager.UserName==string.Empty)
+                        {
+                            StoreManager.UserName = (string)UserData[StoreManager.DispalyNameStr];
+                        }
+
+                        //if (StoreManager.UserEmail == string.Empty)
+                        {
+                            StoreManager.UserEmail = (string)UserData[StoreManager.DispalyNameStr];
+                        }
+                        //if (StoreManager.UserID == string.Empty)
+                        {
+                            StoreManager.UserID = (string)UserData[StoreManager.UserIDStr];
+                        }
+
+                        Debug.LogError("---- Fetch data 33333 ");
+
+                        //SetScore(250);
+                        //get this data and set data
+                    }
+                    else
+                    {
+                        Debug.Log(String.Format("Document {0} does not exist!", snapshot.Id));
+                        StoreManager.UserCredits = StoreManager.DefaultUserScore;
+                        StoreManager.UserWins = 0;
+                        //Set init values
+                        SetDataToFirestore();
+                    }
+                });
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("---------- FetchData exception=" + e);
+
+            }
+
+        }
         void SetDataToFirestore()
         {
             //{ "userid", UIManager.Instance.UserID },

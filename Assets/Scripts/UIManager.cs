@@ -101,21 +101,14 @@ namespace FishShooting
             friendsPanel.SetActive(true);
         }
 
-        public IEnumerator OpenGame()
+        public void OpenGame()
         {
             Debug.Log("---- OpenGame 11111");
             DisableAllPanels();
-            //GamePanel.SetActive(true);
-            //LogoutBtn.SetActive(true);
-            //FirebaseDataBaseHandler.Instance.SetUserData();
-            Debug.Log("---- OpenGame 22222");
-
-            yield return new WaitForSeconds(2);
             Debug.Log("---- OpenGame 33333");
             FirebaseDataBaseHandler.Instance.FetchData();
-            //FirebaseDataBaseHandler.Instance.StartCoroutine(FirebaseDataBaseHandler.Instance.FetchData());
             Debug.Log("---- OpenGame 44444");
-            StoreManager.UserCredits = 0;//srikanth testing
+            //StoreManager.UserCredits = 0;//srikanth testing
             //Use set data to save user data in database
             SceneManager.LoadScene("Menu");
         }

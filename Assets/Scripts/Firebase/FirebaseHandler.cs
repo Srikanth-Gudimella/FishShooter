@@ -83,8 +83,12 @@ namespace FishShooting
                 DontDestroyOnLoad(this);
                 //FirebaseApp app = FirebaseApp.DefaultInstance;
                 //DataBase = FirebaseFirestore.GetInstance(app);
+                //FirebaseApp.DefaultInstance.
+                FirebaseFirestore.DefaultInstance.Settings.PersistenceEnabled = false;
+
                 DataBase = FirebaseFirestore.DefaultInstance;
                 DataBase.ClearPersistenceAsync();
+                //FirebaseApp.DefaultInstance.SetPersistenceEnabled(false);
             }
         }
         public virtual void Start()
@@ -235,7 +239,7 @@ namespace FishShooting
                         //Debug.Log("--------- before open game call 55555");
                         //load game scene
                         Debug.Log("--------- before open game call");
-                        UIManager.Instance.StartCoroutine(UIManager.Instance.OpenGame());
+                        UIManager.Instance.OpenGame();
                     }
                     else
                     {
