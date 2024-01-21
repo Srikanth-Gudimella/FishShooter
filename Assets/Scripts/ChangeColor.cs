@@ -27,7 +27,7 @@ namespace FishShooting
             if (objectRenderer != null)
             {
                 //objectRenderer.material = material;
-                //Debug.Log("------------- Color");
+               Debug.Log("------------- Color");
                // objectRenderer.material.color = newColor;
                 material.color = newColor;
             }
