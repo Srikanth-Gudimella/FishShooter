@@ -61,10 +61,14 @@ namespace FishShooting
 
         public bool IsInsideGame;
 
+
+        public AudioSource m_Audio;
         void OnEnable()
         {
             IsInsideGame = false;
             Mat_ChangeColor = SkeltonAnim.GetComponent<ChangeColor>();
+            if (m_Audio)
+                m_Audio.Play();
         }
         public void SetInitials()
         {

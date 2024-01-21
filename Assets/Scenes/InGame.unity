@@ -41046,8 +41046,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 267cd1facaaddfb4fb1fdc6598493f66, type: 3}
   - {fileID: 8300000, guid: f7998e3244d62374db43a34fbd0eadaf, type: 3}
   m_Clips:
-  - {fileID: 8300000, guid: b8445b3985beac3428f1ed5b79644a76, type: 3}
+  - {fileID: 8300000, guid: d36c2a9620a5c55498411003b3c58b0b, type: 3}
   - {fileID: 8300000, guid: 5ab642430be5edf4abc49d1e7be37ff7, type: 3}
+  - {fileID: 8300000, guid: b8445b3985beac3428f1ed5b79644a76, type: 3}
 --- !u!4 &1113112880
 Transform:
   m_ObjectHideFlags: 0
